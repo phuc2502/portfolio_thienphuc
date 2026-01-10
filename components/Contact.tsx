@@ -112,17 +112,22 @@ const Contact: React.FC = () => {
         // 1) Gửi email auto-reply cho người dùng (template Auto-Reply hiện tại)
         const templateParams = {
           // Biến cho template "Auto-Reply" (gửi email tới địa chỉ user nhập trong form)
-          name: formData.name,          // {{name}}
-          title: formData.message,      // {{title}}
-          email: formData.email,        // {{email}} -> To Email (dùng cho template có {{email}})
-          to_email: formData.email,     // {{to_email}} -> To Email (dùng cho template có {{to_email}})
+          // To Email - PHẢI có một trong các biến này trong template EmailJS
+          email: formData.email,        // {{email}} -> To Email (khuyến nghị)
+          to_email: formData.email,     // {{to_email}} -> To Email (dự phòng)
           
-          // Các biến bổ sung, dùng được cho template khác nếu cần
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          owner_email: targetEmail,     // email cá nhân của bạn (dùng cho template owner notification)
-          reply_to: targetEmail,        // khi người nhận bấm Reply sẽ trả lời về email của bạn
+          // Thông tin hiển thị trong email auto-reply
+          name: formData.name,          // {{name}}
+          from_name: formData.name,     // {{from_name}}
+          message: formData.message,    // {{message}} - nội dung tin nhắn
+          title: formData.message,      // {{title}} - dự phòng nếu template dùng title
+          
+          // Email của người gửi (người điền form)
+          from_email: formData.email,   // {{from_email}}
+          
+          // Email của owner để reply về
+          reply_to: targetEmail,        // {{reply_to}} - khi người nhận bấm Reply sẽ trả lời về email của bạn
+          owner_email: targetEmail,     // {{owner_email}} - dự phòng
         };
 
         console.log('Sending auto-reply with params:', templateParams);
@@ -139,26 +144,28 @@ const Contact: React.FC = () => {
         console.log('Text:', result.text);
 
         // 2) Gửi thêm một email thông báo về email cá nhân của bạn (owner), nếu đã cấu hình template
-        if (EMAILJS_OWNER_TEMPLATE_ID && EMAILJS_OWNER_TEMPLATE_ID !== 'YOUR_OWNER_TEMPLATE_ID') {
+        if (EMAILJS_OWNER_TEMPLATE_ID && EMAILJS_OWNER_TEMPLATE_ID !== 'YOUR_OWNER_TEMPLATE_ID' && EMAILJS_OWNER_TEMPLATE_ID !== 'template_7lzk2dd') {
           const ownerParams = {
-            // Các biến cho "To Email" - hỗ trợ cả {{email}}, {{to_email}}, {{owner_email}}
-            email: targetEmail,              // {{email}} -> To Email
-            to_email: targetEmail,           // {{to_email}} -> To Email
-            owner_email: targetEmail,        // {{owner_email}} -> To Email
+            // Các biến cho "To Email" - PHẢI có một trong các biến này trong template EmailJS
+            // Template Owner phải có "To Email" = {{email}}, {{to_email}}, hoặc {{owner_email}}
+            email: targetEmail,              // {{email}} -> To Email (khuyến nghị)
+            to_email: targetEmail,           // {{to_email}} -> To Email (dự phòng)
+            owner_email: targetEmail,        // {{owner_email}} -> To Email (dự phòng)
             
-            // Thông tin người gửi form
-            from_name: formData.name,
-            from_email: formData.email,
-            message: formData.message,
+            // Thông tin người gửi form (người điền form)
+            from_name: formData.name,        // {{from_name}} - tên người điền form
+            from_email: formData.email,      // {{from_email}} - email người điền form
+            name: formData.name,             // {{name}} - dự phòng
+            message: formData.message,       // {{message}} - nội dung tin nhắn
+            title: formData.message,         // {{title}} - dự phòng
             
-            // Các biến bổ sung
-            name: formData.name,
-            title: formData.message,
-            reply_to: formData.email,
+            // Email để reply về người điền form
+            reply_to: formData.email,        // {{reply_to}} - khi bạn bấm Reply sẽ trả lời về người điền form
           };
 
           console.log('📧 Sending owner notification with params:', ownerParams);
           console.log('📧 Owner Template ID:', EMAILJS_OWNER_TEMPLATE_ID);
+          console.log('📧 Target Email (Owner):', targetEmail);
 
           try {
             const ownerResult = await emailjs.send(
@@ -169,6 +176,8 @@ const Contact: React.FC = () => {
             );
             console.log('✅ EmailJS owner notification success:', ownerResult);
             console.log('✅ Owner email sent to:', targetEmail);
+            console.log('✅ Status:', ownerResult.status);
+            console.log('✅ Text:', ownerResult.text);
           } catch (ownerError: any) {
             console.error('❌ Owner notification email failed:', ownerError);
             console.error('❌ Error details:', {
@@ -176,12 +185,28 @@ const Contact: React.FC = () => {
               text: ownerError.text,
               message: ownerError.message
             });
+            
+            // Hiển thị cảnh báo cho user về lỗi owner notification
+            if (ownerError.text) {
+              if (ownerError.text.includes('recipients address is empty') || ownerError.text.includes('recipient') && ownerError.text.includes('empty')) {
+                console.error('❌ LỖI: Template Owner không có "To Email" được cấu hình đúng!');
+                console.error('❌ Hãy kiểm tra template trong EmailJS Dashboard và đảm bảo "To Email" có giá trị: {{email}}, {{to_email}}, hoặc', targetEmail);
+              } else if (ownerError.text.includes('Template not found')) {
+                console.error('❌ LỖI: Owner Template ID không tồn tại:', EMAILJS_OWNER_TEMPLATE_ID);
+                console.error('❌ Hãy kiểm tra lại VITE_EMAILJS_OWNER_TEMPLATE_ID trong file .env');
+              }
+            }
             // Không phá vỡ trải nghiệm người dùng nếu email thông báo bị lỗi
             // Nhưng log chi tiết để debug
           }
         } else {
-          console.warn('⚠️ Owner template ID chưa được cấu hình. Bỏ qua việc gửi email thông báo cho owner.');
-          console.warn('⚠️ Để nhận email thông báo, hãy tạo template trong EmailJS và thêm VITE_EMAILJS_OWNER_TEMPLATE_ID vào .env');
+          if (EMAILJS_OWNER_TEMPLATE_ID === 'template_7lzk2dd') {
+            console.warn('⚠️ Owner template ID đang dùng giá trị mặc định. Có thể template này chưa được tạo trong EmailJS.');
+            console.warn('⚠️ Hãy tạo template Owner Notification mới trong EmailJS Dashboard và cập nhật VITE_EMAILJS_OWNER_TEMPLATE_ID trong .env');
+          } else {
+            console.warn('⚠️ Owner template ID chưa được cấu hình. Bỏ qua việc gửi email thông báo cho owner.');
+            console.warn('⚠️ Để nhận email thông báo, hãy tạo template trong EmailJS và thêm VITE_EMAILJS_OWNER_TEMPLATE_ID vào .env');
+          }
         }
         
         setSubmitStatus('success');
