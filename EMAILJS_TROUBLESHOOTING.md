@@ -294,3 +294,4 @@ Sending auto-reply with params: {email: "user@example.com", name: "...", ...}
 - Code có logging chi tiết để dễ debug
 - Nếu có lỗi, sẽ không phá vỡ trải nghiệm người dùng (auto-reply vẫn được gửi ngay cả khi owner notification fail)
 
+
