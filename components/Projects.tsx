@@ -13,7 +13,7 @@ interface ProjectDetail {
   title: string;
   hoverTitle: string;
   cat: string;
-  url: string; 
+  url: string;
   demoUrl?: string;
   repoUrl?: string;
   year: string;
@@ -34,11 +34,11 @@ const Projects: React.FC = () => {
   const overlayScrollRef = useRef<HTMLDivElement>(null);
 
   const items: ProjectDetail[] = [
-    { 
-      id: "01", 
-      title: 'BANKING CORE SYSTEM', 
-      hoverTitle: 'BANK', 
-      cat: 'MIS', 
+    {
+      id: "01",
+      title: 'BANKING CORE SYSTEM',
+      hoverTitle: 'BANK',
+      cat: 'MIS',
       url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
       demoUrl: 'https://demo.banking-system.thienphuc.vn',
       repoUrl: 'https://github.com/thienphuc/banking-core-v2',
@@ -48,16 +48,16 @@ const Projects: React.FC = () => {
       strategy: "Conducted exhaustive 'As-Is' vs 'To-Be' gap analysis across 450+ unique business processes. Implemented a phased migration strategy using the Strangler Fig pattern to minimize operational risk.",
       technical: "Orchestrated a distributed system using Spring Boot and Apache Kafka for event-driven transactions. Designed a unified data schema to support real-time reporting and cross-platform sync.",
       methodology: [
-        "Agile Scrum Framework", 
+        "Agile Scrum Framework",
         "BABOK® Standards Alignment",
-        "Business Process Re-engineering (BPR)", 
-        "UAT (User Acceptance Testing) Coordination", 
+        "Business Process Re-engineering (BPR)",
+        "UAT (User Acceptance Testing) Coordination",
         "Risk-based Data Migration"
       ],
       ba_focus: [
-        "Elicitation: BRD & Functional Requirement Specs (FRS)", 
-        "Modeling: UML Sequence & State Machine Diagrams", 
-        "Stakeholder Matrix & Communication Mgmt", 
+        "Elicitation: BRD & Functional Requirement Specs (FRS)",
+        "Modeling: UML Sequence & State Machine Diagrams",
+        "Stakeholder Matrix & Communication Mgmt",
         "API Interface Mapping & Documentation",
         "User Journey Mapping for Retail Banking"
       ],
@@ -68,11 +68,11 @@ const Projects: React.FC = () => {
         { label: "Cost Saving", value: "$1.2M", desc: "Estimated annual savings on maintenance and legacy licensing." }
       ]
     },
-    { 
-      id: "02", 
-      title: 'PREDICTIVE ANALYTICS', 
-      hoverTitle: 'DATA', 
-      cat: 'FINANCE', 
+    {
+      id: "02",
+      title: 'PREDICTIVE ANALYTICS',
+      hoverTitle: 'DATA',
+      cat: 'FINANCE',
       url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000',
       demoUrl: 'https://bi-dashboard.thienphuc.io',
       repoUrl: 'https://github.com/thienphuc/financial-predictive-engine',
@@ -90,11 +90,11 @@ const Projects: React.FC = () => {
         { label: "Insight Gap", value: "-80%", desc: "Reduced time from data collection to actionable insight." }
       ]
     },
-    { 
-      id: "03", 
-      title: 'SECURITY PROTOCOL X', 
-      hoverTitle: 'SECURITY', 
-      cat: 'SECURITY', 
+    {
+      id: "03",
+      title: 'SECURITY PROTOCOL X',
+      hoverTitle: 'SECURITY',
+      cat: 'SECURITY',
       url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000',
       demoUrl: 'https://iam-zero-trust.internal',
       repoUrl: 'https://github.com/thienphuc/protocol-x-iam',
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
       (window as any).lenis?.start();
       document.body.style.overflow = '';
     }
-    
+
     return () => {
       // Fix: Use any-cast to bypass missing property error on window object for Lenis
       (window as any).lenis?.start();
@@ -153,11 +153,10 @@ const Projects: React.FC = () => {
             <button
               key={cat}
               onClick={() => handleFilterClick(cat)}
-              className={`mono text-[9px] tracking-[0.3em] uppercase whitespace-nowrap transition-all duration-300 ${
-                activeFilter === cat 
-                  ? 'text-white opacity-100 italic' 
+              className={`mono text-[9px] tracking-[0.3em] uppercase whitespace-nowrap transition-all duration-300 ${activeFilter === cat
+                  ? 'text-white opacity-100 italic'
                   : 'text-white/60 hover:text-white hover:translate-x-1 hover:italic'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -168,8 +167,8 @@ const Projects: React.FC = () => {
       <motion.div layout className="space-y-24 md:space-y-40">
         <AnimatePresence mode="popLayout">
           {filteredItems.map((project, idx) => (
-            <motion.div 
-              key={project.id} 
+            <motion.div
+              key={project.id}
               layout
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -180,8 +179,8 @@ const Projects: React.FC = () => {
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center group cursor-pointer"
             >
               <div className={`lg:col-span-8 aspect-[21/9] overflow-hidden bg-[#111] rounded-sm relative ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                <motion.img 
-                  src={project.url} 
+                <motion.img
+                  src={project.url}
                   alt={project.title}
                   whileHover={{ scale: 1.05, opacity: 0.2 }}
                   className="w-full h-full object-cover opacity-30 grayscale transition-all duration-700"
@@ -192,26 +191,25 @@ const Projects: React.FC = () => {
               </div>
 
               <div className={`lg:col-span-4 ${idx % 2 !== 0 ? 'lg:order-1 lg:text-right' : ''}`}>
-                 <div className={`flex items-center gap-3 mb-4 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
-                   <span className="mono text-[10px] text-white/10">{project.id}</span>
-                   <div className="w-8 h-[1px] bg-white/5" />
-                 </div>
-                 
-                 <h4 
-                  className={`text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4 opacity-25 group-hover:opacity-100 group-hover:scale-[1.03] group-hover:italic transition-all duration-700 ease-[0.215,0.61,0.355,1] ${
-                    idx % 2 !== 0 
-                    ? 'origin-right group-hover:-translate-x-4' 
-                    : 'origin-left group-hover:translate-x-4'
-                  }`}
-                 >
+                <div className={`flex items-center gap-3 mb-4 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
+                  <span className="mono text-[10px] text-white/10">{project.id}</span>
+                  <div className="w-8 h-[1px] bg-white/5" />
+                </div>
+
+                <h4
+                  className={`text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4 opacity-25 group-hover:opacity-100 group-hover:scale-[1.03] group-hover:italic transition-all duration-700 ease-[0.215,0.61,0.355,1] ${idx % 2 !== 0
+                      ? 'origin-right group-hover:-translate-x-4'
+                      : 'origin-left group-hover:translate-x-4'
+                    }`}
+                >
                   {project.title}
-                 </h4>
-                 
-                 <p className="mono text-[9px] text-white/20 uppercase tracking-[0.4em] mb-6">{project.cat} // {project.year}</p>
-                 
-                 <div className={`flex ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
-                    <button className="mono text-[8px] tracking-[0.3em] border border-white/10 px-6 py-2 rounded-full uppercase opacity-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 hover:bg-white hover:text-black hover:opacity-100">VIEW CASE</button>
-                 </div>
+                </h4>
+
+                <p className="mono text-[9px] text-white/20 uppercase tracking-[0.4em] mb-6">{project.cat} // {project.year}</p>
+
+                <div className={`flex ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
+                  <button className="mono text-[8px] tracking-[0.3em] border border-white/10 px-6 py-2 rounded-full uppercase opacity-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 hover:bg-white hover:text-black hover:opacity-100">VIEW CASE</button>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -221,7 +219,7 @@ const Projects: React.FC = () => {
       {/* DETAILED OVERLAY */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
+          <motion.div
             ref={overlayScrollRef}
             initial={{ clipPath: 'inset(100% 0 0 0)' }}
             animate={{ clipPath: 'inset(0% 0 0 0)' }}
@@ -232,19 +230,19 @@ const Projects: React.FC = () => {
           >
             <div className="max-w-screen-2xl mx-auto pb-40">
               <div className="flex justify-between items-start mb-20 md:mb-32">
-                <button 
-                  onClick={() => setSelectedProject(null)} 
+                <button
+                  onClick={() => setSelectedProject(null)}
                   className="mono text-[10px] opacity-40 hover:opacity-100 transition-all uppercase tracking-widest border border-white/10 px-10 py-4 rounded-full hover:bg-white hover:text-black"
                 >
                   [ RETURN TO GALLERY ]
                 </button>
                 <div className="text-right hidden md:block">
-                   <p className="mono text-[10px] opacity-20 uppercase mb-2">INDEX NO.</p>
-                   <p className="mono text-2xl font-black">#{selectedProject.id}</p>
+                  <p className="mono text-[10px] opacity-20 uppercase mb-2">INDEX NO.</p>
+                  <p className="mono text-2xl font-black">#{selectedProject.id}</p>
                 </div>
               </div>
 
-              <motion.h1 
+              <motion.h1
                 initial={{ y: 80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -253,16 +251,16 @@ const Projects: React.FC = () => {
                 {selectedProject.title}
               </motion.h1>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
                 className="flex flex-wrap gap-8 mb-24 border-b border-white/5 pb-12"
               >
                 {selectedProject.demoUrl && (
-                  <a 
-                    href={selectedProject.demoUrl} 
-                    target="_blank" 
+                  <a
+                    href={selectedProject.demoUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 mono text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition-opacity"
                   >
@@ -272,9 +270,9 @@ const Projects: React.FC = () => {
                   </a>
                 )}
                 {selectedProject.repoUrl && (
-                  <a 
-                    href={selectedProject.repoUrl} 
-                    target="_blank" 
+                  <a
+                    href={selectedProject.repoUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 mono text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition-opacity"
                   >
@@ -290,8 +288,8 @@ const Projects: React.FC = () => {
                   {/* BRIEF SECTION */}
                   <section>
                     <div className="flex items-center gap-4 mb-10">
-                       <div className="w-12 h-[1px] bg-white/20" />
-                       <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Context & Objectives</p>
+                      <div className="w-12 h-[1px] bg-white/20" />
+                      <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Context & Objectives</p>
                     </div>
                     <p className="text-2xl md:text-5xl font-light text-white/80 leading-[1.15] tracking-tight">
                       {selectedProject.brief}
@@ -309,7 +307,7 @@ const Projects: React.FC = () => {
                       <ul className="space-y-6">
                         {selectedProject.methodology.map((m, i) => (
                           <li key={i} className="group flex items-baseline gap-4">
-                            <span className="mono text-[10px] opacity-20 group-hover:opacity-100 transition-opacity">0{i+1}</span>
+                            <span className="mono text-[10px] opacity-20 group-hover:opacity-100 transition-opacity">0{i + 1}</span>
                             <span className="text-lg md:text-xl text-white/60 group-hover:text-white transition-colors leading-tight">{m}</span>
                           </li>
                         ))}
@@ -350,8 +348,8 @@ const Projects: React.FC = () => {
                     <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase mb-16">Metrics of Success</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-20">
                       {selectedProject.outcomes.map((outcome, idx) => (
-                        <motion.div 
-                          key={idx} 
+                        <motion.div
+                          key={idx}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.2 + idx * 0.1 }}

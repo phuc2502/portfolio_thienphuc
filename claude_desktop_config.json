@@ -1,0 +1,10 @@
+{
+    "mcpServers": {
+        "portfolio": {
+            "command": "node",
+            "args": [
+                "d:\\portfolio_thienphuc\\mcp-server\\dist\\index.js"
+            ]
+        }
+    }
+}
