@@ -75,15 +75,15 @@ const App: React.FC = () => {
     <div className="relative w-full bg-[#0a0a0a] text-white overflow-x-hidden">
       <CustomCursor />
       <Header onMenuToggle={toggleMenu} isMenuOpen={isMenuOpen} />
-      
+
       <AnimatePresence>
         {isMenuOpen && (
-          <Menu 
+          <Menu
             onClose={() => {
               const lenis = (window as any).lenis;
               if (lenis) lenis.scrollTo(0);
               setIsMenuOpen(false);
-            }} 
+            }}
             onNavigate={handleNavigate}
           />
         )}

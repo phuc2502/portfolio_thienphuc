@@ -7,8 +7,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),
-      '@components': path.resolve(__dirname, './components'),
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
+      '@types': path.resolve(__dirname, './src/types'),
       '@data': path.resolve(__dirname, './mcp-server/src/data')
     }
   },

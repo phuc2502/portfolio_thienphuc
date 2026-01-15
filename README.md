@@ -10,7 +10,7 @@
 
 **A high-performance, AI-driven portfolio management system featuring a premium UI and integrated Model Context Protocol (MCP) server.**
 
-[Live Demo](#) • [MCP Documentation](./mcp-server/README.md) • [Report Bug](../../issues) • [Request Feature](../../issues)
+[Live Demo](#) • [MCP Documentation](./docs/mcp/) • [Report Bug](../../issues) • [Request Feature](../../issues)
 
 </div>
 
@@ -160,19 +160,36 @@ For the **MCP Server**, configuration is handled via `claude_desktop_config.json
 
 ```text
 portfolio_thienphuc/
-├── components/          # Reusable UI primitives (Hero, About, Projects)
-├── contexts/            # Global state logic
+├── src/                 # Source code chính
+│   ├── components/      # Reusable UI primitives (Hero, About, Projects)
+│   ├── contexts/        # Global state logic
+│   ├── types/           # Global TypeScript interfaces
+│   ├── App.tsx          # Main layout & Routing
+│   ├── index.tsx        # Application entry point
+│   └── vite-env.d.ts    # Vite environment types
+├── docs/                # Tài liệu dự án
+│   ├── mcp/             # MCP Server documentation
+│   │   ├── archive/     # Lưu trữ phiên bản cũ
+│   │   ├── COMPLETE_GUIDE.md
+│   │   └── QUICK_FIX.md
+│   └── contributing/    # Contribution guidelines
+│       └── CONTRIBUTING.md
 ├── mcp-server/          # Full-stack MCP implementation
 │   ├── src/             # TypeScript source code
 │   │   ├── index.ts     # MCP entry point (stdio)
 │   │   ├── api.ts       # HTTP API entry point
 │   │   └── data/        # JSON storage (Source of truth)
+│   ├── metadata.json    # Server metadata
+│   ├── claude_desktop_config.json  # Claude Desktop config
 │   └── package.json     # Server dependencies
+├── scripts/             # Utility scripts
+│   ├── sync-portfolio-data.js
+│   └── download-artifacts.ps1
 ├── public/              # Static assets (3D models, large images)
-├── App.tsx              # Main layout & Routing
-├── index.tsx            # Application entry point
-├── types.ts             # Global TypeScript interfaces
-└── vite.config.ts       # Build orchestration
+├── index.html           # HTML entry point
+├── vite.config.ts       # Build orchestration
+├── tsconfig.json        # TypeScript configuration
+└── package.json         # Frontend dependencies
 ```
 
 ---
