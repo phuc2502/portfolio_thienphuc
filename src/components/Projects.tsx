@@ -31,6 +31,39 @@ interface AccordionSection {
       items: string[];
       bgColor?: string;
     }[];
+    painPoints?: {
+      icon: string;
+      title: string;
+      description: string;
+    }[];
+    businessImpact?: {
+      label: string;
+      description: string;
+    }[];
+    stakeholders?: string[];
+    baActivities?: {
+      title: string;
+      icon: string;
+      sections: {
+        type: 'box' | 'twoColumn' | 'list';
+        title?: string;
+        bgColor?: string;
+        items?: string[];
+        columns?: {
+          title: string;
+          items: string[];
+        }[];
+        content?: string;
+      }[];
+    }[];
+    challenges?: {
+      title: string;
+      icon: string;
+      borderColor: 'orange' | 'purple' | 'blue';
+      problem: string;
+      solution: string[];
+      outcome: string;
+    }[];
   };
 }
 
@@ -101,13 +134,44 @@ const Projects: React.FC = () => {
           icon: "alert-triangle",
           title: "BỐI CẢNH & VẤN ĐỀ",
           content: {
-            description: "Hệ thống lõi ngân hàng cũ (20 năm tuổi) gặp nhiều vấn đề về hiệu suất, bảo mật và khả năng mở rộng. Cần chuyển đổi sang kiến trúc hiện đại để đáp ứng nhu cầu ngày càng tăng của khách hàng.",
-            items: [
-              "Hệ thống monolithic cũ không thể xử lý > 1000 giao dịch/giây",
-              "Thời gian downtime cho maintenance lên đến 4 giờ/tháng",
-              "Chi phí vận hành và bảo trì tăng 30% hàng năm",
-              "Không hỗ trợ tích hợp với các dịch vụ fintech hiện đại"
-            ]
+            description: "Ngân hàng đang vận hành trên hệ thống AS/400 legacy từ những năm 1990s với 15+ modules riêng biệt không tích hợp. Mỗi chi nhánh phải đợi batch processing vào cuối ngày để cập nhật dữ liệu, gây ra độ trễ 8-24 giờ trong xử lý giao dịch.",
+            painPoints: [
+              {
+                icon: "users",
+                title: "Trải nghiệm khách hàng kém",
+                description: "Khiếu nại tăng 40% do không thể kiểm tra số dư real-time giữa các chi nhánh"
+              },
+              {
+                icon: "dollar",
+                title: "Chi phí vận hành cao",
+                description: "$2.8M/năm bảo trì với 80% IT budget chỉ để 'keep the lights on'"
+              },
+              {
+                icon: "clock",
+                title: "Time-to-market chậm",
+                description: "Mất 6-8 tuần để deploy một tính năng nhỏ do monolithic architecture"
+              },
+              {
+                icon: "alert",
+                title: "Rủi ro tuân thủ",
+                description: "Không đáp ứng Basel III về real-time risk reporting"
+              }
+            ],
+            businessImpact: [
+              {
+                label: "Doanh thu:",
+                description: "Mất 15% thị phần segment 18-35 tuổi do thiếu digital capabilities"
+              },
+              {
+                label: "Chiến lược:",
+                description: "Không thể mở rộng hay M&A do technical debt"
+              },
+              {
+                label: "Vận hành:",
+                description: "Nhân viên mất 45 phút/ngày xử lý exceptions"
+              }
+            ],
+            stakeholders: ["CEO", "CTO", "CFO", "120+ Branch Managers", "Regulators", "800+ Customer Service Staff"]
           }
         },
         {
@@ -115,18 +179,99 @@ const Projects: React.FC = () => {
           icon: "target",
           title: "HOẠT ĐỘNG BUSINESS ANALYST CHI TIẾT",
           content: {
-            subsections: [
+            baActivities: [
               {
-                title: "Phân tích yêu cầu nghiệp vụ",
-                content: "Thu thập và phân tích 450+ quy trình nghiệp vụ từ 12 phòng ban khác nhau. Xây dựng BRD (Business Requirements Document) và FRS (Functional Requirements Specification) cho toàn bộ hệ thống."
+                title: "📋 Thu thập Yêu cầu (Requirements Elicitation)",
+                icon: "clipboard",
+                sections: [
+                  {
+                    type: 'box',
+                    title: 'Interviews & Workshops:',
+                    bgColor: 'blue',
+                    items: [
+                      '85+ cuộc phỏng vấn stakeholder qua 8 phòng ban trong 4 tháng',
+                      '24 phiên JAD (Joint Application Design) với 12-18 người mỗi phiên',
+                      '6 focus groups với nhân viên chi nhánh (8-10 người/nhóm)',
+                      '40 giờ job shadowing 5 vai trò khác nhau'
+                    ]
+                  },
+                  {
+                    type: 'box',
+                    title: 'Deliverables:',
+                    bgColor: 'green',
+                    items: [
+                      'BRD: 280 trang, 180 business requirements',
+                      'FRS: 450 trang, 380 functional requirements',
+                      'NFR: 45 requirements (performance, security, scalability)',
+                      'API Specs: 85 RESTful endpoints'
+                    ]
+                  }
+                ]
               },
               {
-                title: "Mô hình hóa quy trình",
-                content: "Thiết kế UML Sequence Diagrams, State Machine Diagrams và Use Case Diagrams để mô tả luồng nghiệp vụ. Tạo API Interface Documentation cho 200+ endpoints."
+                title: "🔍 Phân tích & Mô hình hóa (Analysis & Modeling)",
+                icon: "search",
+                sections: [
+                  {
+                    type: 'twoColumn',
+                    columns: [
+                      {
+                        title: 'Process Models:',
+                        items: [
+                          '28 BPMN diagrams (As-Is + To-Be)',
+                          'Mapped 450+ business processes',
+                          '15 user journey maps'
+                        ]
+                      },
+                      {
+                        title: 'System Models:',
+                        items: [
+                          '120+ UML diagrams',
+                          'ERD với 280+ entities',
+                          'Data flow diagrams'
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    type: 'box',
+                    title: 'Key Analysis Activities:',
+                    bgColor: 'yellow',
+                    items: [
+                      'Gap analysis giữa As-Is và To-Be state',
+                      'Feasibility study đánh giá 3 vendors vs build',
+                      'Cost-benefit analysis: 5-year TCO và ROI projection',
+                      'Risk assessment: 38 critical risks với mitigation plan'
+                    ]
+                  }
+                ]
               },
               {
-                title: "Quản lý stakeholder",
-                content: "Điều phối với 15+ stakeholder chính bao gồm BOD, IT Department, Operations, Risk Management, và các đơn vị khác. Tổ chức 40+ workshop sessions để elicit requirements."
+                title: "👥 Quản lý Stakeholder",
+                icon: "users",
+                sections: [
+                  {
+                    type: 'box',
+                    title: 'Approach:',
+                    bgColor: 'purple',
+                    content: 'Tạo stakeholder matrix phân loại 85 stakeholders theo power/interest. Chiến lược communication phân tầng: weekly steering committee, bi-weekly business sync, monthly town halls.'
+                  },
+                  {
+                    type: 'list',
+                    title: 'Workshops Facilitated:',
+                    items: [
+                      '12 requirements prioritization workshops (MoSCoW)',
+                      '8 design thinking sessions',
+                      '6 architecture review sessions'
+                    ]
+                  },
+                  {
+                    type: 'box',
+                    title: 'Conflict Resolution Example:',
+                    bgColor: 'amber',
+                    content: 'Giải quyết xung đột giữa Retail Banking (muốn nhiều features) vs IT Ops (muốn stability) bằng cách đề xuất phased rollout với MVP approach, đạt được sự đồng thuận của cả hai bên.'
+                  }
+                ]
               }
             ]
           }
@@ -136,18 +281,45 @@ const Projects: React.FC = () => {
           icon: "wrench",
           title: "THÁCH THỨC & GIẢI PHÁP",
           content: {
-            subsections: [
+            challenges: [
               {
-                title: "Migration phức tạp",
-                content: "Giải pháp: Áp dụng Strangler Fig Pattern để migrate từng module một cách độc lập, đảm bảo hệ thống cũ vẫn hoạt động trong quá trình chuyển đổi. Thực hiện dual-write để đồng bộ dữ liệu giữa 2 hệ thống."
+                title: "📊 Data Migration Complexity",
+                icon: "database",
+                borderColor: "orange",
+                problem: "Legacy system có 25 năm dữ liệu không nhất quán trên 15 databases không có unified schema. Phát hiện 12% data quality issues trong initial assessment (180TB data).",
+                solution: [
+                  "Thiết kế chiến lược migration 4 phases: (1) Data profiling & cleansing, (2) Pilot với 2 chi nhánh, (3) Regional rollout, (4) Full migration",
+                  "Tạo data reconciliation framework với 200+ validation rules",
+                  "Thành lập Data Quality Council với business owners để giải quyết ambiguities"
+                ],
+                outcome: "Successfully migrate 180TB với 99.97% accuracy. Giảm migration window từ 12 tháng xuống 8 tháng."
               },
               {
-                title: "Đảm bảo tính nhất quán dữ liệu",
-                content: "Giải pháp: Implement Event Sourcing với Apache Kafka để tracking mọi thay đổi. Sử dụng Saga Pattern cho distributed transactions, đảm bảo eventual consistency."
+                title: "👥 Resistance to Change",
+                icon: "users",
+                borderColor: "purple",
+                problem: "Branch staff (tuổi TB 45, thâm niên TB 15 năm) rất kháng cự hệ thống mới. Survey cho thấy, 65% 'lo lắng' về thay đổi.",
+                solution: [
+                  "Xác định 30 branch champions để peer training",
+                  "Tạo messaging 'What's In It For Me' highlight lợi ích giảm manual work",
+                  "Hands-on training trong mock branch environment",
+                  "24/7 hypercare support trong 3 tháng đầu",
+                  "Gamified adoption program với recognition"
+                ],
+                outcome: "Post-launch survey: 78% user satisfaction. Giảm 60% support tickets vs dự kiến."
               },
               {
-                title: "Resistance to change",
-                content: "Giải pháp: Tổ chức training sessions cho 200+ users. Tạo comprehensive documentation và quick reference guides. Thiết lập support team 24/7 trong giai đoạn go-live."
+                title: "🎯 Scope Creep Management",
+                icon: "target",
+                borderColor: "blue",
+                problem: "Trong 18 tháng, nhận 280+ change requests từ các stakeholders. Nếu không kiểm soát sẽ derail timeline và budget.",
+                solution: [
+                  "Thành lập Change Control Board review weekly",
+                  "Bắt buộc impact analysis cho mỗi request (effort, risk, dependencies)",
+                  "'Parking lot' nghiêm ngặt cho post-launch features",
+                  "Scope boundary linh hoạt: MVP có định, enhancement backlog linh hoạt"
+                ],
+                outcome: "Approve 35 critical changes (12.5% approval rate). Deliver đúng hạn tất cả có changes. Xây dựng trust với stakeholders."
               }
             ]
           }
@@ -281,13 +453,44 @@ const Projects: React.FC = () => {
           icon: "alert-triangle",
           title: "BỐI CẢNH & VẤN ĐỀ",
           content: {
-            description: "Các SMEs (doanh nghiệp vừa và nhỏ) thiếu khả năng dự báo cash flow chính xác, dẫn đến nhiều rủi ro tài chính và khó khăn trong ra quyết định.",
-            items: [
-              "Manual reporting cycle mất 2 tuần để tạo báo cáo tài chính",
-              "Không có khả năng dự báo cash flow cho 30-90 ngày tiếp theo",
-              "Data silos: dữ liệu phân tán ở nhiều hệ thống khác nhau",
-              "Quyết định kinh doanh dựa trên gut feeling thay vì data-driven"
-            ]
+            description: "SMEs (doanh nghiệp vừa và nhỏ) với doanh thu $1M-$50M/năm đang struggle với cash flow management. Không có dedicated CFO, họ dựa vào Excel spreadsheets thủ công và gut feeling để ra quyết định tài chính quan trọng.",
+            painPoints: [
+              {
+                icon: "chart",
+                title: "Không có forecast visibility",
+                description: "Không biết cash position 30-90 ngày tới, leading to surprise crises"
+              },
+              {
+                icon: "clock",
+                title: "Manual reporting quá chậm",
+                description: "Mất 2 tuần để consolidate data từ 10+ sources, thông tin đã outdated"
+              },
+              {
+                icon: "database",
+                title: "Data silos nghiêm trọng",
+                description: "Accounting, CRM, invoicing, banking systems không nói chuyện được với nhau"
+              },
+              {
+                icon: "alert",
+                title: "Decision-making thiếu data",
+                description: "90% quyết định dựa trên intuition thay vì data-driven insights"
+              }
+            ],
+            businessImpact: [
+              {
+                label: "Financial Risk:",
+                description: "35% SMEs fail vì cash flow issues, không phải thiếu revenue"
+              },
+              {
+                label: "Growth Constraint:",
+                description: "Không dám expand vì unclear về financial runway"
+              },
+              {
+                label: "Operational Burden:",
+                description: "Owners spend 20 hours/month trên manual financial reporting"
+              }
+            ],
+            stakeholders: ["SME Founders/CEOs", "Part-time CFOs", "Accountants", "Investors/VCs", "Banks/Lenders", "Board Members"]
           }
         },
         {
@@ -461,13 +664,44 @@ const Projects: React.FC = () => {
           icon: "alert-triangle",
           title: "BỐI CẢNH & VẤN ĐỀ",
           content: {
-            description: "Tập đoàn đa quốc gia với 10,000+ nhân viên đang sử dụng legacy IAM system không đáp ứng security requirements hiện đại và Zero Trust principles.",
-            items: [
-              "Password-based authentication với high breach risk (95+ incidents/năm)",
-              "Không có centralized identity management - users có 10+ credentials",
-              "Legacy LDAP servers không support modern authentication protocols",
-              "Compliance gaps với ISO 27001, SOC 2, và GDPR requirements"
-            ]
+            description: "Tập đoàn đa quốc gia 10,000+ employees vận hành trên patchwork của 50+ legacy systems từ M&A activities. Identity management phân mảnh với 15 different LDAP servers, AD forests và custom auth solutions không interoperable.",
+            painPoints: [
+              {
+                icon: "shield",
+                title: "Security breach risk cao",
+                description: "95 credential-based incidents/năm, estimated loss $500K mỗi breach"
+              },
+              {
+                icon: "users",
+                title: "User friction nghiêm trọng",
+                description: "Employees có 10+ passwords, 60% tickets là password resets"
+              },
+              {
+                icon: "clock",
+                title: "Onboarding/offboarding chậm",
+                description: "3 ngày để provision access, 1 tuần để revoke hết khi employee rời đi"
+              },
+              {
+                icon: "alert",
+                title: "Compliance violations",
+                description: "Failed 40% audit checks cho ISO 27001, SOC 2, GDPR access controls"
+              }
+            ],
+            businessImpact: [
+              {
+                label: "Security Risk:",
+                description: "Estimated $5M exposure từ potential data breach và ransomware"
+              },
+              {
+                label: "Productivity Loss:",
+                description: "2 hours/week mỗi employee wasted trên authentication issues"
+              },
+              {
+                label: "Market Access:",
+                description: "Không thể bid enterprise contracts do compliance gaps"
+              }
+            ],
+            stakeholders: ["CISO", "IT Security Team", "Compliance Officer", "Legal/Privacy", "HR (Identity Lifecycle)", "10,000+ End Users"]
           }
         },
         {
@@ -902,10 +1136,267 @@ const Projects: React.FC = () => {
                                     className="overflow-hidden"
                                   >
                                     <div className="px-6 pb-6 pt-2 border-t border-white/5">
+                                      {/* TÌNH HUỐNG DESCRIPTION */}
                                       {section.content.description && (
-                                        <p className="text-base md:text-lg text-white/60 leading-relaxed mb-6">
-                                          {section.content.description}
-                                        </p>
+                                        <div className="mb-8">
+                                          {(() => {
+                                            const colorThemes = {
+                                              'MIS': { bg: 'bg-red-500', border: 'border-red-500', bgLight: 'bg-red-50' },
+                                              'FINANCE': { bg: 'bg-blue-500', border: 'border-blue-500', bgLight: 'bg-blue-50' },
+                                              'SECURITY': { bg: 'bg-purple-500', border: 'border-purple-500', bgLight: 'bg-purple-50' }
+                                            };
+                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || colorThemes['MIS'];
+
+                                            return (
+                                              <>
+                                                <h4 className="text-sm font-bold text-white/40 mb-3 flex items-center gap-2">
+                                                  <span className={`w-1 h-4 ${theme.bg}/50 rounded`}></span>
+                                                  Tình hướng:
+                                                </h4>
+                                                <div className={`pl-4 border-l-2 ${theme.border}/20 ${theme.bgLight}/5`}>
+                                                  <p className="text-base md:text-lg text-white/70 leading-relaxed p-4">
+                                                    {section.content.description}
+                                                  </p>
+                                                </div>
+                                              </>
+                                            );
+                                          })()}
+                                        </div>
+                                      )}
+
+                                      {/* PAIN POINTS GRID */}
+                                      {section.content.painPoints && section.content.painPoints.length > 0 && (
+                                        <div className="mb-8">
+                                          {(() => {
+                                            // Determine color theme based on project category
+                                            const colorThemes = {
+                                              'MIS': { accent: 'red', bg: 'bg-red-500', text: 'text-red-400', border: 'border-red-500' },
+                                              'FINANCE': { accent: 'blue', bg: 'bg-blue-500', text: 'text-blue-400', border: 'border-blue-500' },
+                                              'SECURITY': { accent: 'purple', bg: 'bg-purple-500', text: 'text-purple-400', border: 'border-purple-500' }
+                                            };
+                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || colorThemes['MIS'];
+
+                                            return (
+                                              <>
+                                                <h4 className="text-sm font-bold text-white/40 mb-6 flex items-center gap-2">
+                                                  <span className={`w-1 h-4 ${theme.bg}/50 rounded`}></span>
+                                                  Pain Points Chính:
+                                                </h4>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                  {section.content.painPoints.map((point, i) => (
+                                                    <div
+                                                      key={i}
+                                                      className="p-5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+                                                    >
+                                                      <div className="flex items-start gap-4">
+                                                        <div className={`w-10 h-10 rounded-full ${theme.bg}/10 border ${theme.border}/20 flex items-center justify-center flex-shrink-0`}>
+                                                          <span className={`${theme.text} text-lg`}>
+                                                            {point.icon === 'users' && '👥'}
+                                                            {point.icon === 'dollar' && '$'}
+                                                            {point.icon === 'clock' && '⏱️'}
+                                                            {point.icon === 'alert' && '⚠️'}
+                                                            {point.icon === 'chart' && '📊'}
+                                                            {point.icon === 'database' && '💾'}
+                                                            {point.icon === 'shield' && '🛡️'}
+                                                          </span>
+                                                        </div>
+                                                        <div className="flex-1">
+                                                          <h5 className="text-sm md:text-base font-bold text-white/80 mb-2">
+                                                            {point.title}
+                                                          </h5>
+                                                          <p className="text-xs md:text-sm text-white/50 leading-relaxed">
+                                                            {point.description}
+                                                          </p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  ))}
+                                                </div>
+                                              </>
+                                            );
+                                          })()}
+                                        </div>
+                                      )}
+
+                                      {/* BUSINESS IMPACT */}
+                                      {section.content.businessImpact && section.content.businessImpact.length > 0 && (
+                                        <div className="mb-8">
+                                          <h4 className="text-sm font-bold text-white/40 mb-4">Business Impact:</h4>
+                                          <div className="p-5 rounded-lg bg-amber-50/5 border border-amber-500/20 space-y-3">
+                                            {section.content.businessImpact.map((impact, i) => (
+                                              <div key={i} className="text-sm md:text-base text-white/60">
+                                                <span className="font-bold text-white/80">{impact.label}</span>{' '}
+                                                {impact.description}
+                                              </div>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      {/* STAKEHOLDERS */}
+                                      {section.content.stakeholders && section.content.stakeholders.length > 0 && (
+                                        <div className="mb-6">
+                                          <h4 className="text-sm font-bold text-white/40 mb-4">Stakeholders:</h4>
+                                          <div className="flex flex-wrap gap-2">
+                                            {section.content.stakeholders.map((stakeholder, i) => (
+                                              <span
+                                                key={i}
+                                                className="px-4 py-2 text-xs md:text-sm rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 font-medium"
+                                              >
+                                                {stakeholder}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      {/* BA ACTIVITIES */}
+                                      {section.content.baActivities && section.content.baActivities.length > 0 && (
+                                        <div className="space-y-8">
+                                          {section.content.baActivities.map((activity, actIdx) => (
+                                            <div key={actIdx} className="space-y-4">
+                                              <h3 className="text-base md:text-lg font-bold text-white/70 mb-4 flex items-center gap-2">
+                                                {activity.title}
+                                              </h3>
+
+                                              {activity.sections.map((sec, secIdx) => {
+                                                // Box type
+                                                if (sec.type === 'box') {
+                                                  const bgColors = {
+                                                    blue: 'bg-blue-50/5 border-blue-500/20',
+                                                    green: 'bg-emerald-50/5 border-emerald-500/20',
+                                                    yellow: 'bg-amber-50/5 border-amber-500/20',
+                                                    purple: 'bg-purple-50/5 border-purple-500/20',
+                                                    amber: 'bg-orange-50/5 border-orange-500/20'
+                                                  };
+                                                  const bgClass = sec.bgColor ? bgColors[sec.bgColor as keyof typeof bgColors] : 'bg-white/[0.02] border-white/10';
+
+                                                  return (
+                                                    <div key={secIdx} className={`p-5 rounded-lg border ${bgClass}`}>
+                                                      {sec.title && (
+                                                        <h4 className="text-sm font-bold text-white/60 mb-3">{sec.title}</h4>
+                                                      )}
+                                                      {sec.content && (
+                                                        <p className="text-sm md:text-base text-white/60 leading-relaxed">{sec.content}</p>
+                                                      )}
+                                                      {sec.items && (
+                                                        <ul className="space-y-2">
+                                                          {sec.items.map((item, i) => (
+                                                            <li key={i} className="flex items-start gap-3 text-sm md:text-base text-white/60">
+                                                              <span className="text-white/40 mt-1">•</span>
+                                                              <span>{item}</span>
+                                                            </li>
+                                                          ))}
+                                                        </ul>
+                                                      )}
+                                                    </div>
+                                                  );
+                                                }
+
+                                                // Two Column type
+                                                if (sec.type === 'twoColumn' && sec.columns) {
+                                                  return (
+                                                    <div key={secIdx} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                      {sec.columns.map((col, colIdx) => (
+                                                        <div key={colIdx} className="p-5 rounded-lg border border-white/10 bg-white/[0.02]">
+                                                          <h4 className="text-sm font-bold text-white/60 mb-3">{col.title}</h4>
+                                                          <ul className="space-y-2">
+                                                            {col.items.map((item, i) => (
+                                                              <li key={i} className="flex items-start gap-3 text-sm md:text-base text-white/60">
+                                                                <span className="text-white/40 mt-1">•</span>
+                                                                <span>{item}</span>
+                                                              </li>
+                                                            ))}
+                                                          </ul>
+                                                        </div>
+                                                      ))}
+                                                    </div>
+                                                  );
+                                                }
+
+                                                // List type
+                                                if (sec.type === 'list') {
+                                                  return (
+                                                    <div key={secIdx} className="space-y-2">
+                                                      {sec.title && (
+                                                        <h4 className="text-sm font-bold text-white/40 mb-2">{sec.title}</h4>
+                                                      )}
+                                                      {sec.items && (
+                                                        <ul className="space-y-2 pl-4">
+                                                          {sec.items.map((item, i) => (
+                                                            <li key={i} className="flex items-start gap-3 text-sm md:text-base text-white/60">
+                                                              <span className="text-white/40 mt-1">•</span>
+                                                              <span>{item}</span>
+                                                            </li>
+                                                          ))}
+                                                        </ul>
+                                                      )}
+                                                    </div>
+                                                  );
+                                                }
+
+                                                return null;
+                                              })}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      )}
+
+                                      {/* CHALLENGES */}
+                                      {section.content.challenges && section.content.challenges.length > 0 && (
+                                        <div className="space-y-6">
+                                          {section.content.challenges.map((challenge, chIdx) => {
+                                            const borderColors = {
+                                              orange: 'border-l-orange-500/50',
+                                              purple: 'border-l-purple-500/50',
+                                              blue: 'border-l-blue-500/50'
+                                            };
+                                            const borderClass = borderColors[challenge.borderColor];
+
+                                            return (
+                                              <div key={chIdx} className={`border-l-4 ${borderClass} pl-6 space-y-4`}>
+                                                <h3 className="text-base md:text-lg font-bold text-white/80 mb-4">
+                                                  {challenge.title}
+                                                </h3>
+
+                                                {/* Problem */}
+                                                <div className="bg-red-50/5 border border-red-500/20 p-4 rounded-lg">
+                                                  <div className="flex items-start gap-2 mb-2">
+                                                    <span className="text-red-400 font-bold text-sm">❌ Problem:</span>
+                                                  </div>
+                                                  <p className="text-sm md:text-base text-white/60 leading-relaxed">
+                                                    {challenge.problem}
+                                                  </p>
+                                                </div>
+
+                                                {/* Solution */}
+                                                <div className="bg-amber-50/5 border border-amber-500/20 p-4 rounded-lg">
+                                                  <div className="flex items-start gap-2 mb-3">
+                                                    <span className="text-amber-400 font-bold text-sm">💡 Solution:</span>
+                                                  </div>
+                                                  <ul className="space-y-2">
+                                                    {challenge.solution.map((sol, i) => (
+                                                      <li key={i} className="flex items-start gap-3 text-sm md:text-base text-white/60">
+                                                        <span className="text-white/40 mt-1">•</span>
+                                                        <span>{sol}</span>
+                                                      </li>
+                                                    ))}
+                                                  </ul>
+                                                </div>
+
+                                                {/* Outcome */}
+                                                <div className="bg-emerald-50/5 border border-emerald-500/20 p-4 rounded-lg">
+                                                  <div className="flex items-start gap-2 mb-2">
+                                                    <span className="text-emerald-400 font-bold text-sm">✅ Outcome:</span>
+                                                  </div>
+                                                  <p className="text-sm md:text-base text-white/60 leading-relaxed">
+                                                    {challenge.outcome}
+                                                  </p>
+                                                </div>
+                                              </div>
+                                            );
+                                          })}
+                                        </div>
                                       )}
 
                                       {section.content.items && section.content.items.length > 0 && (
