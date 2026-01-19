@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
 
   const handleEmailClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    
+
     // Try to copy email to clipboard
     try {
       // Sử dụng Clipboard API nếu có
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-        
+
         try {
           const successful = document.execCommand('copy');
           if (successful) {
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
       // Vẫn hiển thị thông báo để người dùng biết
       alert(`Email: ${targetEmail}\n\nĐã tự động copy vào clipboard (nếu trình duyệt hỗ trợ).`);
     }
-    
+
     // Delay một chút trước khi mở mailto: để đảm bảo copy đã hoàn thành
     setTimeout(() => {
       window.location.href = `mailto:${targetEmail}`;
@@ -98,12 +98,12 @@ const Contact: React.FC = () => {
     console.log('Form Data:', formData);
 
     // Kiểm tra xem EmailJS đã được cấu hình chưa
-    const isEmailJSConfigured = 
-      EMAILJS_SERVICE_ID && 
+    const isEmailJSConfigured =
+      EMAILJS_SERVICE_ID &&
       EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
-      EMAILJS_TEMPLATE_ID && 
+      EMAILJS_TEMPLATE_ID &&
       EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID' &&
-      EMAILJS_PUBLIC_KEY && 
+      EMAILJS_PUBLIC_KEY &&
       EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
 
     if (isEmailJSConfigured) {
@@ -115,16 +115,16 @@ const Contact: React.FC = () => {
           // To Email - PHẢI có một trong các biến này trong template EmailJS
           email: formData.email,        // {{email}} -> To Email (khuyến nghị)
           to_email: formData.email,     // {{to_email}} -> To Email (dự phòng)
-          
+
           // Thông tin hiển thị trong email auto-reply
           name: formData.name,          // {{name}}
           from_name: formData.name,     // {{from_name}}
           message: formData.message,    // {{message}} - nội dung tin nhắn
           title: formData.message,      // {{title}} - dự phòng nếu template dùng title
-          
+
           // Email của người gửi (người điền form)
           from_email: formData.email,   // {{from_email}}
-          
+
           // Email của owner để reply về
           reply_to: targetEmail,        // {{reply_to}} - khi người nhận bấm Reply sẽ trả lời về email của bạn
           owner_email: targetEmail,     // {{owner_email}} - dự phòng
@@ -151,14 +151,14 @@ const Contact: React.FC = () => {
             email: targetEmail,              // {{email}} -> To Email (khuyến nghị)
             to_email: targetEmail,           // {{to_email}} -> To Email (dự phòng)
             owner_email: targetEmail,        // {{owner_email}} -> To Email (dự phòng)
-            
+
             // Thông tin người gửi form (người điền form)
             from_name: formData.name,        // {{from_name}} - tên người điền form
             from_email: formData.email,      // {{from_email}} - email người điền form
             name: formData.name,             // {{name}} - dự phòng
             message: formData.message,       // {{message}} - nội dung tin nhắn
             title: formData.message,         // {{title}} - dự phòng
-            
+
             // Email để reply về người điền form
             reply_to: formData.email,        // {{reply_to}} - khi bạn bấm Reply sẽ trả lời về người điền form
           };
@@ -185,7 +185,7 @@ const Contact: React.FC = () => {
               text: ownerError.text,
               message: ownerError.message
             });
-            
+
             // Hiển thị cảnh báo cho user về lỗi owner notification
             if (ownerError.text) {
               if (ownerError.text.includes('recipients address is empty') || ownerError.text.includes('recipient') && ownerError.text.includes('empty')) {
@@ -208,12 +208,12 @@ const Contact: React.FC = () => {
             console.warn('⚠️ Để nhận email thông báo, hãy tạo template trong EmailJS và thêm VITE_EMAILJS_OWNER_TEMPLATE_ID vào .env');
           }
         }
-        
+
         setSubmitStatus('success');
         setFormSubmitted(true);
         // Reset form
         setFormData({ name: '', email: '', message: '' });
-        
+
         setTimeout(() => {
           setFormSubmitted(false);
           setSubmitStatus('idle');
@@ -223,10 +223,10 @@ const Contact: React.FC = () => {
         console.error('Error Status:', error.status);
         console.error('Error Text:', error.text);
         console.error('Full Error Object:', JSON.stringify(error, null, 2));
-        
+
         // Xử lý các loại lỗi khác nhau
         let errorMsg = 'Có lỗi xảy ra khi gửi email. Vui lòng thử lại.';
-        
+
         if (error.text) {
           errorMsg = error.text;
         } else if (error.message) {
@@ -234,7 +234,7 @@ const Contact: React.FC = () => {
         } else if (typeof error === 'string') {
           errorMsg = error;
         }
-        
+
         // Kiểm tra các lỗi phổ biến
         if (errorMsg.includes('recipients address is empty') || errorMsg.includes('recipient') && errorMsg.includes('empty')) {
           errorMsg = 'Lỗi: Địa chỉ email người nhận trống. Vui lòng kiểm tra template trong EmailJS Dashboard - phần "To Email" phải có {{email}}, {{to_email}} hoặc email cụ thể (ví dụ: thiephuc.ba@gmail.com)';
@@ -251,10 +251,10 @@ const Contact: React.FC = () => {
         } else if (error.status === 404) {
           errorMsg = 'Lỗi 404: Service hoặc Template không tìm thấy';
         }
-        
+
         setSubmitStatus('error');
         setErrorMessage(errorMsg);
-        
+
         // Fallback: copy to clipboard and try mailto
         fallbackToMailto();
       }
@@ -263,14 +263,14 @@ const Contact: React.FC = () => {
       // Fallback: sử dụng mailto: và clipboard
       fallbackToMailto();
     }
-    
+
     setIsSending(false);
   };
 
   const fallbackToMailto = async () => {
     const subject = `Portfolio Inquiry from ${formData.name}`;
     const emailContent = `To: ${targetEmail}\nSubject: ${subject}\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-    
+
     // Copy to clipboard
     try {
       await navigator.clipboard.writeText(emailContent);
@@ -283,7 +283,7 @@ const Contact: React.FC = () => {
     } catch (err) {
       console.error('Failed to copy email:', err);
     }
-    
+
     // Try to open mailto: link
     window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
   };
@@ -291,7 +291,7 @@ const Contact: React.FC = () => {
   return (
     <div className="px-6 md:px-12 py-24 md:py-48 max-w-screen-xl mx-auto border-t border-white/5 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-        
+
         {/* Left Side: Info */}
         <div className="lg:col-span-5 space-y-12 relative z-20">
           <div className="space-y-6">
@@ -301,8 +301,8 @@ const Contact: React.FC = () => {
             <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-sm">
               Please contact me directly at{' '}
               <span className="inline-flex items-center gap-2">
-                <a 
-                  href={`mailto:${targetEmail}`} 
+                <a
+                  href={`mailto:${targetEmail}`}
                   className="text-white underline decoration-white/20 hover:decoration-white transition-all underline-offset-4 font-bold cursor-pointer pointer-events-auto relative z-30"
                 >
                   {targetEmail}
@@ -364,34 +364,34 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-3">
                 <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Full name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="Your Name"
                   className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm placeholder:text-white/20"
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
               <div className="space-y-3">
                 <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Email Address</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   placeholder="you@example.com"
                   className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm placeholder:text-white/20"
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
             </div>
 
             <div className="space-y-3">
               <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Your Message</label>
-              <textarea 
+              <textarea
                 required
                 rows={5}
                 placeholder="Tell me about about your project,"
                 className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm resize-none placeholder:text-white/20"
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
 
@@ -399,7 +399,7 @@ const Contact: React.FC = () => {
               I'll never share your data with anyone else. Pinky promise!
             </p>
 
-            <button 
+            <button
               type="submit"
               disabled={isSending}
               className="w-full bg-[#111] border border-white/10 text-white py-6 rounded-md font-bold text-base uppercase flex items-center justify-center gap-4 hover:bg-white hover:text-black transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
@@ -414,14 +414,14 @@ const Contact: React.FC = () => {
                 </>
               ) : (
                 <>
-              Send Message
-              <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+                  Send Message
+                  <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </>
               )}
             </button>
-            
+
             {submitStatus === 'success' && formSubmitted && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -430,7 +430,7 @@ const Contact: React.FC = () => {
                 className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-md"
               >
                 <p className="text-green-400 text-sm font-medium">
-                  ✓ Email đã được gửi thành công! 
+                  ✓ Email đã được gửi thành công!
                   <br />
                   <span className="text-green-300/80 text-xs mt-1 block">
                     Tôi sẽ phản hồi sớm nhất có thể.
