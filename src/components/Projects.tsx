@@ -132,43 +132,43 @@ const Projects: React.FC = () => {
         {
           id: "context",
           icon: "alert-triangle",
-          title: "BỐI CẢNH & VẤN ĐỀ",
+          title: "CONTEXT & PROBLEM",
           content: {
-            description: "Ngân hàng đang vận hành trên hệ thống AS/400 legacy từ những năm 1990s với 15+ modules riêng biệt không tích hợp. Mỗi chi nhánh phải đợi batch processing vào cuối ngày để cập nhật dữ liệu, gây ra độ trễ 8-24 giờ trong xử lý giao dịch.",
+            description: "The bank was operating on a legacy AS/400 system from the 1990s with 15+ separate, non-integrated modules. Each branch had to wait for end-of-day batch processing to update data, causing 8-24 hour delays in transaction processing.",
             painPoints: [
               {
                 icon: "users",
-                title: "Trải nghiệm khách hàng kém",
-                description: "Khiếu nại tăng 40% do không thể kiểm tra số dư real-time giữa các chi nhánh"
+                title: "Poor Customer Experience",
+                description: "Complaints increased 40% due to inability to check real-time balances across branches"
               },
               {
                 icon: "dollar",
-                title: "Chi phí vận hành cao",
-                description: "$2.8M/năm bảo trì với 80% IT budget chỉ để 'keep the lights on'"
+                title: "High Operating Costs",
+                description: "$2.8M/year in maintenance with 80% of IT budget just to 'keep the lights on'"
               },
               {
                 icon: "clock",
-                title: "Time-to-market chậm",
-                description: "Mất 6-8 tuần để deploy một tính năng nhỏ do monolithic architecture"
+                title: "Slow Time-to-Market",
+                description: "Took 6-8 weeks to deploy a minor feature due to monolithic architecture"
               },
               {
                 icon: "alert",
-                title: "Rủi ro tuân thủ",
-                description: "Không đáp ứng Basel III về real-time risk reporting"
+                title: "Compliance Risks",
+                description: "Failed to meet Basel III requirements for real-time risk reporting"
               }
             ],
             businessImpact: [
               {
-                label: "Doanh thu:",
-                description: "Mất 15% thị phần segment 18-35 tuổi do thiếu digital capabilities"
+                label: "Revenue:",
+                description: "Lost 15% market share in 18-35 age segment due to lack of digital capabilities"
               },
               {
-                label: "Chiến lược:",
-                description: "Không thể mở rộng hay M&A do technical debt"
+                label: "Strategy:",
+                description: "Unable to expand or pursue M&A due to technical debt"
               },
               {
-                label: "Vận hành:",
-                description: "Nhân viên mất 45 phút/ngày xử lý exceptions"
+                label: "Operations:",
+                description: "Staff wasted 45 minutes/day handling exceptions"
               }
             ],
             stakeholders: ["CEO", "CTO", "CFO", "120+ Branch Managers", "Regulators", "800+ Customer Service Staff"]
@@ -177,11 +177,11 @@ const Projects: React.FC = () => {
         {
           id: "ba-activities",
           icon: "target",
-          title: "HOẠT ĐỘNG BUSINESS ANALYST CHI TIẾT",
+          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
           content: {
             baActivities: [
               {
-                title: "📋 Thu thập Yêu cầu (Requirements Elicitation)",
+                title: "📋 Requirements Elicitation",
                 icon: "clipboard",
                 sections: [
                   {
@@ -189,10 +189,10 @@ const Projects: React.FC = () => {
                     title: 'Interviews & Workshops:',
                     bgColor: 'blue',
                     items: [
-                      '85+ cuộc phỏng vấn stakeholder qua 8 phòng ban trong 4 tháng',
-                      '24 phiên JAD (Joint Application Design) với 12-18 người mỗi phiên',
-                      '6 focus groups với nhân viên chi nhánh (8-10 người/nhóm)',
-                      '40 giờ job shadowing 5 vai trò khác nhau'
+                      '85+ stakeholder interviews across 8 departments over 4 months',
+                      '24 JAD (Joint Application Design) sessions with 12-18 participants each',
+                      '6 focus groups with branch staff (8-10 people per group)',
+                      '40 hours of job shadowing across 5 different roles'
                     ]
                   },
                   {
@@ -200,8 +200,8 @@ const Projects: React.FC = () => {
                     title: 'Deliverables:',
                     bgColor: 'green',
                     items: [
-                      'BRD: 280 trang, 180 business requirements',
-                      'FRS: 450 trang, 380 functional requirements',
+                      'BRD: 280 pages, 180 business requirements',
+                      'FRS: 450 pages, 380 functional requirements',
                       'NFR: 45 requirements (performance, security, scalability)',
                       'API Specs: 85 RESTful endpoints'
                     ]
@@ -209,7 +209,7 @@ const Projects: React.FC = () => {
                 ]
               },
               {
-                title: "🔍 Phân tích & Mô hình hóa (Analysis & Modeling)",
+                title: "🔍 Analysis & Modeling",
                 icon: "search",
                 sections: [
                   {
@@ -227,7 +227,7 @@ const Projects: React.FC = () => {
                         title: 'System Models:',
                         items: [
                           '120+ UML diagrams',
-                          'ERD với 280+ entities',
+                          'ERD with 280+ entities',
                           'Data flow diagrams'
                         ]
                       }
@@ -238,23 +238,23 @@ const Projects: React.FC = () => {
                     title: 'Key Analysis Activities:',
                     bgColor: 'yellow',
                     items: [
-                      'Gap analysis giữa As-Is và To-Be state',
-                      'Feasibility study đánh giá 3 vendors vs build',
-                      'Cost-benefit analysis: 5-year TCO và ROI projection',
-                      'Risk assessment: 38 critical risks với mitigation plan'
+                      'Gap analysis between As-Is and To-Be state',
+                      'Feasibility study evaluating 3 vendors vs build',
+                      'Cost-benefit analysis: 5-year TCO and ROI projection',
+                      'Risk assessment: 38 critical risks with mitigation plan'
                     ]
                   }
                 ]
               },
               {
-                title: "👥 Quản lý Stakeholder",
+                title: "👥 Stakeholder Management",
                 icon: "users",
                 sections: [
                   {
                     type: 'box',
                     title: 'Approach:',
                     bgColor: 'purple',
-                    content: 'Tạo stakeholder matrix phân loại 85 stakeholders theo power/interest. Chiến lược communication phân tầng: weekly steering committee, bi-weekly business sync, monthly town halls.'
+                    content: 'Created stakeholder matrix categorizing 85 stakeholders by power/interest. Layered communication strategy: weekly steering committee, bi-weekly business sync, monthly town halls.'
                   },
                   {
                     type: 'list',
@@ -269,7 +269,7 @@ const Projects: React.FC = () => {
                     type: 'box',
                     title: 'Conflict Resolution Example:',
                     bgColor: 'amber',
-                    content: 'Giải quyết xung đột giữa Retail Banking (muốn nhiều features) vs IT Ops (muốn stability) bằng cách đề xuất phased rollout với MVP approach, đạt được sự đồng thuận của cả hai bên.'
+                    content: 'Resolved conflict between Retail Banking (wants many features) vs IT Ops (wants stability) by proposing phased rollout with MVP approach, achieving consensus from both sides.'
                   }
                 ]
               }
@@ -279,47 +279,47 @@ const Projects: React.FC = () => {
         {
           id: "challenges",
           icon: "wrench",
-          title: "THÁCH THỨC & GIẢI PHÁP",
+          title: "CHALLENGES & SOLUTIONS",
           content: {
             challenges: [
               {
                 title: "📊 Data Migration Complexity",
                 icon: "database",
                 borderColor: "orange",
-                problem: "Legacy system có 25 năm dữ liệu không nhất quán trên 15 databases không có unified schema. Phát hiện 12% data quality issues trong initial assessment (180TB data).",
+                problem: "Legacy system contained 25 years of inconsistent data across 15 databases with no unified schema. Found 12% data quality issues in initial assessment (180TB data).",
                 solution: [
-                  "Thiết kế chiến lược migration 4 phases: (1) Data profiling & cleansing, (2) Pilot với 2 chi nhánh, (3) Regional rollout, (4) Full migration",
-                  "Tạo data reconciliation framework với 200+ validation rules",
-                  "Thành lập Data Quality Council với business owners để giải quyết ambiguities"
+                  "Designed 4-phase migration strategy: (1) Data profiling & cleansing, (2) Pilot with 2 branches, (3) Regional rollout, (4) Full migration",
+                  "Created data reconciliation framework with 200+ validation rules",
+                  "Established Data Quality Council with business owners to resolve ambiguities"
                 ],
-                outcome: "Successfully migrate 180TB với 99.97% accuracy. Giảm migration window từ 12 tháng xuống 8 tháng."
+                outcome: "Successfully migrated 180TB with 99.97% accuracy. Reduced migration window from 12 months to 8 months."
               },
               {
                 title: "👥 Resistance to Change",
                 icon: "users",
                 borderColor: "purple",
-                problem: "Branch staff (tuổi TB 45, thâm niên TB 15 năm) rất kháng cự hệ thống mới. Survey cho thấy, 65% 'lo lắng' về thay đổi.",
+                problem: "Branch staff (average age 45, average tenure 15 years) were highly resistant to the new system. Survey showed 65% 'worried' about the change.",
                 solution: [
-                  "Xác định 30 branch champions để peer training",
-                  "Tạo messaging 'What's In It For Me' highlight lợi ích giảm manual work",
-                  "Hands-on training trong mock branch environment",
-                  "24/7 hypercare support trong 3 tháng đầu",
-                  "Gamified adoption program với recognition"
+                  "Identified 30 branch champions for peer training",
+                  "Created 'What's In It For Me' messaging highlighting benefits of reduced manual work",
+                  "Hands-on training in mock branch environment",
+                  "24/7 hypercare support during first 3 months",
+                  "Gamified adoption program with recognition"
                 ],
-                outcome: "Post-launch survey: 78% user satisfaction. Giảm 60% support tickets vs dự kiến."
+                outcome: "Post-launch survey: 78% user satisfaction. Reduced support tickets by 60% vs expected."
               },
               {
                 title: "🎯 Scope Creep Management",
                 icon: "target",
                 borderColor: "blue",
-                problem: "Trong 18 tháng, nhận 280+ change requests từ các stakeholders. Nếu không kiểm soát sẽ derail timeline và budget.",
+                problem: "Over 18 months, received 280+ change requests from stakeholders. Without control, would derail timeline and budget.",
                 solution: [
-                  "Thành lập Change Control Board review weekly",
-                  "Bắt buộc impact analysis cho mỗi request (effort, risk, dependencies)",
-                  "'Parking lot' nghiêm ngặt cho post-launch features",
-                  "Scope boundary linh hoạt: MVP có định, enhancement backlog linh hoạt"
+                  "Established Change Control Board with weekly reviews",
+                  "Mandatory impact analysis for each request (effort, risk, dependencies)",
+                  "Strict 'parking lot' for post-launch features",
+                  "Flexible scope boundary: fixed MVP, flexible enhancement backlog"
                 ],
-                outcome: "Approve 35 critical changes (12.5% approval rate). Deliver đúng hạn tất cả có changes. Xây dựng trust với stakeholders."
+                outcome: "Approved 35 critical changes (12.5% approval rate). Delivered on time with all changes. Built trust with stakeholders."
               }
             ]
           }
@@ -327,25 +327,25 @@ const Projects: React.FC = () => {
         {
           id: "results",
           icon: "check-circle",
-          title: "KẾT QUẢ & TÁC ĐỘNG",
+          title: "RESULTS & IMPACT",
           content: {
             metricCards: [
               {
                 value: "-65%",
                 label: "Transaction Settlement Time",
-                description: "Từ 8-24 giờ xuống còn 2-3 giờ",
+                description: "From 8-24 hours down to 2-3 hours",
                 color: "green"
               },
               {
                 value: "+28%",
                 label: "Customer Satisfaction (NPS)",
-                description: "Từ 42 lên 54 điểm NPS",
+                description: "From 42 to 54 NPS points",
                 color: "blue"
               },
               {
                 value: "$1.2M",
                 label: "Annual Cost Savings",
-                description: "Giảm từ $2.8M xuống $1.6M",
+                description: "Reduced from $2.8M to $1.6M",
                 color: "purple"
               }
             ],
@@ -354,30 +354,30 @@ const Projects: React.FC = () => {
                 title: "Business Impact:",
                 icon: "briefcase",
                 items: [
-                  "Time-to-market cho features mới giảm từ 6-8 tuần xuống 1-2 tuần",
-                  "Có thể launch mobile banking và instant transfer services",
-                  "Compliance: đáp ứng 100% Basel III requirements",
-                  "Tái chiếm 8% thị phần segment khách hàng trẻ sau 12 tháng"
+                  "Time-to-market for new features reduced from 6-8 weeks to 1-2 weeks",
+                  "Enabled launch of mobile banking and instant transfer services",
+                  "Compliance: met 100% of Basel III requirements",
+                  "Recaptured 8% market share in young customer segment after 12 months"
                 ]
               },
               {
                 title: "Operational Impact:",
                 icon: "users",
                 items: [
-                  "Branch staff tiết kiệm 45 phút/ngày (không còn xử lý exceptions)",
-                  "Customer service call volume giảm 35%",
-                  "System uptime tăng từ 95% lên 99.8%",
-                  "Deployment frequency: từ 1 lần/quý lên 2 lần/tuần"
+                  "Branch staff saved 45 minutes/day (no more exception handling)",
+                  "Customer service call volume reduced by 35%",
+                  "System uptime increased from 95% to 99.8%",
+                  "Deployment frequency: from 1 time/quarter to 2 times/week"
                 ]
               },
               {
                 title: "Strategic Impact:",
                 icon: "target",
                 items: [
-                  "Foundation cho digital transformation roadmap tiếp theo",
-                  "Cơ khả năng M&A và mở rộng thị trường",
-                  "Platform sẵn sàng cho AI/ML initiatives",
-                  "Competitive advantage trong ngành banking"
+                  "Foundation for next digital transformation roadmap",
+                  "Enabled M&A opportunities and market expansion",
+                  "Platform ready for AI/ML initiatives",
+                  "Competitive advantage in banking industry"
                 ]
               }
             ]
@@ -386,7 +386,7 @@ const Projects: React.FC = () => {
         {
           id: "lessons",
           icon: "trending-up",
-          title: "BÀI HỌC KINH NGHIỆM",
+          title: "LESSONS LEARNED",
           content: {
             impactSections: [
               {
@@ -394,10 +394,10 @@ const Projects: React.FC = () => {
                 icon: "star",
                 bgColor: "yellow",
                 items: [
-                  "Phased approach: Pilot với 2 branches trước giúp identify issues sớm và adjust",
-                  "Change champions: Peer training hiệu quả hơn top-down training",
-                  "Transparent communication: Weekly updates giúp manage expectations",
-                  "Data-driven decisions: Metrics dashboard giúp prioritize đúng"
+                  "Phased approach: Piloting with 2 branches first helped identify issues early and adjust",
+                  "Change champions: Peer training more effective than top-down training",
+                  "Transparent communication: Weekly updates helped manage expectations",
+                  "Data-driven decisions: Metrics dashboard helped prioritize correctly"
                 ]
               },
               {
@@ -405,9 +405,9 @@ const Projects: React.FC = () => {
                 icon: "lightbulb",
                 bgColor: "red",
                 items: [
-                  "Earlier involvement của Security: Phát hiện một số security gaps muộn",
-                  "More comprehensive training: Cần thêm thời gian training cho advanced features",
-                  "Better vendor management: Một số delays do dependency vào vendor"
+                  "Earlier involvement of Security: Discovered some security gaps late",
+                  "More comprehensive training: Needed more time for advanced features training",
+                  "Better vendor management: Some delays due to vendor dependencies"
                 ]
               },
               {
@@ -415,10 +415,10 @@ const Projects: React.FC = () => {
                 icon: "key",
                 bgColor: "green",
                 items: [
-                  "Transformation projects cần 60% change management, 40% technology",
-                  "Stakeholder alignment quan trọng hơn technical perfection",
-                  "MVP mindset giúp deliver value sớm và học hỏi nhanh",
-                  "Documentation tốt là foundation cho knowledge transfer"
+                  "Transformation projects require 60% change management, 40% technology",
+                  "Stakeholder alignment more important than technical perfection",
+                  "MVP mindset helps deliver value early and learn fast",
+                  "Good documentation is foundation for knowledge transfer"
                 ]
               }
             ]
@@ -451,43 +451,43 @@ const Projects: React.FC = () => {
         {
           id: "context",
           icon: "alert-triangle",
-          title: "BỐI CẢNH & VẤN ĐỀ",
+          title: "CONTEXT & PROBLEM",
           content: {
-            description: "SMEs (doanh nghiệp vừa và nhỏ) với doanh thu $1M-$50M/năm đang struggle với cash flow management. Không có dedicated CFO, họ dựa vào Excel spreadsheets thủ công và gut feeling để ra quyết định tài chính quan trọng.",
+            description: "SMEs (small and medium enterprises) with annual revenue of $1M-$50M are struggling with cash flow management. Without dedicated CFOs, they rely on manual Excel spreadsheets and gut feeling to make critical financial decisions.",
             painPoints: [
               {
                 icon: "chart",
-                title: "Không có forecast visibility",
-                description: "Không biết cash position 30-90 ngày tới, leading to surprise crises"
+                title: "No forecast visibility",
+                description: "Don't know cash position 30-90 days ahead, leading to surprise crises"
               },
               {
                 icon: "clock",
-                title: "Manual reporting quá chậm",
-                description: "Mất 2 tuần để consolidate data từ 10+ sources, thông tin đã outdated"
+                title: "Manual reporting too slow",
+                description: "Takes 2 weeks to consolidate data from 10+ sources, information already outdated"
               },
               {
                 icon: "database",
-                title: "Data silos nghiêm trọng",
-                description: "Accounting, CRM, invoicing, banking systems không nói chuyện được với nhau"
+                title: "Severe data silos",
+                description: "Accounting, CRM, invoicing, banking systems don't talk to each other"
               },
               {
                 icon: "alert",
-                title: "Decision-making thiếu data",
-                description: "90% quyết định dựa trên intuition thay vì data-driven insights"
+                title: "Data-lacking decision-making",
+                description: "90% of decisions based on intuition rather than data-driven insights"
               }
             ],
             businessImpact: [
               {
                 label: "Financial Risk:",
-                description: "35% SMEs fail vì cash flow issues, không phải thiếu revenue"
+                description: "35% of SMEs fail due to cash flow issues, not lack of revenue"
               },
               {
                 label: "Growth Constraint:",
-                description: "Không dám expand vì unclear về financial runway"
+                description: "Afraid to expand due to unclear financial runway"
               },
               {
                 label: "Operational Burden:",
-                description: "Owners spend 20 hours/month trên manual financial reporting"
+                description: "Owners spend 20 hours/month on manual financial reporting"
               }
             ],
             stakeholders: ["SME Founders/CEOs", "Part-time CFOs", "Accountants", "Investors/VCs", "Banks/Lenders", "Board Members"]
@@ -496,20 +496,20 @@ const Projects: React.FC = () => {
         {
           id: "ba-activities",
           icon: "target",
-          title: "HOẠT ĐỘNG BUSINESS ANALYST CHI TIẾT",
+          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
           content: {
             subsections: [
               {
                 title: "Data Discovery & Mapping",
-                content: "Phân tích 15+ nguồn dữ liệu khác nhau (accounting, CRM, invoicing, banking). Tạo comprehensive data dictionary với 200+ fields. Xác định data quality issues và thiết kế data cleansing rules."
+                content: "Analyzed 15+ different data sources (accounting, CRM, invoicing, banking). Created comprehensive data dictionary with 200+ fields. Identified data quality issues and designed data cleansing rules."
               },
               {
                 title: "KPI Definition & Metrics",
-                content: "Làm việc với CFOs của 20+ SMEs để define business KPIs. Thiết kế 30+ financial metrics dashboard. Tạo predictive indicators cho cash flow health score."
+                content: "Worked with CFOs of 20+ SMEs to define business KPIs. Designed 30+ financial metrics dashboard. Created predictive indicators for cash flow health score."
               },
               {
                 title: "Model Requirements & Validation",
-                content: "Collaborate với data scientists để translate business requirements thành model specifications. Define acceptance criteria cho model accuracy (min 90%). Thiết kế A/B testing framework để validate predictions."
+                content: "Collaborated with data scientists to translate business requirements into model specifications. Defined acceptance criteria for model accuracy (min 90%). Designed A/B testing framework to validate predictions."
               }
             ]
           }
@@ -517,20 +517,20 @@ const Projects: React.FC = () => {
         {
           id: "challenges",
           icon: "wrench",
-          title: "THÁCH THỨC & GIẢI PHÁP",
+          title: "CHALLENGES & SOLUTIONS",
           content: {
             subsections: [
               {
                 title: "Data Quality Issues",
-                content: "Giải pháp: Implement data profiling pipeline với Great Expectations. Tạo automated data quality checks và alerting. Build data reconciliation process với tolerance thresholds. Kết quả: Data quality score tăng từ 65% lên 95%."
+                content: "Solution: Implemented data profiling pipeline with Great Expectations. Created automated data quality checks and alerting. Built data reconciliation process with tolerance thresholds. Result: Data quality score increased from 65% to 95%."
               },
               {
                 title: "Model Interpretability",
-                content: "Giải pháp: Sử dụng SHAP values để explain model predictions. Tạo feature importance visualization cho business users. Build 'what-if' scenario analysis tool. Kết quả: Business users hiểu được 90% model predictions."
+                content: "Solution: Used SHAP values to explain model predictions. Created feature importance visualization for business users. Built 'what-if' scenario analysis tool. Result: Business users understood 90% of model predictions."
               },
               {
                 title: "Multi-tenant Data Isolation",
-                content: "Giải pháp: Implement row-level security trong Snowflake. Design tenant-specific encryption keys. Tạo comprehensive audit logs cho data access. Pass SOC 2 Type II audit đầu tiên."
+                content: "Solution: Implemented row-level security in Snowflake. Designed tenant-specific encryption keys. Created comprehensive audit logs for data access. Passed SOC 2 Type II audit on first attempt."
               }
             ]
           }
@@ -538,25 +538,25 @@ const Projects: React.FC = () => {
         {
           id: "results",
           icon: "check-circle",
-          title: "KẾT QUẢ & TÁC ĐỘNG",
+          title: "RESULTS & IMPACT",
           content: {
             metricCards: [
               {
                 value: "94%",
                 label: "Forecast Accuracy",
-                description: "Độ chính xác dự báo cash flow 30 ngày",
+                description: "30-day cash flow forecast precision",
                 color: "green"
               },
               {
                 value: "-80%",
                 label: "Insight Generation Time",
-                description: "Từ 2 tuần xuống còn 2-3 ngày",
+                description: "From 2 weeks down to 2-3 days",
                 color: "blue"
               },
               {
                 value: "150+",
                 label: "SME Clients",
-                description: "Doanh nghiệp sử dụng platform",
+                description: "Enterprises using the platform",
                 color: "purple"
               }
             ],
@@ -565,30 +565,30 @@ const Projects: React.FC = () => {
                 title: "Business Impact:",
                 icon: "briefcase",
                 items: [
-                  "50+ SMEs tránh được cash flow crisis nhờ early warning alerts",
-                  "Average 2.5 months runway improvement cho clients",
-                  "35% clients có thể negotiate better terms với banks nhờ data insights",
-                  "Platform thu hút $2M seed funding từ VCs"
+                  "50+ SMEs avoided cash flow crisis thanks to early warning alerts",
+                  "Average 2.5 months runway improvement for clients",
+                  "35% clients able to negotiate better terms with banks thanks to data insights",
+                  "Platform attracted $2M seed funding from VCs"
                 ]
               },
               {
                 title: "Operational Impact:",
                 icon: "users",
                 items: [
-                  "CFO teams save 15 hours/week trên manual reporting",
-                  "Real-time dashboards thay thế monthly board meetings",
-                  "Automated alerts giảm 70% missed payment risks",
-                  "API integration với 20+ accounting platforms"
+                  "CFO teams save 15 hours/week on manual reporting",
+                  "Real-time dashboards replaced monthly board meetings",
+                  "Automated alerts reduced missed payment risks by 70%",
+                  "API integration with 20+ accounting platforms"
                 ]
               },
               {
                 title: "Strategic Impact:",
                 icon: "target",
                 items: [
-                  "Positioned company như leader trong SME fintech",
-                  "Data insights mở ra upsell opportunities cho advisory services",
-                  "Platform có thể scale lên 10,000+ tenants",
-                  "Foundation cho AI-powered financial advisor chatbot"
+                  "Positioned company as leader in SME fintech",
+                  "Data insights opened up upsell opportunities for advisory services",
+                  "Platform can scale to 10,000+ tenants",
+                  "Foundation for AI-powered financial advisor chatbot"
                 ]
               }
             ]
@@ -597,7 +597,7 @@ const Projects: React.FC = () => {
         {
           id: "lessons",
           icon: "trending-up",
-          title: "BÀI HỌC KINH NGHIỆM",
+          title: "LESSONS LEARNED",
           content: {
             impactSections: [
               {
@@ -605,10 +605,10 @@ const Projects: React.FC = () => {
                 icon: "star",
                 bgColor: "yellow",
                 items: [
-                  "CRISP-DM methodology giúp structure data science projects tốt",
-                  "Early stakeholder involvement trong feature engineering",
-                  "Continuous model retraining với latest data giữ accuracy cao",
-                  "Simple, intuitive UI giúp adoption rate 85% trong 30 ngày"
+                  "CRISP-DM methodology helped structure data science projects well",
+                  "Early stakeholder involvement in feature engineering",
+                  "Continuous model retraining with latest data maintained high accuracy",
+                  "Simple, intuitive UI achieved 85% adoption rate within 30 days"
                 ]
               },
               {
@@ -616,9 +616,9 @@ const Projects: React.FC = () => {
                 icon: "lightbulb",
                 bgColor: "red",
                 items: [
-                  "Model drift monitoring cần được implement sớm hơn",
-                  "User training và onboarding cần thêm interactive tutorials",
-                  "Data pipeline cần thêm fallback mechanisms cho vendor API downtime"
+                  "Model drift monitoring needed earlier implementation",
+                  "User training and onboarding needed more interactive tutorials",
+                  "Data pipeline needed more fallback mechanisms for vendor API downtime"
                 ]
               },
               {
@@ -626,10 +626,10 @@ const Projects: React.FC = () => {
                 icon: "key",
                 bgColor: "green",
                 items: [
-                  "Domain expertise (finance) quan trọng như technical skills",
-                  "Model accuracy < 90% không đủ để business users trust",
-                  "Data governance phải được prioritize từ day 1",
-                  "API-first approach giúp partnerships dễ dàng hơn"
+                  "Domain expertise (finance) as important as technical skills",
+                  "Model accuracy < 90% insufficient for business users to trust",
+                  "Data governance must be prioritized from day 1",
+                  "API-first approach makes partnerships easier"
                 ]
               }
             ]
@@ -662,43 +662,43 @@ const Projects: React.FC = () => {
         {
           id: "context",
           icon: "alert-triangle",
-          title: "BỐI CẢNH & VẤN ĐỀ",
+          title: "CONTEXT & PROBLEM",
           content: {
-            description: "Tập đoàn đa quốc gia 10,000+ employees vận hành trên patchwork của 50+ legacy systems từ M&A activities. Identity management phân mảnh với 15 different LDAP servers, AD forests và custom auth solutions không interoperable.",
+            description: "Multinational corporation with 10,000+ employees operating on a patchwork of 50+ legacy systems from M&A activities. Identity management was fragmented with 15 different LDAP servers, AD forests and custom auth solutions that were not interoperable.",
             painPoints: [
               {
                 icon: "shield",
-                title: "Security breach risk cao",
-                description: "95 credential-based incidents/năm, estimated loss $500K mỗi breach"
+                title: "High security breach risk",
+                description: "95 credential-based incidents/year, estimated loss $500K per breach"
               },
               {
                 icon: "users",
-                title: "User friction nghiêm trọng",
-                description: "Employees có 10+ passwords, 60% tickets là password resets"
+                title: "Severe user friction",
+                description: "Employees have 10+ passwords, 60% tickets are password resets"
               },
               {
                 icon: "clock",
-                title: "Onboarding/offboarding chậm",
-                description: "3 ngày để provision access, 1 tuần để revoke hết khi employee rời đi"
+                title: "Slow onboarding/offboarding",
+                description: "3 days to provision access, 1 week to revoke all when employee leaves"
               },
               {
                 icon: "alert",
                 title: "Compliance violations",
-                description: "Failed 40% audit checks cho ISO 27001, SOC 2, GDPR access controls"
+                description: "Failed 40% audit checks for ISO 27001, SOC 2, GDPR access controls"
               }
             ],
             businessImpact: [
               {
                 label: "Security Risk:",
-                description: "Estimated $5M exposure từ potential data breach và ransomware"
+                description: "Estimated $5M exposure from potential data breach and ransomware"
               },
               {
                 label: "Productivity Loss:",
-                description: "2 hours/week mỗi employee wasted trên authentication issues"
+                description: "2 hours/week per employee wasted on authentication issues"
               },
               {
                 label: "Market Access:",
-                description: "Không thể bid enterprise contracts do compliance gaps"
+                description: "Unable to bid enterprise contracts due to compliance gaps"
               }
             ],
             stakeholders: ["CISO", "IT Security Team", "Compliance Officer", "Legal/Privacy", "HR (Identity Lifecycle)", "10,000+ End Users"]
@@ -707,20 +707,20 @@ const Projects: React.FC = () => {
         {
           id: "ba-activities",
           icon: "target",
-          title: "HOẠT ĐỘNG BUSINESS ANALYST CHI TIẾT",
+          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
           content: {
             subsections: [
               {
                 title: "Security Requirements Elicitation",
-                content: "Phỏng vấn 50+ stakeholders từ IT Security, Compliance, HR, Legal departments. Analyze 200+ access control policies hiện tại. Document security incidents và root causes. Tạo comprehensive security requirements matrix với 150+ requirements."
+                content: "Interviewed 50+ stakeholders from IT Security, Compliance, HR, Legal departments. Analyzed 200+ current access control policies. Documented security incidents and root causes. Created comprehensive security requirements matrix with 150+ requirements."
               },
               {
                 title: "User Journey & Access Pattern Analysis",
-                content: "Map user journeys cho 20+ personas (employees, contractors, vendors, admins). Analyze access logs của 10,000+ users để identify patterns. Design least-privilege access model cho 500+ applications. Create role-based access control (RBAC) hierarchy."
+                content: "Mapped user journeys for 20+ personas (employees, contractors, vendors, admins). Analyzed access logs of 10,000+ users to identify patterns. Designed least-privilege access model for 500+ applications. Created role-based access control (RBAC) hierarchy."
               },
               {
                 title: "Compliance Gap Analysis",
-                content: "Audit current state vs ISO 27001, SOC 2 Type II, GDPR requirements. Identify 80+ compliance gaps cần remediate. Collaborate với legal team để interpret regulations. Build compliance roadmap với prioritized milestones."
+                content: "Audited current state vs ISO 27001, SOC 2 Type II, GDPR requirements. Identified 80+ compliance gaps needing remediation. Collaborated with legal team to interpret regulations. Built compliance roadmap with prioritized milestones."
               }
             ]
           }
@@ -728,20 +728,20 @@ const Projects: React.FC = () => {
         {
           id: "challenges",
           icon: "wrench",
-          title: "THÁCH THỨC & GIẢI PHÁP",
+          title: "CHALLENGES & SOLUTIONS",
           content: {
             subsections: [
               {
                 title: "Legacy System Integration",
-                content: "Giải pháp: Build custom OAuth2/OIDC adapter cho LDAP servers. Implement gradual migration strategy với dual-authentication support. Create middleware layer để bridge modern và legacy protocols. Kết quả: Zero downtime migration với 100% backward compatibility."
+                content: "Solution: Built custom OAuth2/OIDC adapter for LDAP servers. Implemented gradual migration strategy with dual-authentication support. Created middleware layer to bridge modern and legacy protocols. Result: Zero downtime migration with 100% backward compatibility."
               },
               {
                 title: "User Resistance & Change Management",
-                content: "Giải pháp: Phased rollout bắt đầu với IT department (50 users) làm champions. Tổ chức 100+ training sessions với hands-on practice. Create comprehensive self-service documentation và video tutorials. Setup 24/7 support team trong 3 tháng đầu. Kết quả: User satisfaction tăng 40%, support tickets giảm 60%."
+                content: "Solution: Phased rollout starting with IT department (50 users) as champions. Organized 100+ training sessions with hands-on practice. Created comprehensive self-service documentation and video tutorials. Setup 24/7 support team during first 3 months. Result: User satisfaction increased 40%, support tickets reduced 60%."
               },
               {
                 title: "MFA Adoption Across Global Teams",
-                content: "Giải pháp: Support multiple MFA methods (app, SMS, hardware tokens) để accommodate diverse regions. Partner với Okta để optimize mobile app performance ở emerging markets. Implement grace period và remind campaigns. Kết quả: 98% MFA adoption trong 6 tháng."
+                content: "Solution: Supported multiple MFA methods (app, SMS, hardware tokens) to accommodate diverse regions. Partnered with Okta to optimize mobile app performance in emerging markets. Implemented grace period and reminder campaigns. Result: 98% MFA adoption within 6 months."
               }
             ]
           }
@@ -749,25 +749,25 @@ const Projects: React.FC = () => {
         {
           id: "results",
           icon: "check-circle",
-          title: "KẾT QUẢ & TÁC ĐỘNG",
+          title: "RESULTS & IMPACT",
           content: {
             metricCards: [
               {
                 value: "-95%",
                 label: "Credential Attack Risk",
-                description: "Từ 95 incidents/năm xuống 5 incidents/năm",
+                description: "From 95 incidents/year down to 5 incidents/year",
                 color: "green"
               },
               {
                 value: "+40%",
                 label: "User Satisfaction (SSO)",
-                description: "eNPS tăng từ 30 lên 70",
+                description: "eNPS increased from 30 to 70",
                 color: "blue"
               },
               {
                 value: "100%",
                 label: "Compliance Pass Rate",
-                description: "Pass tất cả audits: ISO 27001, SOC 2, GDPR",
+                description: "Passed all audits: ISO 27001, SOC 2, GDPR",
                 color: "purple"
               }
             ],
@@ -776,30 +776,30 @@ const Projects: React.FC = () => {
                 title: "Business Impact:",
                 icon: "briefcase",
                 items: [
-                  "Tránh được estimated $5M trong security breach damages",
-                  "Enable expansion vào EU markets nhờ GDPR compliance",
-                  "Reduce insurance premiums 30% với cyber insurance providers",
-                  "Increase customer trust score 45% trong enterprise sales"
+                  "Avoided estimated $5M in security breach damages",
+                  "Enabled expansion into EU markets thanks to GDPR compliance",
+                  "Reduced insurance premiums 30% with cyber insurance providers",
+                  "Increased customer trust score 45% in enterprise sales"
                 ]
               },
               {
                 title: "Operational Impact:",
                 icon: "users",
                 items: [
-                  "IT helpdesk tickets giảm 60% (password reset requests)",
-                  "User productivity tăng 2 hours/week nhờ SSO",
-                  "Onboarding time cho new hires giảm từ 3 ngày xuống 4 giờ",
-                  "Security team có thể focus vào threat hunting thay vì access management"
+                  "IT helpdesk tickets reduced by 60% (password reset requests)",
+                  "User productivity increased 2 hours/week thanks to SSO",
+                  "Onboarding time for new hires reduced from 3 days to 4 hours",
+                  "Security team can focus on threat hunting instead of access management"
                 ]
               },
               {
                 title: "Strategic Impact:",
                 icon: "target",
                 items: [
-                  "Foundation cho cloud migration strategy (Azure, AWS)",
-                  "Enable zero-trust network architecture implementation",
-                  "Platform sẵn sàng cho AI-powered threat detection",
-                  "Competitive advantage trong winning enterprise contracts"
+                  "Foundation for cloud migration strategy (Azure, AWS)",
+                  "Enabled zero-trust network architecture implementation",
+                  "Platform ready for AI-powered threat detection",
+                  "Competitive advantage in winning enterprise contracts"
                 ]
               }
             ]
@@ -808,7 +808,7 @@ const Projects: React.FC = () => {
         {
           id: "lessons",
           icon: "trending-up",
-          title: "BÀI HỌC KINH NGHIỆM",
+          title: "LESSONS LEARNED",
           content: {
             impactSections: [
               {
@@ -816,10 +816,10 @@ const Projects: React.FC = () => {
                 icon: "star",
                 bgColor: "yellow",
                 items: [
-                  "Executive sponsorship từ CISO critical cho success",
-                  "Phased rollout giúp identify và fix issues early",
-                  "Change champions program (50 power users) hiệu quả",
-                  "Comprehensive documentation giảm support burden"
+                  "Executive sponsorship from CISO critical for success",
+                  "Phased rollout helped identify and fix issues early",
+                  "Change champions program (50 power users) effective",
+                  "Comprehensive documentation reduced support burden"
                 ]
               },
               {
@@ -827,9 +827,9 @@ const Projects: React.FC = () => {
                 icon: "lightbulb",
                 bgColor: "red",
                 items: [
-                  "Earlier engagement với legal team để avoid compliance surprises",
-                  "More robust testing cho edge cases (VPN, offline scenarios)",
-                  "Better communication về timeline expectations với stakeholders"
+                  "Earlier engagement with legal team to avoid compliance surprises",
+                  "More robust testing for edge cases (VPN, offline scenarios)",
+                  "Better communication about timeline expectations with stakeholders"
                 ]
               },
               {
@@ -837,10 +837,10 @@ const Projects: React.FC = () => {
                 icon: "key",
                 bgColor: "green",
                 items: [
-                  "Security projects cần 70% people/process, 30% technology",
-                  "User experience là critical factor cho security adoption",
-                  "Compliance requirements phải được integrated từ design phase",
-                  "Vendor partnership (Okta, Azure) accelerate implementation"
+                  "Security projects require 70% people/process, 30% technology",
+                  "User experience is critical factor for security adoption",
+                  "Compliance requirements must be integrated from design phase",
+                  "Vendor partnership (Okta, Azure) accelerated implementation"
                 ]
               }
             ]
@@ -1556,26 +1556,6 @@ const Projects: React.FC = () => {
                       <p className="text-base md:text-xl text-white/50 leading-relaxed font-light">{selectedProject.technical}</p>
                     </section>
                   </div>
-
-                  {/* METRICS */}
-                  <section className="pt-20">
-                    <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase mb-16">Metrics of Success</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-20">
-                      {selectedProject.outcomes.map((outcome, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 + idx * 0.1 }}
-                          className="group border-l-[1px] border-white/10 pl-8 py-4 hover:border-white transition-colors"
-                        >
-                          <p className="mono text-[9px] opacity-30 uppercase tracking-widest mb-6 group-hover:text-white transition-colors">{outcome.label}</p>
-                          <h4 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-6 transition-all group-hover:translate-x-2">{outcome.value}</h4>
-                          <p className="text-[11px] text-white/40 leading-relaxed uppercase tracking-wider font-medium">{outcome.desc}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </section>
                 </div>
 
                 {/* SIDEBAR METADATA */}
