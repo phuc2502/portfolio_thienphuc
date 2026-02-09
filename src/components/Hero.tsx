@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
-import VideoPlayer from './VideoPlayer';
+import HeroVideoPlayer from './HeroVideoPlayer';
 
 const Hero: React.FC = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Sử dụng ảnh từ folder components/img/
   const heroImageUrl = new URL('./img/avt.jpg', import.meta.url).href;
+  const videoUrl = new URL('./img/video.mp4', import.meta.url).href;
 
   return (
     <div className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
@@ -106,11 +107,13 @@ const Hero: React.FC = () => {
         <span className="mono text-[7px] tracking-[0.4em] opacity-20 uppercase">Scroll</span>
       </div>
 
-      <VideoPlayer
-        isOpen={isVideoOpen}
-        onClose={() => setIsVideoOpen(false)}
-        videoUrl={new URL('./img/caythong.mp4', import.meta.url).href}
-      />
+      {/* Fullscreen Video Player */}
+      {isVideoOpen && (
+        <HeroVideoPlayer
+          videoUrl={videoUrl}
+          onBack={() => setIsVideoOpen(false)}
+        />
+      )}
 
       {/* CSS Animations */}
       <style>{`
