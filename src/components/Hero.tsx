@@ -1,124 +1,17 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
 const Hero: React.FC = () => {
-  const bgRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const metadataTopRef = useRef<HTMLDivElement>(null);
-  const metadataBottomRef = useRef<HTMLDivElement>(null);
-  const actionButtonRef = useRef<HTMLDivElement>(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Sử dụng ảnh từ folder components/img/
   const heroImageUrl = new URL('./img/avt.jpg', import.meta.url).href;
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline({ delay: 0.3 });
-
-    // Initial entrance animations
-    tl.fromTo(bgRef.current,
-      { scale: 1.3, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 2, ease: "power3.out" }
-    )
-      .fromTo(subtitleRef.current,
-        { opacity: 0, y: 30, letterSpacing: '0.3em' },
-        { opacity: 0.4, y: 0, letterSpacing: '0.7em', duration: 1.2, ease: "power4.out" },
-        "-=1.5"
-      )
-      .fromTo(titleRef.current,
-        { opacity: 0, y: 80, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: "power4.out" },
-        "-=1"
-      )
-      .fromTo(actionButtonRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-        "-=0.6"
-      )
-      .fromTo(metadataTopRef.current,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.8"
-      )
-      .fromTo(metadataBottomRef.current,
-        { opacity: 0, x: 30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.6"
-      );
-
-    // Scroll-based parallax for background
-    if (bgRef.current) {
-      gsap.to(bgRef.current, {
-        yPercent: 20,
-        scale: 1.15,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5,
-        },
-      });
-    }
-
-    // Title scroll animation - smooth fade and rise
-    if (titleRef.current) {
-      gsap.to(titleRef.current, {
-        y: -80,
-        opacity: 0.15,
-        scale: 0.98,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '50% top',
-          scrub: 1,
-        },
-      });
-    }
-
-    // Subtitle parallax
-    if (subtitleRef.current) {
-      gsap.to(subtitleRef.current, {
-        y: -40,
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '40% top',
-          scrub: 1,
-        },
-      });
-    }
-
-    // Action button fade
-    if (actionButtonRef.current) {
-      gsap.to(actionButtonRef.current, {
-        y: -20,
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '30% top',
-          scrub: 1,
-        },
-      });
-    }
-  }, []);
-
   return (
-    <div ref={containerRef} className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <div className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
       {/* Background Section */}
-      <div ref={bgRef} className="absolute inset-0 z-0 opacity-0">
+      <div className="absolute inset-0 z-0 animate-fade-in">
         <img
           src={heroImageUrl}
           alt="Hero Background"
@@ -132,7 +25,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-[5] opacity-[0.03] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
 
       {/* Top Metadata */}
-      <div ref={metadataTopRef} className="absolute top-12 left-0 w-full px-6 md:px-12 z-20 flex justify-between items-start pointer-events-none opacity-0">
+      <div className="absolute top-12 left-0 w-full px-6 md:px-12 z-20 flex justify-between items-start pointer-events-none animate-slide-in-left" style={{ animationDelay: '0.5s' }}>
         <div className="mono text-[7px] md:text-[9px] text-white/30 tracking-[0.5em] uppercase leading-relaxed">
           <p className="mb-1 text-white/10">PROJECT EDITION</p>
           <p className="font-bold">SYSTEM ARCHITECT ©2024</p>
@@ -142,16 +35,16 @@ const Hero: React.FC = () => {
 
       {/* Main Title Section */}
       <div className="relative z-10 w-full flex flex-col items-center mt-[35vh] md:mt-[40vh]">
-        <p ref={subtitleRef} className="mono text-[8px] md:text-[11px] tracking-[0.7em] mb-6 opacity-0 uppercase font-black text-center">
-          Creative Strategist / MIS Specialist
+        <p className="mono text-[8px] md:text-[11px] tracking-[0.7em] mb-6 opacity-40 uppercase font-black text-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          Business Analyst / MIS Specialist
         </p>
 
         <div className="w-full overflow-hidden flex justify-center px-4">
           <h1
-            ref={titleRef}
-            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl opacity-0"
+            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl animate-fade-in-up"
             style={{
-              textShadow: '0 0 80px rgba(255,255,255,0.1), 0 0 160px rgba(255,255,255,0.05)'
+              textShadow: '0 0 80px rgba(255,255,255,0.1), 0 0 160px rgba(255,255,255,0.05)',
+              animationDelay: '0.4s'
             }}
           >
             THIEN PHUC
@@ -161,9 +54,9 @@ const Hero: React.FC = () => {
 
         {/* Action Button */}
         <div
-          ref={actionButtonRef}
           onClick={() => setIsVideoOpen(true)}
-          className="mt-10 md:mt-16 flex flex-col items-center gap-4 group cursor-pointer pointer-events-auto opacity-0"
+          className="mt-10 md:mt-16 flex flex-col items-center gap-4 group cursor-pointer pointer-events-auto animate-fade-in-up"
+          style={{ animationDelay: '0.6s' }}
         >
           <div className="relative w-14 h-14 flex items-center justify-center">
             {/* Outer ring pulse */}
@@ -180,7 +73,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Bottom status */}
-      <div ref={metadataBottomRef} className="absolute bottom-12 right-12 z-20 hidden md:block opacity-0">
+      <div className="absolute bottom-12 right-12 z-20 hidden md:block animate-slide-in-right" style={{ animationDelay: '0.7s' }}>
         <div className="mono text-[8px] text-right text-white/10 tracking-widest uppercase">
           <p className="mb-1">STATUS</p>
           <p className="font-bold text-white/30">SENIOR STUDENT</p>
@@ -198,6 +91,41 @@ const Hero: React.FC = () => {
         onClose={() => setIsVideoOpen(false)}
         videoUrl={new URL('./img/caythong.mp4', import.meta.url).href}
       />
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide-in-left {
+          from { opacity: 0; transform: translateX(-30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+          from { opacity: 0; transform: translateX(30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 1.5s ease-out forwards;
+        }
+        .animate-fade-in-up {
+          opacity: 0;
+          animation: fade-in-up 1s ease-out forwards;
+        }
+        .animate-slide-in-left {
+          opacity: 0;
+          animation: slide-in-left 0.8s ease-out forwards;
+        }
+        .animate-slide-in-right {
+          opacity: 0;
+          animation: slide-in-right 0.8s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };
