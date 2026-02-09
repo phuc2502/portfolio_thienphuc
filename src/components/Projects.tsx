@@ -97,36 +97,32 @@ const Projects: React.FC = () => {
   const items: ProjectDetail[] = [
     {
       id: "01",
-      title: 'BANKING CORE SYSTEM',
-      hoverTitle: 'BANK',
-      cat: 'MIS',
-      url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-      demoUrl: 'https://demo.banking-system.thienphuc.vn',
-      repoUrl: 'https://github.com/thienphuc/banking-core-v2',
+      title: 'DIGITAL WALLET CORE',
+      hoverTitle: 'TRANSACTION FLOW',
+      cat: 'FINTECH',
+      url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070',
       year: "2024",
       role: "Lead System Analyst",
-      brief: "A digital transformation initiative for a tier-1 commercial bank, aiming to replace a 20-year-old legacy core with a modern microservices-based architecture.",
-      strategy: "Conducted exhaustive 'As-Is' vs 'To-Be' gap analysis across 450+ unique business processes. Implemented a phased migration strategy using the Strangler Fig pattern to minimize operational risk.",
-      technical: "Orchestrated a distributed system using Spring Boot and Apache Kafka for event-driven transactions. Designed a unified data schema to support real-time reporting and cross-platform sync.",
+      brief: "A comprehensive redesign and optimization of deposit and withdrawal workflows for a high-volume digital wallet platform, ensuring seamless transaction processing and high security.",
+      strategy: "Conducted an end-to-end audit of the transaction lifecycle. Streamlined payment gateway integrations and implemented asynchronous processing for improved scalability.",
+      technical: "Designed robust API architectures for balance synchronization and transaction logging. Leveraged microservices to isolate core banking logic from the wallet front-end.",
       methodology: [
-        "Agile Scrum Framework",
-        "BABOK® Standards Alignment",
-        "Business Process Re-engineering (BPR)",
-        "UAT (User Acceptance Testing) Coordination",
-        "Risk-based Data Migration"
+        "Business Process Mapping",
+        "UML Sequence Modeling",
+        "Sequence Diagrams",
+        "Stakeholder Alignment Workshops"
       ],
       ba_focus: [
-        "Elicitation: BRD & Functional Requirement Specs (FRS)",
-        "Modeling: UML Sequence & State Machine Diagrams",
-        "Stakeholder Matrix & Communication Mgmt",
-        "API Interface Mapping & Documentation",
-        "User Journey Mapping for Retail Banking"
+        "Requirement Engineering",
+        "Process Flow Optimization",
+        "User Story Mapping",
+        "Risk Mitigation Strategies"
       ],
-      tech: ["Java Spring Boot", "Kafka", "PostgreSQL", "Redis", "Docker", "AWS"],
+      tech: ["Fintech APIs", "System Architecture", "Security Protocols", "Node.js"],
       outcomes: [
-        { label: "Throughput", value: "3.5x", desc: "Increased transaction processing capacity per second." },
-        { label: "Latency", value: "-60%", desc: "Reduced end-to-end transaction time for retail customers." },
-        { label: "Cost Saving", value: "$1.2M", desc: "Estimated annual savings on maintenance and legacy licensing." }
+        { label: "Stability", value: "99.99%", desc: "Ensured high availability for wallet operations." },
+        { label: "Processing", value: "-40%", desc: "Reduced transaction settlement latency." },
+        { label: "Automation", value: "High", desc: "Automated reconciliation processes." }
       ],
       accordionSections: [
         {
@@ -134,142 +130,46 @@ const Projects: React.FC = () => {
           icon: "alert-triangle",
           title: "CONTEXT & PROBLEM",
           content: {
-            description: "The bank was operating on a legacy AS/400 system from the 1990s with 15+ separate, non-integrated modules. Each branch had to wait for end-of-day batch processing to update data, causing 8-24 hour delays in transaction processing.",
+            description: "The platform struggled with inconsistent transaction states and database deadlocks during high-load periods, especially during promotion campaigns. Users experienced delayed balance updates and occasional transaction failures.",
             painPoints: [
               {
-                icon: "users",
-                title: "Poor Customer Experience",
-                description: "Complaints increased 40% due to inability to check real-time balances across branches"
-              },
-              {
-                icon: "dollar",
-                title: "High Operating Costs",
-                description: "$2.8M/year in maintenance with 80% of IT budget just to 'keep the lights on'"
-              },
-              {
                 icon: "clock",
-                title: "Slow Time-to-Market",
-                description: "Took 6-8 weeks to deploy a minor feature due to monolithic architecture"
+                title: "Processing Delays",
+                description: "Intermittent delays in balance updates after successful deposits, causing customer dissatisfaction."
               },
               {
-                icon: "alert",
-                title: "Compliance Risks",
-                description: "Failed to meet Basel III requirements for real-time risk reporting"
+                icon: "database",
+                title: "Concurrency Issues",
+                description: "Database deadlocks occurring during peak seconds when multiple microservices attempted to update the same ledger."
               }
             ],
-            businessImpact: [
-              {
-                label: "Revenue:",
-                description: "Lost 15% market share in 18-35 age segment due to lack of digital capabilities"
-              },
-              {
-                label: "Strategy:",
-                description: "Unable to expand or pursue M&A due to technical debt"
-              },
-              {
-                label: "Operations:",
-                description: "Staff wasted 45 minutes/day handling exceptions"
-              }
-            ],
-            stakeholders: ["CEO", "CTO", "CFO", "120+ Branch Managers", "Regulators", "800+ Customer Service Staff"]
+            stakeholders: ["Product Owners", "DevOps Team", "Final Users", "Compliance Officers"]
           }
         },
         {
           id: "ba-activities",
           icon: "target",
-          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
+          title: "BUSINESS ANALYST ACTIVITIES",
           content: {
             baActivities: [
               {
-                title: "📋 Requirements Elicitation",
-                icon: "clipboard",
+                title: "Requirement Elicitation & Analysis",
+                icon: "target",
                 sections: [
                   {
-                    type: 'box',
-                    title: 'Interviews & Workshops:',
-                    bgColor: 'blue',
-                    items: [
-                      '85+ stakeholder interviews across 8 departments over 4 months',
-                      '24 JAD (Joint Application Design) sessions with 12-18 participants each',
-                      '6 focus groups with branch staff (8-10 people per group)',
-                      '40 hours of job shadowing across 5 different roles'
-                    ]
+                    type: "box",
+                    title: "As-Is vs To-Be Analysis",
+                    content: "Analyzed existing legacy workflows to identify bottlenecks. Proposed a new asynchronous event-driven architecture to decouple transaction logging from balance updates.",
+                    bgColor: "blue"
                   },
                   {
-                    type: 'box',
-                    title: 'Deliverables:',
-                    bgColor: 'green',
+                    type: "list",
+                    title: "Key Deliverables",
                     items: [
-                      'BRD: 280 pages, 180 business requirements',
-                      'FRS: 450 pages, 380 functional requirements',
-                      'NFR: 45 requirements (performance, security, scalability)',
-                      'API Specs: 85 RESTful endpoints'
+                      "Detailed Use Case Specifications for Deposit/Withdraw",
+                      "UML Activity Diagrams for Exception Handling",
+                      "API Documentation for Third-party Gateways"
                     ]
-                  }
-                ]
-              },
-              {
-                title: "🔍 Analysis & Modeling",
-                icon: "search",
-                sections: [
-                  {
-                    type: 'twoColumn',
-                    columns: [
-                      {
-                        title: 'Process Models:',
-                        items: [
-                          '28 BPMN diagrams (As-Is + To-Be)',
-                          'Mapped 450+ business processes',
-                          '15 user journey maps'
-                        ]
-                      },
-                      {
-                        title: 'System Models:',
-                        items: [
-                          '120+ UML diagrams',
-                          'ERD with 280+ entities',
-                          'Data flow diagrams'
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    type: 'box',
-                    title: 'Key Analysis Activities:',
-                    bgColor: 'yellow',
-                    items: [
-                      'Gap analysis between As-Is and To-Be state',
-                      'Feasibility study evaluating 3 vendors vs build',
-                      'Cost-benefit analysis: 5-year TCO and ROI projection',
-                      'Risk assessment: 38 critical risks with mitigation plan'
-                    ]
-                  }
-                ]
-              },
-              {
-                title: "👥 Stakeholder Management",
-                icon: "users",
-                sections: [
-                  {
-                    type: 'box',
-                    title: 'Approach:',
-                    bgColor: 'purple',
-                    content: 'Created stakeholder matrix categorizing 85 stakeholders by power/interest. Layered communication strategy: weekly steering committee, bi-weekly business sync, monthly town halls.'
-                  },
-                  {
-                    type: 'list',
-                    title: 'Workshops Facilitated:',
-                    items: [
-                      '12 requirements prioritization workshops (MoSCoW)',
-                      '8 design thinking sessions',
-                      '6 architecture review sessions'
-                    ]
-                  },
-                  {
-                    type: 'box',
-                    title: 'Conflict Resolution Example:',
-                    bgColor: 'amber',
-                    content: 'Resolved conflict between Retail Banking (wants many features) vs IT Ops (wants stability) by proposing phased rollout with MVP approach, achieving consensus from both sides.'
                   }
                 ]
               }
@@ -283,143 +183,36 @@ const Projects: React.FC = () => {
           content: {
             challenges: [
               {
-                title: "📊 Data Migration Complexity",
-                icon: "database",
-                borderColor: "orange",
-                problem: "Legacy system contained 25 years of inconsistent data across 15 databases with no unified schema. Found 12% data quality issues in initial assessment (180TB data).",
-                solution: [
-                  "Designed 4-phase migration strategy: (1) Data profiling & cleansing, (2) Pilot with 2 branches, (3) Regional rollout, (4) Full migration",
-                  "Created data reconciliation framework with 200+ validation rules",
-                  "Established Data Quality Council with business owners to resolve ambiguities"
-                ],
-                outcome: "Successfully migrated 180TB with 99.97% accuracy. Reduced migration window from 12 months to 8 months."
-              },
-              {
-                title: "👥 Resistance to Change",
-                icon: "users",
-                borderColor: "purple",
-                problem: "Branch staff (average age 45, average tenure 15 years) were highly resistant to the new system. Survey showed 65% 'worried' about the change.",
-                solution: [
-                  "Identified 30 branch champions for peer training",
-                  "Created 'What's In It For Me' messaging highlighting benefits of reduced manual work",
-                  "Hands-on training in mock branch environment",
-                  "24/7 hypercare support during first 3 months",
-                  "Gamified adoption program with recognition"
-                ],
-                outcome: "Post-launch survey: 78% user satisfaction. Reduced support tickets by 60% vs expected."
-              },
-              {
-                title: "🎯 Scope Creep Management",
-                icon: "target",
+                title: "Race Condition Management",
+                icon: "alert-triangle",
                 borderColor: "blue",
-                problem: "Over 18 months, received 280+ change requests from stakeholders. Without control, would derail timeline and budget.",
+                problem: "Simultaneous balance updates led to 'dirty reads' and incorrect ledger entries.",
                 solution: [
-                  "Established Change Control Board with weekly reviews",
-                  "Mandatory impact analysis for each request (effort, risk, dependencies)",
-                  "Strict 'parking lot' for post-launch features",
-                  "Flexible scope boundary: fixed MVP, flexible enhancement backlog"
+                  "Implemented optimistic locking mechanism at the database level.",
+                  "Introduced a Redis-based distributed lock for critical transaction paths."
                 ],
-                outcome: "Approved 35 critical changes (12.5% approval rate). Delivered on time with all changes. Built trust with stakeholders."
+                outcome: "Zero balance discrepancies reported across 1M+ monthly transactions."
               }
             ]
           }
         },
         {
           id: "results",
-          icon: "check-circle",
+          icon: "trending-up",
           title: "RESULTS & IMPACT",
           content: {
             metricCards: [
               {
-                value: "-65%",
-                label: "Transaction Settlement Time",
-                description: "From 8-24 hours down to 2-3 hours",
-                color: "green"
-              },
-              {
-                value: "+28%",
-                label: "Customer Satisfaction (NPS)",
-                description: "From 42 to 54 NPS points",
+                label: "Transaction Growth",
+                value: "300%",
+                description: "System successfully handled 3x more concurrent users.",
                 color: "blue"
               },
               {
-                value: "$1.2M",
-                label: "Annual Cost Savings",
-                description: "Reduced from $2.8M to $1.6M",
-                color: "purple"
-              }
-            ],
-            impactSections: [
-              {
-                title: "Business Impact:",
-                icon: "briefcase",
-                items: [
-                  "Time-to-market for new features reduced from 6-8 weeks to 1-2 weeks",
-                  "Enabled launch of mobile banking and instant transfer services",
-                  "Compliance: met 100% of Basel III requirements",
-                  "Recaptured 8% market share in young customer segment after 12 months"
-                ]
-              },
-              {
-                title: "Operational Impact:",
-                icon: "users",
-                items: [
-                  "Branch staff saved 45 minutes/day (no more exception handling)",
-                  "Customer service call volume reduced by 35%",
-                  "System uptime increased from 95% to 99.8%",
-                  "Deployment frequency: from 1 time/quarter to 2 times/week"
-                ]
-              },
-              {
-                title: "Strategic Impact:",
-                icon: "target",
-                items: [
-                  "Foundation for next digital transformation roadmap",
-                  "Enabled M&A opportunities and market expansion",
-                  "Platform ready for AI/ML initiatives",
-                  "Competitive advantage in banking industry"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          id: "lessons",
-          icon: "trending-up",
-          title: "LESSONS LEARNED",
-          content: {
-            impactSections: [
-              {
-                title: "✨ What Worked Well:",
-                icon: "star",
-                bgColor: "yellow",
-                items: [
-                  "Phased approach: Piloting with 2 branches first helped identify issues early and adjust",
-                  "Change champions: Peer training more effective than top-down training",
-                  "Transparent communication: Weekly updates helped manage expectations",
-                  "Data-driven decisions: Metrics dashboard helped prioritize correctly"
-                ]
-              },
-              {
-                title: "💡 What Could Be Improved:",
-                icon: "lightbulb",
-                bgColor: "red",
-                items: [
-                  "Earlier involvement of Security: Discovered some security gaps late",
-                  "More comprehensive training: Needed more time for advanced features training",
-                  "Better vendor management: Some delays due to vendor dependencies"
-                ]
-              },
-              {
-                title: "💡 Key Takeaways:",
-                icon: "key",
-                bgColor: "green",
-                items: [
-                  "Transformation projects require 60% change management, 40% technology",
-                  "Stakeholder alignment more important than technical perfection",
-                  "MVP mindset helps deliver value early and learn fast",
-                  "Good documentation is foundation for knowledge transfer"
-                ]
+                label: "Support Tickets",
+                value: "-65%",
+                description: "Significant reduction in transaction-related complaints.",
+                color: "green"
               }
             ]
           }
@@ -428,420 +221,55 @@ const Projects: React.FC = () => {
     },
     {
       id: "02",
-      title: 'PREDICTIVE ANALYTICS',
-      hoverTitle: 'DATA',
-      cat: 'FINANCE',
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000',
-      demoUrl: 'https://bi-dashboard.thienphuc.io',
-      repoUrl: 'https://github.com/thienphuc/financial-predictive-engine',
-      year: "2023",
-      role: "BI & Data Analyst",
-      brief: "Development of a real-time financial health monitoring dashboard for small to medium enterprises (SMEs), utilizing predictive modeling for cash flow forecasting.",
-      strategy: "Leveraged historical financial data to identify cyclical patterns. Designed a multi-tenant architecture to ensure data isolation while maintaining high availability.",
-      technical: "Built an ETL pipeline using Python and Azure Data Factory. Implemented Random Forest regression models to predict cash flow deficits with high precision.",
-      methodology: ["CRISP-DM", "Waterfall-Agile Hybrid", "Data Governance", "Model Validation"],
-      ba_focus: ["Data Mapping", "KPI Definition", "Market Trend Analysis", "Decision Logic Documentation"],
-      tech: ["Python (Pandas/Scikit-learn)", "Azure Data Factory", "Power BI", "Snowflake"],
-      outcomes: [
-        { label: "Accuracy", value: "94%", desc: "Precision of the 30-day cash flow forecast model." },
-        { label: "Reporting", value: "Real-time", desc: "Eliminated the 2-week manual reporting cycle." },
-        { label: "Insight Gap", value: "-80%", desc: "Reduced time from data collection to actionable insight." }
-      ],
-      accordionSections: [
-        {
-          id: "context",
-          icon: "alert-triangle",
-          title: "CONTEXT & PROBLEM",
-          content: {
-            description: "SMEs (small and medium enterprises) with annual revenue of $1M-$50M are struggling with cash flow management. Without dedicated CFOs, they rely on manual Excel spreadsheets and gut feeling to make critical financial decisions.",
-            painPoints: [
-              {
-                icon: "chart",
-                title: "No forecast visibility",
-                description: "Don't know cash position 30-90 days ahead, leading to surprise crises"
-              },
-              {
-                icon: "clock",
-                title: "Manual reporting too slow",
-                description: "Takes 2 weeks to consolidate data from 10+ sources, information already outdated"
-              },
-              {
-                icon: "database",
-                title: "Severe data silos",
-                description: "Accounting, CRM, invoicing, banking systems don't talk to each other"
-              },
-              {
-                icon: "alert",
-                title: "Data-lacking decision-making",
-                description: "90% of decisions based on intuition rather than data-driven insights"
-              }
-            ],
-            businessImpact: [
-              {
-                label: "Financial Risk:",
-                description: "35% of SMEs fail due to cash flow issues, not lack of revenue"
-              },
-              {
-                label: "Growth Constraint:",
-                description: "Afraid to expand due to unclear financial runway"
-              },
-              {
-                label: "Operational Burden:",
-                description: "Owners spend 20 hours/month on manual financial reporting"
-              }
-            ],
-            stakeholders: ["SME Founders/CEOs", "Part-time CFOs", "Accountants", "Investors/VCs", "Banks/Lenders", "Board Members"]
-          }
-        },
-        {
-          id: "ba-activities",
-          icon: "target",
-          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
-          content: {
-            subsections: [
-              {
-                title: "Data Discovery & Mapping",
-                content: "Analyzed 15+ different data sources (accounting, CRM, invoicing, banking). Created comprehensive data dictionary with 200+ fields. Identified data quality issues and designed data cleansing rules."
-              },
-              {
-                title: "KPI Definition & Metrics",
-                content: "Worked with CFOs of 20+ SMEs to define business KPIs. Designed 30+ financial metrics dashboard. Created predictive indicators for cash flow health score."
-              },
-              {
-                title: "Model Requirements & Validation",
-                content: "Collaborated with data scientists to translate business requirements into model specifications. Defined acceptance criteria for model accuracy (min 90%). Designed A/B testing framework to validate predictions."
-              }
-            ]
-          }
-        },
-        {
-          id: "challenges",
-          icon: "wrench",
-          title: "CHALLENGES & SOLUTIONS",
-          content: {
-            subsections: [
-              {
-                title: "Data Quality Issues",
-                content: "Solution: Implemented data profiling pipeline with Great Expectations. Created automated data quality checks and alerting. Built data reconciliation process with tolerance thresholds. Result: Data quality score increased from 65% to 95%."
-              },
-              {
-                title: "Model Interpretability",
-                content: "Solution: Used SHAP values to explain model predictions. Created feature importance visualization for business users. Built 'what-if' scenario analysis tool. Result: Business users understood 90% of model predictions."
-              },
-              {
-                title: "Multi-tenant Data Isolation",
-                content: "Solution: Implemented row-level security in Snowflake. Designed tenant-specific encryption keys. Created comprehensive audit logs for data access. Passed SOC 2 Type II audit on first attempt."
-              }
-            ]
-          }
-        },
-        {
-          id: "results",
-          icon: "check-circle",
-          title: "RESULTS & IMPACT",
-          content: {
-            metricCards: [
-              {
-                value: "94%",
-                label: "Forecast Accuracy",
-                description: "30-day cash flow forecast precision",
-                color: "green"
-              },
-              {
-                value: "-80%",
-                label: "Insight Generation Time",
-                description: "From 2 weeks down to 2-3 days",
-                color: "blue"
-              },
-              {
-                value: "150+",
-                label: "SME Clients",
-                description: "Enterprises using the platform",
-                color: "purple"
-              }
-            ],
-            impactSections: [
-              {
-                title: "Business Impact:",
-                icon: "briefcase",
-                items: [
-                  "50+ SMEs avoided cash flow crisis thanks to early warning alerts",
-                  "Average 2.5 months runway improvement for clients",
-                  "35% clients able to negotiate better terms with banks thanks to data insights",
-                  "Platform attracted $2M seed funding from VCs"
-                ]
-              },
-              {
-                title: "Operational Impact:",
-                icon: "users",
-                items: [
-                  "CFO teams save 15 hours/week on manual reporting",
-                  "Real-time dashboards replaced monthly board meetings",
-                  "Automated alerts reduced missed payment risks by 70%",
-                  "API integration with 20+ accounting platforms"
-                ]
-              },
-              {
-                title: "Strategic Impact:",
-                icon: "target",
-                items: [
-                  "Positioned company as leader in SME fintech",
-                  "Data insights opened up upsell opportunities for advisory services",
-                  "Platform can scale to 10,000+ tenants",
-                  "Foundation for AI-powered financial advisor chatbot"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          id: "lessons",
-          icon: "trending-up",
-          title: "LESSONS LEARNED",
-          content: {
-            impactSections: [
-              {
-                title: "✨ What Worked Well:",
-                icon: "star",
-                bgColor: "yellow",
-                items: [
-                  "CRISP-DM methodology helped structure data science projects well",
-                  "Early stakeholder involvement in feature engineering",
-                  "Continuous model retraining with latest data maintained high accuracy",
-                  "Simple, intuitive UI achieved 85% adoption rate within 30 days"
-                ]
-              },
-              {
-                title: "💡 What Could Be Improved:",
-                icon: "lightbulb",
-                bgColor: "red",
-                items: [
-                  "Model drift monitoring needed earlier implementation",
-                  "User training and onboarding needed more interactive tutorials",
-                  "Data pipeline needed more fallback mechanisms for vendor API downtime"
-                ]
-              },
-              {
-                title: "💡 Key Takeaways:",
-                icon: "key",
-                bgColor: "green",
-                items: [
-                  "Domain expertise (finance) as important as technical skills",
-                  "Model accuracy < 90% insufficient for business users to trust",
-                  "Data governance must be prioritized from day 1",
-                  "API-first approach makes partnerships easier"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      id: "03",
       title: 'SECURITY PROTOCOL X',
-      hoverTitle: 'SECURITY',
+      hoverTitle: 'ZERO TRUST INITIATIVE',
       cat: 'SECURITY',
-      url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000',
-      demoUrl: 'https://iam-zero-trust.internal',
-      repoUrl: 'https://github.com/thienphuc/protocol-x-iam',
-      year: "2024",
+      url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
+      year: "2025",
       role: "Security Consultant",
-      brief: "Redesigning the identity and access management (IAM) framework for a multinational corporation to align with Zero Trust security principles.",
-      strategy: "Implemented a multi-factor authentication (MFA) rollout plan that integrated with existing legacy LDAP servers. Applied least-privilege access across all cloud resources.",
-      technical: "Configured Okta as the primary Identity Provider. Developed custom middleware to bridge the gap between modern OAuth2/OIDC flows and legacy internal apps.",
-      methodology: ["Zero Trust Framework", "ISO 27001 Compliance", "Threat Modeling", "Identity Lifecycle Mgmt"],
-      ba_focus: ["Access Control Auditing", "Compliance Gap Analysis", "User Journey Mapping", "Policy Definition"],
-      tech: ["Okta", "Azure AD", "Terraform", "Nginx", "OAuth2.0 / SAML"],
+      brief: "An advanced cybersecurity initiative focused on implementing Zero Trust Architecture and enhanced identity management for enterprise environments.",
+      strategy: "Phase 1 involves threat modeling and current-state vulnerability assessment. We are establishing foundational security policies before full-scale implementation.",
+      technical: "Leveraging modern OAuth2 and OIDC standards for unified identity providers. Investigating biometrics as a secondary factor for administrative access.",
+      methodology: [
+        "NIST Framework Alignment",
+        "Threat Modeling",
+        "Security Audits"
+      ],
+      ba_focus: [
+        "Compliance Gap Analysis",
+        "IAM Policy Definition",
+        "Security Requirement Elicitation"
+      ],
+      tech: ["Zero Trust", "OAuth2", "Cloud Security"],
       outcomes: [
-        { label: "Breach Risk", value: "-95%", desc: "Reduction in estimated risk of credential-based attacks." },
-        { label: "UX Rating", value: "+40%", desc: "Increase in internal user satisfaction after SSO implementation." },
-        { label: "Compliance", value: "100%", desc: "Passed all internal and external security audits." }
+        { label: "Status", value: "Planned", desc: "Currently in the requirements gathering phase." }
       ],
       accordionSections: [
         {
-          id: "context",
+          id: "vision",
           icon: "alert-triangle",
-          title: "CONTEXT & PROBLEM",
+          title: "VISION & OBJECTIVES",
           content: {
-            description: "Multinational corporation with 10,000+ employees operating on a patchwork of 50+ legacy systems from M&A activities. Identity management was fragmented with 15 different LDAP servers, AD forests and custom auth solutions that were not interoperable.",
-            painPoints: [
-              {
-                icon: "shield",
-                title: "High security breach risk",
-                description: "95 credential-based incidents/year, estimated loss $500K per breach"
-              },
-              {
-                icon: "users",
-                title: "Severe user friction",
-                description: "Employees have 10+ passwords, 60% tickets are password resets"
-              },
-              {
-                icon: "clock",
-                title: "Slow onboarding/offboarding",
-                description: "3 days to provision access, 1 week to revoke all when employee leaves"
-              },
-              {
-                icon: "alert",
-                title: "Compliance violations",
-                description: "Failed 40% audit checks for ISO 27001, SOC 2, GDPR access controls"
-              }
-            ],
+            description: "To transition from a perimeter-based security model to a dynamic identity-based model where no user or device is trusted by default, regardless of their location.",
             businessImpact: [
-              {
-                label: "Security Risk:",
-                description: "Estimated $5M exposure from potential data breach and ransomware"
-              },
-              {
-                label: "Productivity Loss:",
-                description: "2 hours/week per employee wasted on authentication issues"
-              },
-              {
-                label: "Market Access:",
-                description: "Unable to bid enterprise contracts due to compliance gaps"
-              }
-            ],
-            stakeholders: ["CISO", "IT Security Team", "Compliance Officer", "Legal/Privacy", "HR (Identity Lifecycle)", "10,000+ End Users"]
+              { label: "Risk Mitigation", description: "Reduced lateral movement potential for attackers." },
+              { label: "Compliance", description: "Meeting strict ISO 27001 and GDPR requirements." }
+            ]
           }
         },
         {
-          id: "ba-activities",
+          id: "strategy",
           icon: "target",
-          title: "DETAILED BUSINESS ANALYST ACTIVITIES",
+          title: "IMPLEMENTATION ROADMAP",
           content: {
             subsections: [
               {
-                title: "Security Requirements Elicitation",
-                content: "Interviewed 50+ stakeholders from IT Security, Compliance, HR, Legal departments. Analyzed 200+ current access control policies. Documented security incidents and root causes. Created comprehensive security requirements matrix with 150+ requirements."
+                title: "Phase 1: Identity Foundation",
+                content: "Centralizing all user identities into a single source of truth and enabling MFA across all internal applications."
               },
               {
-                title: "User Journey & Access Pattern Analysis",
-                content: "Mapped user journeys for 20+ personas (employees, contractors, vendors, admins). Analyzed access logs of 10,000+ users to identify patterns. Designed least-privilege access model for 500+ applications. Created role-based access control (RBAC) hierarchy."
-              },
-              {
-                title: "Compliance Gap Analysis",
-                content: "Audited current state vs ISO 27001, SOC 2 Type II, GDPR requirements. Identified 80+ compliance gaps needing remediation. Collaborated with legal team to interpret regulations. Built compliance roadmap with prioritized milestones."
-              }
-            ]
-          }
-        },
-        {
-          id: "challenges",
-          icon: "wrench",
-          title: "CHALLENGES & SOLUTIONS",
-          content: {
-            subsections: [
-              {
-                title: "Legacy System Integration",
-                content: "Solution: Built custom OAuth2/OIDC adapter for LDAP servers. Implemented gradual migration strategy with dual-authentication support. Created middleware layer to bridge modern and legacy protocols. Result: Zero downtime migration with 100% backward compatibility."
-              },
-              {
-                title: "User Resistance & Change Management",
-                content: "Solution: Phased rollout starting with IT department (50 users) as champions. Organized 100+ training sessions with hands-on practice. Created comprehensive self-service documentation and video tutorials. Setup 24/7 support team during first 3 months. Result: User satisfaction increased 40%, support tickets reduced 60%."
-              },
-              {
-                title: "MFA Adoption Across Global Teams",
-                content: "Solution: Supported multiple MFA methods (app, SMS, hardware tokens) to accommodate diverse regions. Partnered with Okta to optimize mobile app performance in emerging markets. Implemented grace period and reminder campaigns. Result: 98% MFA adoption within 6 months."
-              }
-            ]
-          }
-        },
-        {
-          id: "results",
-          icon: "check-circle",
-          title: "RESULTS & IMPACT",
-          content: {
-            metricCards: [
-              {
-                value: "-95%",
-                label: "Credential Attack Risk",
-                description: "From 95 incidents/year down to 5 incidents/year",
-                color: "green"
-              },
-              {
-                value: "+40%",
-                label: "User Satisfaction (SSO)",
-                description: "eNPS increased from 30 to 70",
-                color: "blue"
-              },
-              {
-                value: "100%",
-                label: "Compliance Pass Rate",
-                description: "Passed all audits: ISO 27001, SOC 2, GDPR",
-                color: "purple"
-              }
-            ],
-            impactSections: [
-              {
-                title: "Business Impact:",
-                icon: "briefcase",
-                items: [
-                  "Avoided estimated $5M in security breach damages",
-                  "Enabled expansion into EU markets thanks to GDPR compliance",
-                  "Reduced insurance premiums 30% with cyber insurance providers",
-                  "Increased customer trust score 45% in enterprise sales"
-                ]
-              },
-              {
-                title: "Operational Impact:",
-                icon: "users",
-                items: [
-                  "IT helpdesk tickets reduced by 60% (password reset requests)",
-                  "User productivity increased 2 hours/week thanks to SSO",
-                  "Onboarding time for new hires reduced from 3 days to 4 hours",
-                  "Security team can focus on threat hunting instead of access management"
-                ]
-              },
-              {
-                title: "Strategic Impact:",
-                icon: "target",
-                items: [
-                  "Foundation for cloud migration strategy (Azure, AWS)",
-                  "Enabled zero-trust network architecture implementation",
-                  "Platform ready for AI-powered threat detection",
-                  "Competitive advantage in winning enterprise contracts"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          id: "lessons",
-          icon: "trending-up",
-          title: "LESSONS LEARNED",
-          content: {
-            impactSections: [
-              {
-                title: "✨ What Worked Well:",
-                icon: "star",
-                bgColor: "yellow",
-                items: [
-                  "Executive sponsorship from CISO critical for success",
-                  "Phased rollout helped identify and fix issues early",
-                  "Change champions program (50 power users) effective",
-                  "Comprehensive documentation reduced support burden"
-                ]
-              },
-              {
-                title: "💡 What Could Be Improved:",
-                icon: "lightbulb",
-                bgColor: "red",
-                items: [
-                  "Earlier engagement with legal team to avoid compliance surprises",
-                  "More robust testing for edge cases (VPN, offline scenarios)",
-                  "Better communication about timeline expectations with stakeholders"
-                ]
-              },
-              {
-                title: "💡 Key Takeaways:",
-                icon: "key",
-                bgColor: "green",
-                items: [
-                  "Security projects require 70% people/process, 30% technology",
-                  "User experience is critical factor for security adoption",
-                  "Compliance requirements must be integrated from design phase",
-                  "Vendor partnership (Okta, Azure) accelerated implementation"
-                ]
+                title: "Phase 2: Micro-segmentation",
+                content: "Isolating high-value assets and applying granular access controls based on user role and device health."
               }
             ]
           }
@@ -1077,7 +505,7 @@ const Projects: React.FC = () => {
                       <div className="w-12 h-[1px] bg-white/20" />
                       <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Context & Objectives</p>
                     </div>
-                    <p className="text-2xl md:text-5xl font-light text-white/80 leading-[1.15] tracking-tight">
+                    <p className="text-2xl md:text-5xl font-light text-white leading-[1.15] tracking-tight">
                       {selectedProject.brief}
                     </p>
                   </section>
@@ -1087,7 +515,7 @@ const Projects: React.FC = () => {
                     <section className="space-y-6 pt-10 border-t border-white/5">
                       <div className="flex items-center gap-4 mb-12">
                         <div className="w-12 h-[1px] bg-white/20" />
-                        <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Chi tiết dự án</p>
+                        <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Project Breakdown</p>
                       </div>
 
                       <div className="space-y-4">
@@ -1141,11 +569,10 @@ const Projects: React.FC = () => {
                                         <div className="mb-8">
                                           {(() => {
                                             const colorThemes = {
-                                              'MIS': { bg: 'bg-red-500', border: 'border-red-500', bgLight: 'bg-red-50' },
-                                              'FINANCE': { bg: 'bg-blue-500', border: 'border-blue-500', bgLight: 'bg-blue-50' },
-                                              'SECURITY': { bg: 'bg-purple-500', border: 'border-purple-500', bgLight: 'bg-purple-50' }
+                                              'FINTECH': { bg: 'bg-emerald-500', border: 'border-emerald-500', bgLight: 'bg-emerald-50' },
+                                              'SECURITY': { bg: 'bg-blue-500', border: 'border-blue-500', bgLight: 'bg-blue-50' }
                                             };
-                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || colorThemes['MIS'];
+                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || { bg: 'bg-white/20', border: 'border-white/20', bgLight: 'bg-white/5' };
 
                                             return (
                                               <>
@@ -1170,17 +597,16 @@ const Projects: React.FC = () => {
                                           {(() => {
                                             // Determine color theme based on project category
                                             const colorThemes = {
-                                              'MIS': { accent: 'red', bg: 'bg-red-500', text: 'text-red-400', border: 'border-red-500' },
-                                              'FINANCE': { accent: 'blue', bg: 'bg-blue-500', text: 'text-blue-400', border: 'border-blue-500' },
-                                              'SECURITY': { accent: 'purple', bg: 'bg-purple-500', text: 'text-purple-400', border: 'border-purple-500' }
+                                              'FINTECH': { accent: 'emerald', bg: 'bg-emerald-500', text: 'text-emerald-400', border: 'border-emerald-500' },
+                                              'SECURITY': { accent: 'blue', bg: 'bg-blue-500', text: 'text-blue-400', border: 'border-blue-500' }
                                             };
-                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || colorThemes['MIS'];
+                                            const theme = colorThemes[selectedProject.cat as keyof typeof colorThemes] || { accent: 'white', bg: 'bg-white/20', text: 'text-white/60', border: 'border-white/20' };
 
                                             return (
                                               <>
                                                 <h4 className="text-sm font-bold text-white/40 mb-6 flex items-center gap-2">
                                                   <span className={`w-1 h-4 ${theme.bg}/50 rounded`}></span>
-                                                  Pain Points Chính:
+                                                  Key Pain Points:
                                                 </h4>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                   {section.content.painPoints.map((point, i) => (
@@ -1516,13 +942,13 @@ const Projects: React.FC = () => {
                     <section className="space-y-10">
                       <div className="flex items-center gap-4">
                         <span className="mono text-[8px] px-2 py-0.5 border border-white/20 rounded-sm opacity-40">FRAMEWORK</span>
-                        <h5 className="mono text-[10px] tracking-[0.5em] uppercase opacity-20">Methodology</h5>
+                        <h5 className="mono text-[10px] tracking-[0.5em] uppercase opacity-60">Methodology</h5>
                       </div>
                       <ul className="space-y-6">
                         {selectedProject.methodology.map((m, i) => (
                           <li key={i} className="group flex items-baseline gap-4">
                             <span className="mono text-[10px] opacity-20 group-hover:opacity-100 transition-opacity">0{i + 1}</span>
-                            <span className="text-lg md:text-xl text-white/60 group-hover:text-white transition-colors leading-tight">{m}</span>
+                            <span className="text-lg md:text-xl text-white group-hover:italic transition-all duration-300 leading-tight">{m}</span>
                           </li>
                         ))}
                       </ul>
@@ -1532,13 +958,13 @@ const Projects: React.FC = () => {
                     <section className="space-y-10">
                       <div className="flex items-center gap-4">
                         <span className="mono text-[8px] px-2 py-0.5 border border-white/20 rounded-sm opacity-40">ANALYSIS</span>
-                        <h5 className="mono text-[10px] tracking-[0.5em] uppercase opacity-20">BA Focus Areas</h5>
+                        <h5 className="mono text-[10px] tracking-[0.5em] uppercase opacity-60">BA Focus Areas</h5>
                       </div>
                       <ul className="space-y-6">
                         {selectedProject.ba_focus.map((b, i) => (
                           <li key={i} className="group flex items-baseline gap-4">
-                            <span className="w-1.5 h-1.5 bg-white/20 rounded-full group-hover:bg-white group-hover:scale-125 transition-all" />
-                            <span className="text-lg md:text-xl text-white/60 group-hover:text-white transition-colors leading-tight">{b}</span>
+                            <span className="w-1.5 h-1.5 bg-white/40 rounded-full group-hover:bg-white group-hover:scale-125 transition-all" />
+                            <span className="text-lg md:text-xl text-white group-hover:italic transition-all duration-300 leading-tight">{b}</span>
                           </li>
                         ))}
                       </ul>
@@ -1549,11 +975,11 @@ const Projects: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     <section className="space-y-8">
                       <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase border-b border-white/5 pb-4">Strategy & Vision</p>
-                      <p className="text-base md:text-xl text-white/50 leading-relaxed font-light">{selectedProject.strategy}</p>
+                      <p className="text-base md:text-xl text-white/80 leading-relaxed font-light">{selectedProject.strategy}</p>
                     </section>
                     <section className="space-y-8">
                       <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase border-b border-white/5 pb-4">Technical Execution</p>
-                      <p className="text-base md:text-xl text-white/50 leading-relaxed font-light">{selectedProject.technical}</p>
+                      <p className="text-base md:text-xl text-white/80 leading-relaxed font-light">{selectedProject.technical}</p>
                     </section>
                   </div>
                 </div>

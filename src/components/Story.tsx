@@ -4,32 +4,36 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Story: React.FC = () => {
+  const storyImageUrl = new URL('./img/avt2.jpg', import.meta.url).href;
   const img1Ref = useRef<HTMLImageElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     if (img1Ref.current) {
-      gsap.to(img1Ref.current, {
-        y: -60,
-        scrollTrigger: {
-          trigger: img1Ref.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
+      gsap.fromTo(img1Ref.current,
+        { y: '5%' },
+        {
+          y: '-5%',
+          scrollTrigger: {
+            trigger: img1Ref.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5,
+          }
         }
-      });
+      );
     }
 
     if (textContainerRef.current) {
-      gsap.fromTo(textContainerRef.current.querySelectorAll('.reveal'), 
+      gsap.fromTo(textContainerRef.current.querySelectorAll('.reveal'),
         { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          stagger: 0.2, 
-          duration: 1, 
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: textContainerRef.current,
@@ -48,22 +52,22 @@ const Story: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center max-w-screen-2xl mx-auto relative z-10">
-        <div className="lg:col-span-5 relative">
-           <div className="aspect-[3/4] bg-white/5 overflow-hidden rounded-sm border border-white/5 shadow-2xl">
-              <img 
-                ref={img1Ref} 
-                src="https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=2070" 
-                className="w-full h-[130%] object-cover opacity-30 grayscale contrast-125" 
-                alt="Analytical focus"
-              />
-           </div>
-           {/* Floating Badge */}
-           <div className="absolute -bottom-6 -right-6 bg-white text-black p-6 hidden md:block rounded-sm shadow-xl">
-              <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">BA VISION 2024</p>
-           </div>
+        <div className="lg:col-span-5 lg:col-start-2 relative">
+          <div className="aspect-[3/4] bg-white/5 overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+            <img
+              ref={img1Ref}
+              src={storyImageUrl}
+              className="w-full h-[115%] object-cover object-[center_25%] opacity-70 grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
+              alt="Analytical focus"
+            />
+          </div>
+          {/* Floating Badge */}
+          <div className="absolute -bottom-6 -right-6 bg-white text-black p-6 hidden md:block rounded-sm shadow-xl">
+            <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">BA VISION 2026</p>
+          </div>
         </div>
 
-        <div ref={textContainerRef} className="lg:col-span-6 lg:col-start-7 space-y-12">
+        <div ref={textContainerRef} className="lg:col-span-5 lg:col-start-8 space-y-12">
           <div className="space-y-4">
             <h3 className="reveal text-4xl md:text-6xl lg:text-7xl font-black italic tracking-tighter uppercase leading-[0.9] text-white">
               MY <br />STORY
@@ -73,9 +77,9 @@ const Story: React.FC = () => {
 
           <div className="space-y-8 max-w-xl">
             <p className="reveal text-lg md:text-2xl text-white/70 leading-relaxed font-light">
-              I perceive complex systems not merely as static lines of code, but as a continuous, vital dialogue between <span className="text-white italic font-medium">people</span> and <span className="text-white italic font-medium">solutions</span>. 
+              I perceive complex systems not merely as static lines of code, but as a continuous, vital dialogue between <span className="text-white italic font-medium">people</span> and <span className="text-white italic font-medium">solutions</span>.
             </p>
-            
+
             <p className="reveal text-lg md:text-2xl text-white/70 leading-relaxed font-light">
               With a foundation in the Banking sector, I have honed a meticulous approach to data analysis and a sharp eye for operational workflows. My mission is to decode intricate business challenges into <span className="underline decoration-white/20 underline-offset-8">streamlined and high-impact</span> technological blueprints.
             </p>
@@ -93,14 +97,14 @@ const Story: React.FC = () => {
 
           {/* Quick Stats for BA Intern */}
           <div className="reveal grid grid-cols-2 gap-8 pt-12 border-t border-white/5">
-             <div>
-                <p className="mono text-[8px] opacity-30 uppercase mb-2">Requirement Strategy</p>
-                <p className="text-xs font-bold tracking-widest uppercase">Elicitation Focused</p>
-             </div>
-             <div>
-                <p className="mono text-[8px] opacity-30 uppercase mb-2">Development Approach</p>
-                <p className="text-xs font-bold tracking-widest uppercase italic">User-Centric Architecture</p>
-             </div>
+            <div>
+              <p className="mono text-[8px] opacity-30 uppercase mb-2">Requirement Strategy</p>
+              <p className="text-xs font-bold tracking-widest uppercase">Elicitation Focused</p>
+            </div>
+            <div>
+              <p className="mono text-[8px] opacity-30 uppercase mb-2">Development Approach</p>
+              <p className="text-xs font-bold tracking-widest uppercase italic">User-Centric Architecture</p>
+            </div>
           </div>
         </div>
       </div>
