@@ -41,13 +41,33 @@ const Hero: React.FC = () => {
 
         <div className="w-full overflow-hidden flex justify-center px-4">
           <h1
-            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl flex items-baseline justify-center gap-[0.15em]"
+            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl flex items-baseline justify-center"
             style={{
               textShadow: '0 0 80px rgba(255,255,255,0.1), 0 0 160px rgba(255,255,255,0.05)'
             }}
           >
-            <span className="inline-block animate-drop-from-sky" style={{ animationDelay: '0.2s' }}>THIEN</span>
-            <span className="inline-block animate-drop-from-sky" style={{ animationDelay: '0.5s' }}>PHUC</span>
+            {/* THIEN - each letter drops */}
+            {'THIEN'.split('').map((char, i) => (
+              <span
+                key={`thien-${i}`}
+                className="inline-block animate-drop-from-sky"
+                style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+              >
+                {char}
+              </span>
+            ))}
+            {/* Space between words */}
+            <span className="inline-block w-[0.2em]"></span>
+            {/* PHUC - each letter drops */}
+            {'PHUC'.split('').map((char, i) => (
+              <span
+                key={`phuc-${i}`}
+                className="inline-block animate-drop-from-sky"
+                style={{ animationDelay: `${0.5 + i * 0.08}s` }}
+              >
+                {char}
+              </span>
+            ))}
             <span className="text-[2.5vw] opacity-10 italic ml-2 align-top font-light animate-fade-in" style={{ animationDelay: '1.2s' }}>®</span>
           </h1>
         </div>

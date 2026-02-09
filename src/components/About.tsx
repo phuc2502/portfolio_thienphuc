@@ -4,8 +4,6 @@ import React from 'react';
 const About: React.FC = () => {
   const bio = "Thien Phuc is a dedicated analyst at the Banking Academy of Vietnam. With a system analysis mindset and a passion for technology, Phuc focuses on optimizing business processes through data-driven insights and modern architectural solutions.";
 
-  const words = bio.split(' ');
-
   return (
     <div className="px-6 md:px-12 py-20 md:py-32 max-w-screen-2xl mx-auto border-t border-white/5 bg-[#0a0a0a]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -16,15 +14,23 @@ const About: React.FC = () => {
           </p>
 
           <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.4] tracking-tight text-white/90 mb-12">
-            {words.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block mr-[0.25em] animate-about-word"
-                style={{ animationDelay: `${0.2 + i * 0.03}s` }}
-              >
-                {word}
-              </span>
-            ))}
+            {bio.split(' ').map((word, wordIndex) => {
+              // Calculate character offset for delay
+              const charOffset = bio.split(' ').slice(0, wordIndex).join(' ').length + wordIndex;
+              return (
+                <span key={wordIndex} className="inline-block mr-[0.25em] whitespace-nowrap">
+                  {word.split('').map((char, charIndex) => (
+                    <span
+                      key={charIndex}
+                      className="inline-block animate-char-drop"
+                      style={{ animationDelay: `${0.1 + (charOffset + charIndex) * 0.015}s` }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+              );
+            })}
           </div>
 
           {/* Education Metadata Section */}
@@ -63,15 +69,23 @@ const About: React.FC = () => {
           from { opacity: 0; transform: translateX(-20px); }
           to { opacity: 0.2; transform: translateX(0); }
         }
-        @keyframes about-word {
-          from { 
-            opacity: 0; 
-            transform: translateY(20px);
-            filter: blur(4px);
+        @keyframes char-drop {
+          0% {
+            opacity: 0;
+            transform: translateY(-80px) scale(1.1);
+            filter: blur(6px);
           }
-          to { 
-            opacity: 1; 
-            transform: translateY(0);
+          50% {
+            opacity: 1;
+            transform: translateY(8px) scale(0.98);
+            filter: blur(0);
+          }
+          70% {
+            transform: translateY(-4px) scale(1.01);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
             filter: blur(0);
           }
         }
@@ -103,9 +117,10 @@ const About: React.FC = () => {
           opacity: 0;
           animation: about-fade-in 0.8s ease-out forwards;
         }
-        .animate-about-word {
+        .animate-char-drop {
           opacity: 0;
-          animation: about-word 0.6s ease-out forwards;
+          display: inline-block;
+          animation: char-drop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
         .animate-about-slide-in {
           opacity: 0;
