@@ -41,14 +41,14 @@ const Hero: React.FC = () => {
 
         <div className="w-full overflow-hidden flex justify-center px-4">
           <h1
-            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl animate-fade-in-up"
+            className="text-[13vw] sm:text-[14vw] md:text-[16vw] font-black tracking-[-0.08em] select-none uppercase text-center text-white leading-[0.75] whitespace-nowrap drop-shadow-2xl flex items-baseline justify-center gap-[0.15em]"
             style={{
-              textShadow: '0 0 80px rgba(255,255,255,0.1), 0 0 160px rgba(255,255,255,0.05)',
-              animationDelay: '0.4s'
+              textShadow: '0 0 80px rgba(255,255,255,0.1), 0 0 160px rgba(255,255,255,0.05)'
             }}
           >
-            THIEN PHUC
-            <span className="text-[2.5vw] opacity-10 italic ml-2 align-top font-light">®</span>
+            <span className="inline-block animate-drop-from-sky" style={{ animationDelay: '0.2s' }}>THIEN</span>
+            <span className="inline-block animate-drop-from-sky" style={{ animationDelay: '0.5s' }}>PHUC</span>
+            <span className="text-[2.5vw] opacity-10 italic ml-2 align-top font-light animate-fade-in" style={{ animationDelay: '1.2s' }}>®</span>
           </h1>
         </div>
 
@@ -110,7 +110,28 @@ const Hero: React.FC = () => {
           from { opacity: 0; transform: translateX(30px); }
           to { opacity: 1; transform: translateX(0); }
         }
+        @keyframes drop-from-sky {
+          0% {
+            opacity: 0;
+            transform: translateY(-200px) scale(1.2);
+            filter: blur(10px);
+          }
+          60% {
+            opacity: 1;
+            transform: translateY(20px) scale(0.98);
+            filter: blur(0px);
+          }
+          80% {
+            transform: translateY(-10px) scale(1.01);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+          }
+        }
         .animate-fade-in {
+          opacity: 0;
           animation: fade-in 1.5s ease-out forwards;
         }
         .animate-fade-in-up {
@@ -124,6 +145,10 @@ const Hero: React.FC = () => {
         .animate-slide-in-right {
           opacity: 0;
           animation: slide-in-right 0.8s ease-out forwards;
+        }
+        .animate-drop-from-sky {
+          opacity: 0;
+          animation: drop-from-sky 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
       `}</style>
     </div>
