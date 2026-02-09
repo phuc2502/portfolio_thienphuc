@@ -535,7 +535,7 @@ const Projects: React.FC = () => {
               </motion.div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32">
-                <div className="lg:col-span-8 space-y-24">
+                <div className="lg:col-span-12 space-y-24">
                   {/* BRIEF SECTION */}
                   <section>
                     <div className="flex items-center gap-4 mb-10">
@@ -1018,52 +1018,6 @@ const Projects: React.FC = () => {
                       <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase border-b border-white/5 pb-4">Technical Execution</p>
                       <p className="text-base md:text-xl text-white/80 leading-relaxed font-light">{selectedProject.technical}</p>
                     </section>
-                  </div>
-                </div>
-
-                {/* SIDEBAR METADATA */}
-                <div className="lg:col-span-4 space-y-20">
-                  <div className="grid grid-cols-2 gap-12 mono text-[10px] uppercase tracking-widest border-t border-white/10 pt-10">
-                    <div>
-                      <p className="opacity-20 mb-3">Professional Role</p>
-                      <p className="font-bold opacity-100 text-white italic">{selectedProject.role}</p>
-                    </div>
-                    <div>
-                      <p className="opacity-20 mb-3">Release Year</p>
-                      <p className="font-bold opacity-100 text-white">{selectedProject.year}</p>
-                    </div>
-                  </div>
-
-                  <section className="space-y-8">
-                    <p className="mono text-[10px] opacity-30 tracking-[0.6em] uppercase italic flex items-center gap-3">
-                      <span className="w-4 h-4 rounded-full border border-white/20 flex items-center justify-center text-[7px] font-bold not-italic">01</span>
-                      System Design
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      {selectedProject.tech.map((t, i) => (
-                        <span key={i} className="mono text-[10px] px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-white/50 hover:bg-white hover:text-black transition-all cursor-default uppercase">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </section>
-
-                  <div className="p-8 border border-white/5 rounded-sm bg-white/[0.02]">
-                    <p className="mono text-[8px] opacity-20 tracking-widest uppercase mb-6">Documentation Status</p>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="mono text-[9px] opacity-40">BRD / FRS</span>
-                        <span className="text-[9px] text-green-500 uppercase font-bold tracking-widest italic">Verified</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="mono text-[9px] opacity-40">UML MODELS</span>
-                        <span className="text-[9px] text-green-500 uppercase font-bold tracking-widest italic">Approved</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="mono text-[9px] opacity-40">TRACEABILITY</span>
-                        <span className="text-[9px] text-white/20 uppercase font-bold tracking-widest italic">100%</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
