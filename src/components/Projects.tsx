@@ -221,8 +221,8 @@ const Projects: React.FC = () => {
     },
     {
       id: "02",
-      title: 'SECURITY PROTOCOL X',
-      hoverTitle: 'ZERO TRUST INITIATIVE',
+      title: 'UNDER DEVELOPMENT',
+      hoverTitle: 'SECURITY PROTOCOL X',
       cat: 'SECURITY',
       url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
       year: "2025",

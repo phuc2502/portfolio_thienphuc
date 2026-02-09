@@ -57,7 +57,7 @@ const Story: React.FC = () => {
             <img
               ref={img1Ref}
               src={storyImageUrl}
-              className="w-full h-[115%] object-cover object-[center_25%] opacity-70 grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-[115%] object-cover object-center opacity-70 grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
               alt="Analytical focus"
             />
           </div>

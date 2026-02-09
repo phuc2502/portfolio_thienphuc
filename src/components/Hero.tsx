@@ -32,13 +32,14 @@ const Hero: React.FC = () => {
 
     if (titleRef.current) {
       gsap.to(titleRef.current, {
-        y: -100,
-        opacity: 0.1,
+        y: -50,
+        opacity: 0.3,
+        ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: 'bottom 20%',
-          scrub: true,
+          end: 'center top',
+          scrub: 0.5,
         },
       });
     }
