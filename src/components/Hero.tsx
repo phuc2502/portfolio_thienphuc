@@ -1,12 +1,23 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroVideoPlayer from './HeroVideoPlayer';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  closeVideoTrigger?: number;
+}
+
+const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
+  // Close video when trigger changes (navigation from menu)
+  useEffect(() => {
+    if (closeVideoTrigger && closeVideoTrigger > 0) {
+      setIsVideoOpen(false);
+    }
+  }, [closeVideoTrigger]);
+
   // Sử dụng ảnh từ folder components/img/
-  const heroImageUrl = new URL('./img/avt.jpg', import.meta.url).href;
+  const heroImageUrl = new URL('./img/avt1.png', import.meta.url).href;
   const videoUrl = new URL('./img/video.mp4', import.meta.url).href;
 
   return (

@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Story: React.FC = () => {
-  const storyImageUrl = new URL('./img/avt2.jpg', import.meta.url).href;
+  const storyImageUrl = new URL('./img/anh.jpg', import.meta.url).href;
   const img1Ref = useRef<HTMLImageElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);

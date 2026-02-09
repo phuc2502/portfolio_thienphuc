@@ -16,6 +16,7 @@ import CustomCursor from './components/CustomCursor';
 
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [closeVideoTrigger, setCloseVideoTrigger] = useState(0);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -53,6 +54,9 @@ const App: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleNavigate = (id: string) => {
+    // Close video player if open
+    setCloseVideoTrigger(prev => prev + 1);
+
     const lenis = (window as any).lenis;
     if (lenis) {
       const target = id === 'home' ? 0 : `#${id}`;
@@ -90,7 +94,7 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       <main className="w-full">
-        <section id="home"><Hero /></section>
+        <section id="home"><Hero closeVideoTrigger={closeVideoTrigger} /></section>
         <section id="about" className="overflow-hidden"><About /></section>
         <section id="story"><Story /></section>
         <section id="projects" className="overflow-hidden"><Projects /></section>
