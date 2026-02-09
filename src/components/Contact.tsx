@@ -1,8 +1,10 @@
 /// <reference types="vite/client" />
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // EmailJS configuration - bạn cần thay đổi các giá trị này
 // Lấy từ https://dashboard.emailjs.com/admin
@@ -31,8 +33,82 @@ const Contact: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Refs for animations
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
   // Địa chỉ email chính của bạn để nhận thông báo
   const targetEmail = "thiephuc.ba@gmail.com";
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Title animation
+    if (titleRef.current) {
+      gsap.fromTo(titleRef.current,
+        {
+          opacity: 0,
+          y: 80,
+          clipPath: 'inset(100% 0% 0% 0%)'
+        },
+        {
+          opacity: 1,
+          y: 0,
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.4,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+            once: true
+          }
+        }
+      );
+    }
+
+    // Description animation
+    if (descRef.current) {
+      gsap.fromTo(descRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.3,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 75%',
+            once: true
+          }
+        }
+      );
+    }
+
+    // Form animation
+    if (formRef.current) {
+      const formElements = formRef.current.querySelectorAll('.form-element');
+      gsap.fromTo(formElements,
+        { opacity: 0, y: 30, scale: 0.98 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          delay: 0.4,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: 'top 85%',
+            once: true
+          }
+        }
+      );
+    }
+  }, []);
 
   const handleEmailClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -289,16 +365,20 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="px-6 md:px-12 py-24 md:py-48 max-w-screen-xl mx-auto border-t border-white/5 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <div ref={containerRef} className="px-6 md:px-12 py-24 md:py-48 max-w-screen-xl mx-auto border-t border-white/5 relative z-10 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-white/[0.02] to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] bg-gradient-to-tr from-white/[0.02] to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
 
         {/* Left Side: Info */}
         <div className="lg:col-span-5 space-y-12 relative z-20">
           <div className="space-y-6">
-            <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8]">
+            <h2 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8] opacity-0" style={{ clipPath: 'inset(100% 0% 0% 0%)' }}>
               Contact <br /> Form
             </h2>
-            <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-sm">
+            <p ref={descRef} className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-sm opacity-0">
               Please contact me directly at{' '}
               <span className="inline-flex items-center gap-2">
                 <a
@@ -360,97 +440,118 @@ const Contact: React.FC = () => {
 
         {/* Right Side: Form */}
         <div className="lg:col-span-7 relative z-20">
-          <form onSubmit={handleSubmit} className="space-y-10 pointer-events-auto">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-10 pointer-events-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div className="space-y-3">
+              <div className="space-y-3 form-element opacity-0">
                 <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Full name</label>
                 <input
                   type="text"
                   required
                   placeholder="Your Name"
-                  className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm placeholder:text-white/20"
+                  className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm placeholder:text-white/20"
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
-              <div className="space-y-3">
+              <div className="space-y-3 form-element opacity-0">
                 <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Email Address</label>
                 <input
                   type="email"
                   required
                   placeholder="you@example.com"
-                  className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm placeholder:text-white/20"
+                  className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm placeholder:text-white/20"
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 form-element opacity-0">
               <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Your Message</label>
               <textarea
                 required
                 rows={5}
                 placeholder="Tell me about about your project,"
-                className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 transition-colors text-sm resize-none placeholder:text-white/20"
+                className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm resize-none placeholder:text-white/20"
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
 
-            <p className="text-sm opacity-60 font-medium tracking-tight">
+            <p className="text-sm opacity-60 font-medium tracking-tight form-element opacity-0">
               I'll never share your data with anyone else. Pinky promise!
             </p>
 
-            <button
+            <motion.button
               type="submit"
               disabled={isSending}
-              className="w-full bg-[#111] border border-white/10 text-white py-6 rounded-md font-bold text-base uppercase flex items-center justify-center gap-4 hover:bg-white hover:text-black transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
+              className="form-element opacity-0 w-full bg-[#111] border border-white/10 text-white py-6 rounded-md font-bold text-base uppercase flex items-center justify-center gap-4 hover:bg-white hover:text-black transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
+              {/* Button glow effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
               {isSending ? (
                 <>
                   <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Đang gửi...
+                  <span className="relative z-10">Sending...</span>
                 </>
               ) : (
                 <>
-                  Send Message
-                  <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="relative z-10">Send Message</span>
+                  <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </>
               )}
-            </button>
+            </motion.button>
 
-            {submitStatus === 'success' && formSubmitted && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-md"
-              >
-                <p className="text-green-400 text-sm font-medium">
-                  ✓ Email đã được gửi thành công!
-                  <br />
-                  <span className="text-green-300/80 text-xs mt-1 block">
-                    Tôi sẽ phản hồi sớm nhất có thể.
-                  </span>
-                </p>
-              </motion.div>
-            )}
+            <AnimatePresence mode="wait">
+              {submitStatus === 'success' && formSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="mt-4 p-6 bg-green-500/10 border border-green-500/20 rounded-lg backdrop-blur-sm"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-green-400 text-sm font-semibold">Message sent successfully!</p>
+                      <p className="text-green-300/60 text-xs mt-1">I'll get back to you as soon as possible.</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
-            {submitStatus === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-md"
-              >
-                <p className="text-red-400 text-sm font-medium">
-                  ✗ {errorMessage || 'Có lỗi xảy ra khi gửi email. Vui lòng thử lại hoặc liên hệ trực tiếp qua email.'}
-                </p>
-              </motion.div>
-            )}
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  className="mt-4 p-6 bg-red-500/10 border border-red-500/20 rounded-lg backdrop-blur-sm"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-red-400 text-sm font-semibold">Failed to send message</p>
+                      <p className="text-red-300/60 text-xs mt-1">{errorMessage || 'Please try again or contact me directly via email.'}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </form>
         </div>
       </div>

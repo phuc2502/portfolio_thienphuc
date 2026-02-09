@@ -384,45 +384,82 @@ const Projects: React.FC = () => {
             <motion.div
               key={project.id}
               layout
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 60, clipPath: 'inset(10% 0% 10% 0%)' }}
+              animate={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)' }}
+              exit={{ opacity: 0, scale: 0.95, clipPath: 'inset(5% 0% 5% 0%)' }}
+              transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: idx * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
               onClick={() => setSelectedProject(project)}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center group cursor-pointer"
             >
-              <div className={`lg:col-span-8 aspect-[21/9] overflow-hidden bg-[#111] rounded-sm relative ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
+              <motion.div
+                className={`lg:col-span-8 aspect-[21/9] overflow-hidden bg-[#111] rounded-lg relative shadow-2xl ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              >
                 <motion.img
                   src={project.url}
                   alt={project.title}
-                  whileHover={{ scale: 1.05, opacity: 0.2 }}
-                  className="w-full h-full object-cover opacity-30 grayscale transition-all duration-700"
+                  initial={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.15, opacity: 0.15 }}
+                  transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                  className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-1000"
                 />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter drop-shadow-lg">{project.hoverTitle}</h3>
-                </div>
-              </div>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-transparent to-[#0a0a0a]/30 group-hover:opacity-0 transition-opacity duration-700" />
+
+                {/* Hover title with enhanced animation */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  <motion.h3
+                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase italic tracking-tighter opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-100 scale-90"
+                    style={{ textShadow: '0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(255,255,255,0.1)' }}
+                  >
+                    {project.hoverTitle}
+                  </motion.h3>
+                </motion.div>
+
+                {/* Corner accent */}
+                <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white/0 group-hover:border-white/30 transition-all duration-500 rounded-tl-lg" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-white/0 group-hover:border-white/30 transition-all duration-500 rounded-br-lg" />
+              </motion.div>
 
               <div className={`lg:col-span-4 ${idx % 2 !== 0 ? 'lg:order-1 lg:text-right' : ''}`}>
-                <div className={`flex items-center gap-3 mb-4 ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
-                  <span className="mono text-[10px] text-white/10">{project.id}</span>
-                  <div className="w-8 h-[1px] bg-white/5" />
-                </div>
+                <motion.div
+                  className={`flex items-center gap-3 mb-4 ${idx % 2 !== 0 ? 'justify-end' : ''}`}
+                  initial={{ opacity: 0, x: idx % 2 !== 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="mono text-[10px] text-white/20 group-hover:text-white/40 transition-colors duration-500">{project.id}</span>
+                  <div className="w-12 h-[1px] bg-white/10 group-hover:w-20 group-hover:bg-white/30 transition-all duration-700" />
+                </motion.div>
 
-                <h4
-                  className={`text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4 opacity-25 group-hover:opacity-100 group-hover:scale-[1.03] group-hover:italic transition-all duration-700 ease-[0.215,0.61,0.355,1] ${idx % 2 !== 0
-                    ? 'origin-right group-hover:-translate-x-4'
-                    : 'origin-left group-hover:translate-x-4'
+                <motion.h4
+                  className={`text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4 opacity-30 group-hover:opacity-100 transition-all duration-700 ease-[0.215,0.61,0.355,1] ${idx % 2 !== 0
+                    ? 'origin-right group-hover:-translate-x-4 group-hover:italic'
+                    : 'origin-left group-hover:translate-x-4 group-hover:italic'
                     }`}
+                  whileHover={{ scale: 1.02 }}
                 >
                   {project.title}
-                </h4>
+                </motion.h4>
 
-                <p className="mono text-[9px] text-white/20 uppercase tracking-[0.4em] mb-6">{project.cat} // {project.year}</p>
+                <p className="mono text-[9px] text-white/20 uppercase tracking-[0.4em] mb-6 group-hover:text-white/40 group-hover:tracking-[0.5em] transition-all duration-500">{project.cat} // {project.year}</p>
 
                 <div className={`flex ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
-                  <button className="mono text-[8px] tracking-[0.3em] border border-white/10 px-6 py-2 rounded-full uppercase opacity-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 hover:bg-white hover:text-black hover:opacity-100">VIEW CASE</button>
+                  <motion.button
+                    className="mono text-[8px] tracking-[0.3em] border border-white/10 px-6 py-3 rounded-full uppercase opacity-0 group-hover:opacity-80 transition-all duration-500 hover:bg-white hover:text-black hover:opacity-100 backdrop-blur-sm"
+                    whileHover={{ scale: 1.1, x: idx % 2 !== 0 ? -5 : 5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    VIEW CASE
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
