@@ -90,16 +90,43 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
           className="mt-10 md:mt-16 flex flex-col items-center gap-4 group cursor-pointer pointer-events-auto animate-fade-in-up"
           style={{ animationDelay: '0.6s' }}
         >
-          <div className="relative w-14 h-14 flex items-center justify-center">
+          <div className="relative w-16 h-16 md:w-18 md:h-18 flex items-center justify-center">
+            {/* Outer glow */}
+            <div className="absolute inset-[-8px] bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+            {/* Animated rotating ring */}
+            <div
+              className="absolute inset-[-4px] rounded-full opacity-30 group-hover:opacity-60 transition-opacity duration-500"
+              style={{
+                background: 'conic-gradient(from 0deg, transparent, rgba(255,255,255,0.3), transparent)',
+                animation: 'spin 4s linear infinite'
+              }}
+            />
+
             {/* Outer ring pulse */}
-            <div className="absolute inset-0 border border-white/5 rounded-full animate-ping opacity-20"
-              style={{ animationDuration: '3s' }} />
-            {/* Main button */}
-            <div className="absolute inset-0 border border-white/20 rounded-full group-hover:scale-125 group-hover:bg-white group-hover:border-white transition-all duration-700 ease-[0.23,1,0.32,1]" />
-            <span className="mono text-[10px] font-black group-hover:text-black transition-colors duration-500 uppercase tracking-tighter relative z-10">PLAY</span>
+            <div className="absolute inset-0 border-2 border-white/10 rounded-full animate-ping opacity-30"
+              style={{ animationDuration: '2s' }} />
+
+            {/* Secondary ring */}
+            <div className="absolute inset-1 border border-white/20 rounded-full group-hover:scale-110 transition-transform duration-700" />
+
+            {/* Main button with gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-full border border-white/30 group-hover:bg-white/50 group-hover:border-white/60 group-hover:scale-110 transition-all duration-500 ease-out" />
+
+            {/* Play icon */}
+            <div className="relative z-10 flex items-center justify-center">
+              <svg
+                className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-black/80 transition-colors duration-500 ml-0.5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
           </div>
-          <p className="mono text-[8px] tracking-[0.4em] opacity-20 group-hover:opacity-100 uppercase transition-all duration-700 group-hover:tracking-[0.6em]">
-            Discover Story
+
+          <p className="mono text-[9px] md:text-[10px] tracking-[0.4em] opacity-40 group-hover:opacity-100 uppercase transition-all duration-700 group-hover:tracking-[0.6em] font-medium">
+            Play Video
           </p>
         </div>
       </div>
