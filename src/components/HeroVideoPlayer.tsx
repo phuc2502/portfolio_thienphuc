@@ -105,8 +105,11 @@ const HeroVideoPlayer: React.FC<HeroVideoPlayerProps> = ({ videoUrl, onBack }) =
                     playsInline
                     className={`w-full h-full object-cover transition-opacity duration-500 ${isLooping ? 'opacity-0' : 'opacity-100'}`}
                     style={{
-                        imageRendering: 'high-quality',
-                        filter: 'contrast(1.02) saturate(1.05)',
+                        imageRendering: 'crisp-edges',
+                        filter: 'contrast(1.05) saturate(1.08) brightness(1.02)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden',
+                        transform: 'translateZ(0)',
                     }}
                     onClick={togglePlay}
                 />
