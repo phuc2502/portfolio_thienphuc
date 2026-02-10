@@ -97,11 +97,11 @@ const Projects: React.FC = () => {
   const items: ProjectDetail[] = [
     {
       id: "01",
-      title: 'DIGITAL WALLET CORE',
+      title: 'DEPOSIT & WITHDRAWAL FEATURE',
       hoverTitle: 'TRANSACTION FLOW',
       cat: 'FINTECH',
       url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070',
-      year: "2024",
+      year: "2026",
       role: "Lead System Analyst",
       brief: "A comprehensive redesign and optimization of deposit and withdrawal workflows for a high-volume digital wallet platform, ensuring seamless transaction processing and high security.",
       strategy: "Conducted an end-to-end audit of the transaction lifecycle. Streamlined payment gateway integrations and implemented asynchronous processing for improved scalability.",
@@ -225,7 +225,7 @@ const Projects: React.FC = () => {
       hoverTitle: 'SECURITY PROTOCOL X',
       cat: 'SECURITY',
       url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-      year: "2025",
+      year: "2026",
       role: "Security Consultant",
       brief: "An advanced cybersecurity initiative focused on implementing Zero Trust Architecture and enhanced identity management for enterprise environments.",
       strategy: "Phase 1 involves threat modeling and current-state vulnerability assessment. We are establishing foundational security policies before full-scale implementation.",
@@ -410,18 +410,16 @@ const Projects: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-transparent to-[#0a0a0a]/30 group-hover:opacity-0 transition-opacity duration-700" />
 
                 {/* Hover title with enhanced animation */}
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
+                <div
+                  className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
                 >
-                  <motion.h3
-                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase italic tracking-tighter opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-100 scale-90"
-                    style={{ textShadow: '0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(255,255,255,0.1)' }}
+                  <h3
+                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase italic tracking-tighter opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-100 scale-90 text-center w-full"
+                    style={{ textShadow: '0 0 60px rgba(255,255,255,0.5), 0 0 120px rgba(255,255,255,0.2)' }}
                   >
                     {project.hoverTitle}
-                  </motion.h3>
-                </motion.div>
+                  </h3>
+                </div>
 
                 {/* Corner accent */}
                 <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white/0 group-hover:border-white/30 transition-all duration-500 rounded-tl-lg" />
