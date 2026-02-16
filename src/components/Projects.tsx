@@ -97,8 +97,8 @@ const Projects: React.FC = () => {
   const items: ProjectDetail[] = [
     {
       id: "01",
-      title: 'DEPOSIT & WITHDRAWAL FEATURE',
-      hoverTitle: 'TRANSACTION FLOW',
+      title: 'UNI WALLET',
+      hoverTitle: 'UNI WALLET',
       cat: 'FINTECH',
       url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070',
       year: "2026",

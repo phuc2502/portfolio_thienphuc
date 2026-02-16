@@ -36,11 +36,11 @@ const About: React.FC = () => {
         <div className="border-l-2 border-white/20 pl-8 py-4 backdrop-blur-sm bg-white/[0.02] rounded-r-lg animate-about-slide-in" style={{ animationDelay: '1.2s' }}>
           <p className="mono text-[8px] opacity-30 tracking-[0.4em] uppercase mb-3 italic">Academic Background</p>
           <div className="space-y-2">
-            <p className="mono text-[11px] md:text-sm font-bold text-white tracking-widest uppercase italic">
+            <p className="mono text-2xl md:text-3xl font-bold text-white tracking-wider uppercase italic mb-2">
               Management Information Systems (MIS)
             </p>
-            <p className="mono text-[9px] md:text-[11px] text-white/50 tracking-[0.3em] uppercase">
-              Banking Academy of Vietnam // GPA: 3.3/4.0
+            <p className="mono text-lg md:text-xl text-white/90 tracking-widest uppercase font-medium">
+              Banking Academy of Vietnam // <span className="text-white font-bold border-b border-white/30 pb-0.5">GPA: 3.3/4.0</span>
             </p>
           </div>
         </div>

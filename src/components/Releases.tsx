@@ -24,81 +24,191 @@ const Releases: React.FC = () => {
 
   const releases: Release[] = [
     {
-      name: "BA CORE EXPERTISE",
+      name: "BA CORE SKILLS",
       tracks: [
         {
-          artist: "REQUIREMENTS",
-          title: "BRD, SRS, USE CASES & DIAGRAMS",
+          artist: "BRD & SRS",
+          title: "BUSINESS REQUIREMENTS & SYSTEM SPEC",
           start: "CORE",
           end: "DOC",
-          url: "https://github.com/phuc2502/ba-resources/tree/main/requirements"
+          url: "https://www.iiba.org/business-analysis-certifications/"
         },
         {
-          artist: "MODELING",
-          title: "UML, USER STORIES & AC",
+          artist: "USE CASE",
+          title: "USE CASES & USE CASE DIAGRAM",
           start: "SPEC",
-          end: "REQ"
+          end: "UML",
+          url: "https://www.uml-diagrams.org/use-case-diagrams.html"
         },
         {
-          artist: "PROCESSES",
-          title: "BPMN, SDLC (WATERFALL/AGILE)",
+          artist: "USER STORIES",
+          title: "USER STORIES & ACCEPTANCE CRITERIA",
+          start: "AGILE",
+          end: "REQ",
+          url: "https://www.atlassian.com/agile/project-management/user-stories"
+        },
+        {
+          artist: "BPMN 2.0",
+          title: "BUSINESS PROCESS MODELING NOTATION",
           start: "FLOW",
           end: "MAP",
-          url: "https://www.lucidchart.com"
+          url: "https://www.bpmn.org/"
         },
         {
-          artist: "VALIDATION",
-          title: "UAT TEST SCENARIOS & DECISION TABLE",
+          artist: "UML",
+          title: "ACTIVITY, SEQUENCE, ERD, CLASS DIAGRAM",
+          start: "MODEL",
+          end: "VIS",
+          url: "https://www.uml.org/"
+        },
+        {
+          artist: "UAT TESTING",
+          title: "UAT TEST SCENARIOS & API TESTING",
           start: "TEST",
-          end: "SIGN"
+          end: "QA",
+          url: "https://www.guru99.com/user-acceptance-testing.html"
+        },
+        {
+          artist: "WIREFRAMING",
+          title: "WIREFRAMING & MOCKUPS DESIGN",
+          start: "UI",
+          end: "UX",
+          url: "https://www.figma.com/"
+        },
+        {
+          artist: "SDLC",
+          title: "WATERFALL, AGILE & SCRUM",
+          start: "PROC",
+          end: "DEV",
+          url: "https://www.scrum.org/"
         },
       ]
     },
     {
-      name: "DATA & TECH STACK",
+      name: "TECHNICAL KNOWLEDGE",
       tracks: [
         {
-          artist: "ANALYTICS",
-          title: "POWER BI & DATA VISUALS",
-          start: "DASH",
-          end: "INS"
-        },
-        {
-          artist: "DATABASE",
-          title: "SQL (DDL, DML, DQL)",
-          start: "PRO",
-          end: "QUERY"
-        },
-        {
-          artist: "DEV BASICS",
-          title: "PYTHON & PROGRAMMING",
+          artist: "PYTHON",
+          title: "PYTHON PROGRAMMING (BASIC)",
           start: "CODE",
-          end: "BASE"
+          end: "DEV",
+          url: "https://www.python.org/"
         },
         {
-          artist: "SYSTEMS",
-          title: "API DOCUMENT & TESTING",
-          start: "SYNC",
-          end: "TECH"
+          artist: "SQL",
+          title: "DDL, DML, DQL QUERIES",
+          start: "DATA",
+          end: "QUERY",
+          url: "https://www.w3schools.com/sql/"
+        },
+        {
+          artist: "POWER BI",
+          title: "DASHBOARDS & DATA VISUALIZATION",
+          start: "DASH",
+          end: "INS",
+          url: "https://powerbi.microsoft.com/"
+        },
+        {
+          artist: "EXCEL",
+          title: "PIVOT TABLE & VLOOKUP",
+          start: "CALC",
+          end: "DATA",
+          url: "https://www.microsoft.com/en-us/microsoft-365/excel"
         },
       ]
     },
     {
-      name: "TOOLS & FRAMEWORKS",
+      name: "TOOLS & PLATFORMS",
       tracks: [
-        { artist: "MANAGEMENT", title: "JIRA, CONFLUENCE, NOTION", start: "TASK", end: "DEL" },
-        { artist: "DESIGN", title: "DRAW.IO, LUCIDCHART, FIGMA", start: "VIS", end: "IDE" },
-        { artist: "OFFICE", title: "EXCEL (PIVOT, VLOOKUP)", start: "DATA", end: "CALC" },
-        { artist: "BACKEND", title: "POSTMAN, VISUAL PARADIGM", start: "API", end: "TEST" },
+        {
+          artist: "JIRA",
+          title: "PROJECT & TASK MANAGEMENT",
+          start: "TASK",
+          end: "MGMT",
+          url: "https://www.atlassian.com/software/jira"
+        },
+        {
+          artist: "CONFLUENCE",
+          title: "DOCUMENTATION & KNOWLEDGE BASE",
+          start: "DOC",
+          end: "WIKI",
+          url: "https://www.atlassian.com/software/confluence"
+        },
+        {
+          artist: "NOTION",
+          title: "WORKSPACE & NOTES MANAGEMENT",
+          start: "NOTE",
+          end: "ORG",
+          url: "https://www.notion.so/"
+        },
+        {
+          artist: "POSTMAN",
+          title: "API DOCUMENTATION & TESTING",
+          start: "API",
+          end: "TEST",
+          url: "https://www.postman.com/"
+        },
+        {
+          artist: "DRAW.IO",
+          title: "DIAGRAMS & FLOWCHARTS",
+          start: "VIS",
+          end: "FLOW",
+          url: "https://app.diagrams.net/"
+        },
+        {
+          artist: "LUCIDCHART",
+          title: "VISUAL MODELING & COLLABORATION",
+          start: "MODEL",
+          end: "TEAM",
+          url: "https://www.lucidchart.com/"
+        },
+        {
+          artist: "FIGMA",
+          title: "UI/UX DESIGN & PROTOTYPING",
+          start: "UI",
+          end: "PROTO",
+          url: "https://www.figma.com/"
+        },
+        {
+          artist: "VISUAL PARADIGM",
+          title: "UML & ENTERPRISE MODELING",
+          start: "UML",
+          end: "ARCH",
+          url: "https://www.visual-paradigm.com/"
+        },
       ]
     },
     {
-      name: "PROFESSIONAL CORE",
+      name: "SOFT SKILLS",
       tracks: [
-        { artist: "STRATEGY", title: "ANALYTICAL THINKING", start: "MIND", end: "SOLV" },
-        { artist: "COMMUNICATION", title: "STAKEHOLDER COMMUNICATION", start: "MGMT", end: "COLL" },
-        { artist: "ELICITATION", title: "REQUIREMENT ELICITATION", start: "COMM", end: "EXEC" },
-        { artist: "DOCUMENTATION", title: "REQUIREMENT DOCUMENTATION", start: "DOC", end: "SPEC" },
+        {
+          artist: "STAKEHOLDER",
+          title: "STAKEHOLDER COMMUNICATION",
+          start: "MGMT",
+          end: "COLL",
+          url: "https://www.pmi.org/learning/library/stakeholder-management-6090"
+        },
+        {
+          artist: "ELICITATION",
+          title: "REQUIREMENT ELICITATION",
+          start: "DISC",
+          end: "ANAL",
+          url: "https://www.iiba.org/"
+        },
+        {
+          artist: "ANALYTICAL",
+          title: "ANALYTICAL THINKING & PROBLEM SOLVING",
+          start: "MIND",
+          end: "SOLV",
+          url: "https://www.mindtools.com/athe1wg/analytical-thinking"
+        },
+        {
+          artist: "DOCUMENTATION",
+          title: "REQUIREMENT DOCUMENTATION & TEAMWORK",
+          start: "DOC",
+          end: "TEAM",
+          url: "https://www.iiba.org/business-analysis-certifications/"
+        },
       ]
     }
   ];
