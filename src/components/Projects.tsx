@@ -41,6 +41,13 @@ interface AccordionSection {
       description: string;
     }[];
     stakeholders?: string[];
+    comparisonTable?: {
+      headers: string[];
+      rows: {
+        feature: string;
+        values: string[];
+      }[];
+    };
     baActivities?: {
       title: string;
       icon: string;
@@ -103,7 +110,7 @@ const Projects: React.FC = () => {
       url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070',
       year: "2026",
       role: "Lead System Analyst",
-      brief: "A comprehensive redesign and optimization of deposit and withdrawal workflows for a high-volume digital wallet platform, ensuring seamless transaction processing and high security.",
+      brief: "A core digital wallet platform designed to manage the full lifecycle of deposit and withdrawal transactions, ensuring real-time balance control, secure user authentication, and seamless bank integration within a scalable single-wallet architecture.",
       strategy: "Conducted an end-to-end audit of the transaction lifecycle. Streamlined payment gateway integrations and implemented asynchronous processing for improved scalability.",
       technical: "Designed robust API architectures for balance synchronization and transaction logging. Leveraged microservices to isolate core banking logic from the wallet front-end.",
       methodology: [
@@ -126,24 +133,82 @@ const Projects: React.FC = () => {
       ],
       accordionSections: [
         {
-          id: "context",
+          id: "problem-opportunity",
           icon: "alert-triangle",
-          title: "CONTEXT & PROBLEM",
+          title: "PROBLEM & OPPORTUNITY",
           content: {
-            description: "The platform struggled with inconsistent transaction states and database deadlocks during high-load periods, especially during promotion campaigns. Users experienced delayed balance updates and occasional transaction failures.",
+            description: "Parents are the core user group of UniWallet, where the need for financial control and financial education for their children directly intersects with the product's core features. Children require a financial experience designed specifically for them — safe, intuitive, and educational. This user segment has largely been overlooked by the current market. The current digital financial ecosystem in Vietnam is built entirely for adult users, creating a significant market gap that UniWallet can fill.",
             painPoints: [
               {
-                icon: "clock",
-                title: "Processing Delays",
-                description: "Intermittent delays in balance updates after successful deposits, causing customer dissatisfaction."
+                icon: "users",
+                title: "1.1 Parents — Lack of Control Over Children's Spending",
+                description: "Parents are unable to track where their children spend money or set weekly/monthly spending limits. The biggest risk is that children may spend on age-inappropriate content and develop uncontrolled spending habits early on. Potential risks: Spending on age-inappropriate digital content, loss of money due to in-app purchases or uncontrolled transactions, and formation of impulsive spending habits at an early age."
+              },
+              {
+                icon: "chart",
+                title: "1.2 Parents — Lack of Tools to Teach Financial Management",
+                description: "Giving cash or transferring money does not create a learning mechanism or enable behavioral tracking. Parents lack an integrated tool that includes budget allocation, reward/penalty mechanisms, and spending reports. What is currently missing: Budget allocation tools (Spending / Saving / Goal), integrated financial reward and discipline mechanisms, and weekly/monthly spending behavior reports."
+              },
+              {
+                icon: "shield",
+                title: "1.3 Parents — Security Concerns",
+                description: "Parents worry about data exposure, fraudulent transactions, or children spending beyond supervision. They require a clear Parent–Child authorization model, approval workflow, and age-based KYC control. Specific needs: Clear Parent–Child role hierarchy within the system, approval workflow for each child transaction, and tiered KYC and age-based transaction limits."
+              },
+              {
+                icon: "heart",
+                title: "2.1 Children — Lack of Understanding of Money Value",
+                description: "Children cannot visualize how money 'disappears' through transactions and lack reporting tools to reflect on their spending behavior. Without clear feedback, they fail to develop awareness of money's value."
+              },
+              {
+                icon: "dollar",
+                title: "2.2 Children — Lack of Personal Money Management Tools",
+                description: "Children are not equipped with tools to allocate money by purpose: Spending, Saving, or Goal-based saving. Without a structured framework, they tend to spend impulsively and struggle to build healthy financial habits."
+              },
+              {
+                icon: "lock",
+                title: "2.3 Children — Lack of a Safe Financial Experience",
+                description: "When using adult wallets, children have no transaction limits, no age-appropriate guidance, and no built-in learning mechanisms. They need a financial environment designed specifically for them — both secure and educational."
+              },
+              {
+                icon: "globe",
+                title: "3.1 Market — Traditional E-Wallets Serve Only Adults",
+                description: "Existing platforms such as MoMo, ZaloPay, and VNPay do not offer a Family Wallet model or account hierarchy by family structure. This gap means there is no product truly designed to support children's financial education journeys."
               },
               {
                 icon: "database",
-                title: "Concurrency Issues",
-                description: "Database deadlocks occurring during peak seconds when multiple microservices attempted to update the same ledger."
+                title: "3.2 Market — Lack of Integrated Educational Mechanisms",
+                description: "The market lacks features such as goal-based saving, reward systems, or age-specific spending behavior reports. This creates a significant gap between real family needs and what existing financial apps currently provide."
+              },
+              {
+                icon: "alert",
+                title: "3.3 Market — Compliance and Risk Control Limitations",
+                description: "Current systems do not support tiered KYC, age-based transaction limits, or device binding specifically for children. This represents a serious gap in both legal compliance and minor user protection. Completely missing elements: A clear governance layer (Parent approval, Child sub-wallet), approval workflow for child transactions, integrated financial education dashboard, and international-standard sub-wallet architecture."
               }
             ],
-            stakeholders: ["Product Owners", "DevOps Team", "Final Users", "Compliance Officers"]
+            subsections: [
+              {
+                title: "4. Market Trends & Opportunity",
+                content: "Financial literacy is now a critical life skill. Parents use allowances to teach saving; schools integrate finance into curricula. Gen Z & Gen Alpha adopt digital payments naturally — creating strong demand for a family-focused financial product."
+              },
+              {
+                title: "5. Market Demand Analysis",
+                content: "Globally, Family Wallet products (Greenlight, GoHenry, Step, Revolut <18) have matured over 5–10 years with proven demand. In Vietnam — 100M+ population, 70%+ smartphone penetration — no product offers a Parent–Child wallet hierarchy with governance and financial education. UniWallet is strategically positioned as the first-mover to capture this gap."
+              }
+            ],
+            comparisonTable: {
+              headers: ["Feature", "Greenlight (US)", "GoHenry (UK)", "Step (US)", "Revolut <18 (EU)", "UniWallet (VN)"],
+              rows: [
+                { feature: "Family Wallet", values: ["✅", "✅", "✅", "✅", "🚀 Building"] },
+                { feature: "Parent–Child Hierarchy", values: ["✅", "✅", "❌", "✅", "🚀 Building"] },
+                { feature: "Spending Limits", values: ["✅", "✅", "✅", "✅", "✅ MVP"] },
+                { feature: "Transaction Monitoring", values: ["✅", "✅", "✅", "✅", "✅ MVP"] },
+                { feature: "Financial Education", values: ["✅", "✅", "❌", "❌", "🚀 Planned"] },
+                { feature: "Goal-Based Saving", values: ["✅", "✅", "❌", "❌", "🚀 Planned"] },
+                { feature: "Multi-step KYC", values: ["✅", "✅", "✅", "✅", "✅ MVP"] },
+                { feature: "Vietnam Market", values: ["❌", "❌", "❌", "❌", "✅ First-mover"] }
+              ]
+            },
+            stakeholders: ["Parents & Guardians", "Children & Teens", "Product Owners", "Compliance Officers", "Education Partners"]
           }
         },
         {
@@ -599,7 +664,7 @@ const Projects: React.FC = () => {
                                     className="overflow-hidden"
                                   >
                                     <div className="px-6 pb-6 pt-2 border-t border-white/5">
-                                      {/* TÌNH HUỐNG DESCRIPTION */}
+                                      {/* SCENARIO DESCRIPTION */}
                                       {section.content.description && (
                                         <div className="mb-8">
                                           {(() => {
@@ -613,7 +678,7 @@ const Projects: React.FC = () => {
                                               <>
                                                 <h4 className="text-sm font-bold text-white/40 mb-3 flex items-center gap-2">
                                                   <span className={`w-1 h-4 ${theme.bg}/50 rounded`}></span>
-                                                  Tình hướng:
+                                                  Scenario:
                                                 </h4>
                                                 <div className={`pl-4 border-l-2 ${theme.border}/20 ${theme.bgLight}/5`}>
                                                   <p className="text-base md:text-lg text-white/70 leading-relaxed p-4">
@@ -641,7 +706,7 @@ const Projects: React.FC = () => {
                                               <>
                                                 <h4 className="text-sm font-bold text-white/40 mb-6 flex items-center gap-2">
                                                   <span className={`w-1 h-4 ${theme.bg}/50 rounded`}></span>
-                                                  Key Pain Points:
+                                                  Key Findings:
                                                 </h4>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                   {section.content.painPoints.map((point, i) => (
@@ -659,6 +724,9 @@ const Projects: React.FC = () => {
                                                             {point.icon === 'chart' && '📊'}
                                                             {point.icon === 'database' && '💾'}
                                                             {point.icon === 'shield' && '🛡️'}
+                                                            {point.icon === 'heart' && '❤️'}
+                                                            {point.icon === 'globe' && '🌍'}
+                                                            {point.icon === 'trending-up' && '📈'}
                                                           </span>
                                                         </div>
                                                         <div className="flex-1">
@@ -885,6 +953,58 @@ const Projects: React.FC = () => {
                                               </p>
                                             </div>
                                           ))}
+                                        </div>
+                                      )}
+
+                                      {/* COMPARISON TABLE */}
+                                      {section.content.comparisonTable && (
+                                        <div className="mt-8">
+                                          <h4 className="mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4 font-bold">
+                                            6. Competitive Comparison
+                                          </h4>
+                                          <div className="overflow-x-auto rounded-xl border border-white/10">
+                                            <table className="w-full text-left" style={{ minWidth: '700px' }}>
+                                              <thead>
+                                                <tr className="bg-white/5">
+                                                  {section.content.comparisonTable.headers.map((header, i) => (
+                                                    <th
+                                                      key={i}
+                                                      className={`px-4 py-3 text-[10px] mono tracking-[0.2em] uppercase font-bold ${i === section.content.comparisonTable!.headers.length - 1
+                                                          ? 'text-cyan-400'
+                                                          : 'text-white/50'
+                                                        }`}
+                                                    >
+                                                      {header}
+                                                    </th>
+                                                  ))}
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                {section.content.comparisonTable.rows.map((row, i) => (
+                                                  <tr
+                                                    key={i}
+                                                    className={`border-t border-white/5 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''
+                                                      } hover:bg-white/[0.06] transition-colors`}
+                                                  >
+                                                    <td className="px-4 py-3 text-xs text-white/70 font-medium">
+                                                      {row.feature}
+                                                    </td>
+                                                    {row.values.map((val, j) => (
+                                                      <td
+                                                        key={j}
+                                                        className={`px-4 py-3 text-xs text-center ${j === row.values.length - 1
+                                                            ? 'text-cyan-400 font-semibold'
+                                                            : 'text-white/50'
+                                                          }`}
+                                                      >
+                                                        {val}
+                                                      </td>
+                                                    ))}
+                                                  </tr>
+                                                ))}
+                                              </tbody>
+                                            </table>
+                                          </div>
                                         </div>
                                       )}
 

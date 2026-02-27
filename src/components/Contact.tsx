@@ -6,17 +6,17 @@ import emailjs from '@emailjs/browser';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// EmailJS configuration - bạn cần thay đổi các giá trị này
-// Lấy từ https://dashboard.emailjs.com/admin
+// EmailJS configuration - update these values with your own
+// Get from https://dashboard.emailjs.com/admin
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_a7ixd56';
-// Template auto-reply (gửi cho người dùng điền form)
+// Template auto-reply (sent to the form submitter)
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_17nvhcr';
-// Template thông báo gửi về email của bạn (owner) - tùy chọn
+// Template notification sent to your email (owner) - optional
 const EMAILJS_OWNER_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_OWNER_TEMPLATE_ID || 'template_7lzk2dd';
-// Public key lấy trong Account → API keys → Public Key
+// Public key found in Account → API keys → Public Key
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '5qmo2FFCXbyrB0jfQ';
 
-// Khởi tạo EmailJS với public key
+// Initialize EmailJS with public key
 if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
 }
@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
   const descRef = useRef<HTMLParagraphElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Địa chỉ email chính của bạn để nhận thông báo
+  // Your primary email address to receive notifications
   const targetEmail = "thiephuc.ba@gmail.com";
 
   useEffect(() => {
@@ -115,14 +115,14 @@ const Contact: React.FC = () => {
 
     // Try to copy email to clipboard
     try {
-      // Sử dụng Clipboard API nếu có
+      // Use Clipboard API if available
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(targetEmail);
         setEmailCopied(true);
         setTimeout(() => setEmailCopied(false), 3000);
-        console.log('✅ Email đã được copy:', targetEmail);
+        console.log('✅ Email copied:', targetEmail);
       } else {
-        // Fallback cho trình duyệt cũ
+        // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = targetEmail;
         textArea.style.position = 'fixed';
@@ -137,7 +137,7 @@ const Contact: React.FC = () => {
           if (successful) {
             setEmailCopied(true);
             setTimeout(() => setEmailCopied(false), 3000);
-            console.log('✅ Email đã được copy (fallback):', targetEmail);
+            console.log('✅ Email copied (fallback):', targetEmail);
           } else {
             console.error('❌ Copy failed');
           }
@@ -149,11 +149,11 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error('❌ Failed to copy email:', err);
-      // Vẫn hiển thị thông báo để người dùng biết
-      alert(`Email: ${targetEmail}\n\nĐã tự động copy vào clipboard (nếu trình duyệt hỗ trợ).`);
+      // Still show notification so the user knows
+      alert(`Email: ${targetEmail}\n\nAutomatically copied to clipboard (if browser supports).`);
     }
 
-    // Delay một chút trước khi mở mailto: để đảm bảo copy đã hoàn thành
+    // Delay briefly before opening mailto: to ensure copy has completed
     setTimeout(() => {
       window.location.href = `mailto:${targetEmail}`;
     }, 100);
@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
     setErrorMessage('');
 
-    // Debug: Log cấu hình EmailJS
+    // Debug: Log EmailJS configuration
     console.log('=== EmailJS Configuration Debug ===');
     console.log('Service ID:', EMAILJS_SERVICE_ID);
     console.log('Template ID:', EMAILJS_TEMPLATE_ID);
@@ -173,7 +173,7 @@ const Contact: React.FC = () => {
     console.log('Target Email:', targetEmail);
     console.log('Form Data:', formData);
 
-    // Kiểm tra xem EmailJS đã được cấu hình chưa
+    // Check if EmailJS has been configured
     const isEmailJSConfigured =
       EMAILJS_SERVICE_ID &&
       EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
@@ -183,27 +183,27 @@ const Contact: React.FC = () => {
       EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
 
     if (isEmailJSConfigured) {
-      // Gửi email qua EmailJS
+      // Send email via EmailJS
       try {
-        // 1) Gửi email auto-reply cho người dùng (template Auto-Reply hiện tại)
+        // 1) Send auto-reply email to the user (current Auto-Reply template)
         const templateParams = {
-          // Biến cho template "Auto-Reply" (gửi email tới địa chỉ user nhập trong form)
-          // To Email - PHẢI có một trong các biến này trong template EmailJS
-          email: formData.email,        // {{email}} -> To Email (khuyến nghị)
-          to_email: formData.email,     // {{to_email}} -> To Email (dự phòng)
+          // Variables for "Auto-Reply" template (sends email to the address user entered in form)
+          // To Email - MUST have one of these variables in the EmailJS template
+          email: formData.email,        // {{email}} -> To Email (recommended)
+          to_email: formData.email,     // {{to_email}} -> To Email (fallback)
 
-          // Thông tin hiển thị trong email auto-reply
+          // Information displayed in auto-reply email
           name: formData.name,          // {{name}}
           from_name: formData.name,     // {{from_name}}
-          message: formData.message,    // {{message}} - nội dung tin nhắn
-          title: formData.message,      // {{title}} - dự phòng nếu template dùng title
+          message: formData.message,    // {{message}} - message content
+          title: formData.message,      // {{title}} - fallback if template uses title
 
-          // Email của người gửi (người điền form)
+          // Email of the sender (form submitter)
           from_email: formData.email,   // {{from_email}}
 
-          // Email của owner để reply về
-          reply_to: targetEmail,        // {{reply_to}} - khi người nhận bấm Reply sẽ trả lời về email của bạn
-          owner_email: targetEmail,     // {{owner_email}} - dự phòng
+          // Owner email for replies
+          reply_to: targetEmail,        // {{reply_to}} - when recipient clicks Reply, it goes to your email
+          owner_email: targetEmail,     // {{owner_email}} - fallback
         };
 
         console.log('Sending auto-reply with params:', templateParams);
@@ -219,24 +219,24 @@ const Contact: React.FC = () => {
         console.log('Status:', result.status);
         console.log('Text:', result.text);
 
-        // 2) Gửi thêm một email thông báo về email cá nhân của bạn (owner), nếu đã cấu hình template
+        // 2) Additionally send a notification email to your personal email (owner), if template is configured
         if (EMAILJS_OWNER_TEMPLATE_ID && EMAILJS_OWNER_TEMPLATE_ID !== 'YOUR_OWNER_TEMPLATE_ID' && EMAILJS_OWNER_TEMPLATE_ID !== 'template_7lzk2dd') {
           const ownerParams = {
-            // Các biến cho "To Email" - PHẢI có một trong các biến này trong template EmailJS
-            // Template Owner phải có "To Email" = {{email}}, {{to_email}}, hoặc {{owner_email}}
-            email: targetEmail,              // {{email}} -> To Email (khuyến nghị)
-            to_email: targetEmail,           // {{to_email}} -> To Email (dự phòng)
-            owner_email: targetEmail,        // {{owner_email}} -> To Email (dự phòng)
+            // Variables for "To Email" - MUST have one of these in the EmailJS template
+            // Owner template must have "To Email" = {{email}}, {{to_email}}, or {{owner_email}}
+            email: targetEmail,              // {{email}} -> To Email (recommended)
+            to_email: targetEmail,           // {{to_email}} -> To Email (fallback)
+            owner_email: targetEmail,        // {{owner_email}} -> To Email (fallback)
 
-            // Thông tin người gửi form (người điền form)
-            from_name: formData.name,        // {{from_name}} - tên người điền form
-            from_email: formData.email,      // {{from_email}} - email người điền form
-            name: formData.name,             // {{name}} - dự phòng
-            message: formData.message,       // {{message}} - nội dung tin nhắn
-            title: formData.message,         // {{title}} - dự phòng
+            // Form submitter information
+            from_name: formData.name,        // {{from_name}} - form submitter name
+            from_email: formData.email,      // {{from_email}} - form submitter email
+            name: formData.name,             // {{name}} - fallback
+            message: formData.message,       // {{message}} - message content
+            title: formData.message,         // {{title}} - fallback
 
-            // Email để reply về người điền form
-            reply_to: formData.email,        // {{reply_to}} - khi bạn bấm Reply sẽ trả lời về người điền form
+            // Email for replying to the form submitter
+            reply_to: formData.email,        // {{reply_to}} - when you click Reply, it goes to the form submitter
           };
 
           console.log('📧 Sending owner notification with params:', ownerParams);
@@ -262,26 +262,26 @@ const Contact: React.FC = () => {
               message: ownerError.message
             });
 
-            // Hiển thị cảnh báo cho user về lỗi owner notification
+            // Display warning for owner notification error
             if (ownerError.text) {
               if (ownerError.text.includes('recipients address is empty') || ownerError.text.includes('recipient') && ownerError.text.includes('empty')) {
-                console.error('❌ LỖI: Template Owner không có "To Email" được cấu hình đúng!');
-                console.error('❌ Hãy kiểm tra template trong EmailJS Dashboard và đảm bảo "To Email" có giá trị: {{email}}, {{to_email}}, hoặc', targetEmail);
+                console.error('❌ ERROR: Owner Template does not have "To Email" configured correctly!');
+                console.error('❌ Check the template in EmailJS Dashboard and ensure "To Email" has value: {{email}}, {{to_email}}, or', targetEmail);
               } else if (ownerError.text.includes('Template not found')) {
-                console.error('❌ LỖI: Owner Template ID không tồn tại:', EMAILJS_OWNER_TEMPLATE_ID);
-                console.error('❌ Hãy kiểm tra lại VITE_EMAILJS_OWNER_TEMPLATE_ID trong file .env');
+                console.error('❌ ERROR: Owner Template ID does not exist:', EMAILJS_OWNER_TEMPLATE_ID);
+                console.error('❌ Please check VITE_EMAILJS_OWNER_TEMPLATE_ID in .env file');
               }
             }
-            // Không phá vỡ trải nghiệm người dùng nếu email thông báo bị lỗi
-            // Nhưng log chi tiết để debug
+            // Don't break user experience if notification email fails
+            // But log details for debugging
           }
         } else {
           if (EMAILJS_OWNER_TEMPLATE_ID === 'template_7lzk2dd') {
-            console.warn('⚠️ Owner template ID đang dùng giá trị mặc định. Có thể template này chưa được tạo trong EmailJS.');
-            console.warn('⚠️ Hãy tạo template Owner Notification mới trong EmailJS Dashboard và cập nhật VITE_EMAILJS_OWNER_TEMPLATE_ID trong .env');
+            console.warn('⚠️ Owner template ID is using default value. This template may not have been created in EmailJS.');
+            console.warn('⚠️ Create a new Owner Notification template in EmailJS Dashboard and update VITE_EMAILJS_OWNER_TEMPLATE_ID in .env');
           } else {
-            console.warn('⚠️ Owner template ID chưa được cấu hình. Bỏ qua việc gửi email thông báo cho owner.');
-            console.warn('⚠️ Để nhận email thông báo, hãy tạo template trong EmailJS và thêm VITE_EMAILJS_OWNER_TEMPLATE_ID vào .env');
+            console.warn('⚠️ Owner template ID not configured. Skipping owner notification email.');
+            console.warn('⚠️ To receive notification emails, create a template in EmailJS and add VITE_EMAILJS_OWNER_TEMPLATE_ID to .env');
           }
         }
 
@@ -300,8 +300,8 @@ const Contact: React.FC = () => {
         console.error('Error Text:', error.text);
         console.error('Full Error Object:', JSON.stringify(error, null, 2));
 
-        // Xử lý các loại lỗi khác nhau
-        let errorMsg = 'Có lỗi xảy ra khi gửi email. Vui lòng thử lại.';
+        // Handle different error types
+        let errorMsg = 'An error occurred while sending the email. Please try again.';
 
         if (error.text) {
           errorMsg = error.text;
@@ -311,21 +311,21 @@ const Contact: React.FC = () => {
           errorMsg = error;
         }
 
-        // Kiểm tra các lỗi phổ biến
+        // Check common errors
         if (errorMsg.includes('recipients address is empty') || errorMsg.includes('recipient') && errorMsg.includes('empty')) {
-          errorMsg = 'Lỗi: Địa chỉ email người nhận trống. Vui lòng kiểm tra template trong EmailJS Dashboard - phần "To Email" phải có {{email}}, {{to_email}} hoặc email cụ thể (ví dụ: thiephuc.ba@gmail.com)';
+          errorMsg = 'Error: Recipient email address is empty. Please check the template in EmailJS Dashboard - "To Email" must have {{email}}, {{to_email}} or a specific email address';
         } else if (errorMsg.includes('Account not found') || errorMsg.includes('Invalid public key')) {
-          errorMsg = 'Cấu hình EmailJS không đúng. Vui lòng kiểm tra lại API keys trong file .env';
+          errorMsg = 'EmailJS configuration is incorrect. Please check the API keys in .env file';
         } else if (errorMsg.includes('Service not found')) {
-          errorMsg = 'Service ID không đúng. Vui lòng kiểm tra lại trong EmailJS dashboard';
+          errorMsg = 'Service ID is incorrect. Please check in EmailJS dashboard';
         } else if (errorMsg.includes('Template not found')) {
-          errorMsg = 'Template ID không đúng. Vui lòng kiểm tra lại trong EmailJS dashboard';
+          errorMsg = 'Template ID is incorrect. Please check in EmailJS dashboard';
         } else if (error.status === 400) {
-          errorMsg = `Lỗi 400: ${error.text || 'Dữ liệu không hợp lệ. Kiểm tra lại template variables trong EmailJS'}`;
+          errorMsg = `Error 400: ${error.text || 'Invalid data. Check template variables in EmailJS'}`;
         } else if (error.status === 403) {
-          errorMsg = 'Lỗi 403: Không có quyền truy cập. Kiểm tra lại Public Key';
+          errorMsg = 'Error 403: Access denied. Check your Public Key';
         } else if (error.status === 404) {
-          errorMsg = 'Lỗi 404: Service hoặc Template không tìm thấy';
+          errorMsg = 'Error 404: Service or Template not found';
         }
 
         setSubmitStatus('error');
@@ -335,8 +335,8 @@ const Contact: React.FC = () => {
         fallbackToMailto();
       }
     } else {
-      console.warn('⚠️ EmailJS chưa được cấu hình, sử dụng fallback');
-      // Fallback: sử dụng mailto: và clipboard
+      console.warn('⚠️ EmailJS not configured, using fallback');
+      // Fallback: use mailto: and clipboard
       fallbackToMailto();
     }
 
@@ -396,7 +396,7 @@ const Contact: React.FC = () => {
                         await navigator.clipboard.writeText(targetEmail);
                         setEmailCopied(true);
                         setTimeout(() => setEmailCopied(false), 3000);
-                        console.log('✅ Email đã được copy:', targetEmail);
+                        console.log('✅ Email copied:', targetEmail);
                       } else {
                         // Fallback
                         const textArea = document.createElement('textarea');
@@ -431,7 +431,7 @@ const Contact: React.FC = () => {
               {' '}or drop your info here.
               {emailCopied && (
                 <span className="block mt-2 text-green-400 text-sm font-medium animate-pulse">
-                  ✓ Email đã được copy vào clipboard!
+                  ✓ Email copied to clipboard!
                 </span>
               )}
             </p>

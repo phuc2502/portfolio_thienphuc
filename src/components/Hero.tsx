@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
     }
   }, [closeVideoTrigger]);
 
-  // Sử dụng ảnh từ folder components/img/
+  // Use images from components/img/ folder
   const heroImageUrl = new URL('./img/avt1.png', import.meta.url).href;
   const videoUrl = new URL('./img/video.mp4', import.meta.url).href;
 
