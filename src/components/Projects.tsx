@@ -1,6 +1,11 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import imgAsIs from './img/AS_IS_RUT.png';
+import imgUC from './img/UC_RUT.png';
+import imgLifecycle from './img/TRANSACTION_LIFECYCLE.png';
+import imgERD from './img/ERD.png';
+
 
 interface Outcome {
   label: string;
@@ -64,7 +69,7 @@ interface AccordionSection {
       title: string;
       icon: string;
       sections: {
-        type: 'box' | 'twoColumn' | 'list';
+        type: 'box' | 'twoColumn' | 'list' | 'image';
         title?: string;
         bgColor?: string;
         items?: string[];
@@ -73,6 +78,7 @@ interface AccordionSection {
           items: string[];
         }[];
         content?: string;
+        src?: string;
       }[];
     }[];
     challenges?: {
@@ -115,6 +121,7 @@ const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const overlayScrollRef = useRef<HTMLDivElement>(null);
 
@@ -319,22 +326,80 @@ const Projects: React.FC = () => {
           content: {
             baActivities: [
               {
-                title: "Requirement Elicitation & Analysis",
+                title: "3.1 Business & Requirement Analysis",
                 icon: "target",
                 sections: [
                   {
-                    type: "box",
-                    title: "As-Is vs To-Be Analysis",
-                    content: "Analyzed existing legacy workflows to identify bottlenecks. Proposed a new asynchronous event-driven architecture to decouple transaction logging from balance updates.",
-                    bgColor: "blue"
-                  },
+                    type: "list",
+                    items: [
+                      "Conducted structured analysis of family-based wallet use cases and identified key functional requirements for MVP scope.",
+                      "Defined functional and non-functional requirements covering Authentication, KYC simulation, Deposit/Withdrawal, and Transaction Monitoring.",
+                      "Documented business rules, validation logic, and transaction lifecycle states in BRD and SRS.",
+                      "Established requirement traceability from business objectives to user stories and test scenarios."
+                    ]
+                  }
+                ]
+              },
+              {
+                title: "3.2 Process Modeling & System Understanding",
+                icon: "target",
+                sections: [
                   {
                     type: "list",
-                    title: "Key Deliverables",
                     items: [
-                      "Detailed Use Case Specifications for Deposit/Withdraw",
-                      "UML Activity Diagrams for Exception Handling",
-                      "API Documentation for Third-party Gateways"
+                      "Modeled AS-IS and TO-BE transaction flows using BPMN 2.0.",
+                      "Created Use Case and Sequence Diagrams to illustrate interaction between Mobile App, Backend, and Bank Gateway.",
+                      "Developed ERD to represent core wallet entities and relationships.",
+                      "Analyzed transaction lifecycle to ensure consistency across processing steps."
+                    ]
+                  },
+                  {
+                    type: "image",
+                    title: "BPMN — AS-IS Process Flow (RUT Diagram)",
+                    src: imgAsIs
+                  },
+                  {
+                    type: "image",
+                    title: "Use Case Diagram",
+                    src: imgUC
+                  },
+                  {
+                    type: "image",
+                    title: "Transaction State Machine / Lifecycle",
+                    src: imgLifecycle
+                  },
+                  {
+                    type: "image",
+                    title: "Entity Relationship Diagram (ERD)",
+                    src: imgERD
+                  }
+                ]
+              },
+              {
+                title: "3.3 Backlog & Documentation",
+                icon: "target",
+                sections: [
+                  {
+                    type: "list",
+                    items: [
+                      "Translated requirements into 30+ structured user stories with clear acceptance criteria.",
+                      "Organized product backlog aligned with MVP priority and sprint planning.",
+                      "Produced BRD, SRS, and Process Specification documents.",
+                      "Maintained traceability matrix linking business goals → requirements → test cases."
+                    ]
+                  }
+                ]
+              },
+              {
+                title: "3.4 Quality & Validation",
+                icon: "target",
+                sections: [
+                  {
+                    type: "list",
+                    items: [
+                      "Designed test scenarios and acceptance criteria for core flows: deposit, withdrawal, and KYC.",
+                      "Participated in UAT walkthroughs and tracked defect resolution.",
+                      "Validated system behavior against documented business rules and edge cases."
                     ]
                   }
                 ]
@@ -1101,8 +1166,49 @@ const Projects: React.FC = () => {
                                                   );
                                                 }
 
+                                                // Image type — handled in grouped grid below
+                                                if (sec.type === 'image') return null;
+
                                                 return null;
                                               })}
+
+                                              {/* IMAGE GRID — render all image sections as 2-col grid (2 rows of 2) */}
+                                              {(() => {
+                                                const imgSections = activity.sections.filter(s => s.type === 'image' && s.src);
+                                                if (imgSections.length === 0) return null;
+                                                return (
+                                                  <div className="mt-4 grid grid-cols-2 gap-3">
+                                                    {imgSections.map((img, imgIdx) => (
+                                                      <div key={imgIdx} className="space-y-1.5">
+                                                        {img.title && (
+                                                          <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 truncate">{img.title}</p>
+                                                        )}
+                                                        <div
+                                                          className="relative overflow-hidden rounded-lg border border-white/10 group/img bg-white/[0.02] cursor-zoom-in aspect-square"
+                                                          onClick={() => setLightboxImg({ src: img.src!, title: img.title || 'Diagram' })}
+                                                        >
+                                                          {/* Corner decorations */}
+                                                          <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/25 rounded-tl-lg z-10 pointer-events-none" />
+                                                          <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/25 rounded-tr-lg z-10 pointer-events-none" />
+                                                          <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/25 rounded-bl-lg z-10 pointer-events-none" />
+                                                          <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/25 rounded-br-lg z-10 pointer-events-none" />
+                                                          {/* Zoom hint */}
+                                                          <div className="absolute top-1.5 right-1.5 z-20 bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 pointer-events-none">
+                                                            <span className="text-[7px] text-white/70 font-mono tracking-wider">⊕ EXPAND</span>
+                                                          </div>
+                                                          {/* Gradient overlay */}
+                                                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-[1] pointer-events-none" />
+                                                          <img
+                                                            src={img.src}
+                                                            alt={img.title || 'Diagram'}
+                                                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-[1.04]"
+                                                          />
+                                                        </div>
+                                                      </div>
+                                                    ))}
+                                                  </div>
+                                                );
+                                              })()}
                                             </div>
                                           ))}
                                         </div>
@@ -1377,6 +1483,61 @@ const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightboxImg && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setLightboxImg(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative max-w-6xl w-full"
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setLightboxImg(null)}
+                className="absolute -top-12 right-0 flex items-center gap-2 text-white/60 hover:text-white transition-colors group"
+              >
+                <span className="text-xs mono tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100">Close</span>
+                <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:border-white/60 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </span>
+              </button>
+
+              {/* Caption */}
+              {lightboxImg.title && (
+                <p className="text-[10px] mono uppercase tracking-[0.3em] text-white/30 mb-3">{lightboxImg.title}</p>
+              )}
+
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-2xl border border-white/10">
+                <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-white/40 rounded-tl-2xl z-10 pointer-events-none" />
+                <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/40 rounded-tr-2xl z-10 pointer-events-none" />
+                <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-white/40 rounded-bl-2xl z-10 pointer-events-none" />
+                <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-2xl z-10 pointer-events-none" />
+                <img
+                  src={lightboxImg.src}
+                  alt={lightboxImg.title}
+                  className="w-full max-h-[80vh] object-contain bg-[#0d0d0d]"
+                />
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
