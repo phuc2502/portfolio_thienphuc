@@ -40,7 +40,19 @@ interface AccordionSection {
       label: string;
       description: string;
     }[];
-    stakeholders?: string[];
+    stakeholders?: {
+      groupTitle: string;
+      groupIcon: string;
+      groupColor: 'emerald' | 'blue' | 'purple' | 'amber' | 'rose' | 'cyan';
+      items: {
+        icon: string;
+        title: string;
+        role?: string;
+        benefits?: string[];
+        concerns?: string[];
+        note?: string;
+      }[];
+    }[];
     comparisonTable?: {
       headers: string[];
       rows: {
@@ -92,6 +104,11 @@ interface ProjectDetail {
   tech: string[];
   outcomes: Outcome[];
   accordionSections?: AccordionSection[];
+  projectLinks?: {
+    label: string;
+    url: string;
+    icon: 'github' | 'deploy' | 'figma';
+  }[];
 }
 
 const Projects: React.FC = () => {
@@ -130,6 +147,11 @@ const Projects: React.FC = () => {
         { label: "Stability", value: "99.99%", desc: "Ensured high availability for wallet operations." },
         { label: "Processing", value: "-40%", desc: "Reduced transaction settlement latency." },
         { label: "Automation", value: "High", desc: "Automated reconciliation processes." }
+      ],
+      projectLinks: [
+        { label: "GitHub", url: "https://github.com/phuc2502/uniwallet_mvp", icon: "github" },
+        { label: "Deploy MVP", url: "https://demouniwallet.vercel.app/#/login", icon: "deploy" },
+        { label: "Figma MockUp", url: "https://www.figma.com/design/dVAzddJDxaUcpam5EJGPQa/UNI-WALLET?node-id=0-1&t=dj5WaFlzGTtmYXmk-1", icon: "figma" }
       ],
       accordionSections: [
         {
@@ -208,7 +230,54 @@ const Projects: React.FC = () => {
                 { feature: "Vietnam Market", values: ["❌", "❌", "❌", "❌", "✅ First-mover"] }
               ]
             },
-            stakeholders: ["Parents & Guardians", "Children & Teens", "Product Owners", "Compliance Officers", "Education Partners"]
+            stakeholders: [
+              {
+                groupTitle: "🎯 Primary Stakeholders",
+                groupIcon: "users",
+                groupColor: "emerald",
+                items: [
+                  {
+                    icon: "👨‍👩‍👧",
+                    title: "Parents (Account Owner)",
+                    role: "Family Account Controller",
+                    benefits: ["Spending control", "Financial education", "Limit management", "Reports"],
+                    concerns: ["Security", "Approval workflow", "Age restrictions", "Compliance"],
+                    note: "Highest decision-making authority."
+                  },
+                  {
+                    icon: "👶",
+                    title: "Children (Sub-account User)",
+                    role: "Sub-account User",
+                    benefits: ["Own wallet", "Learn money management", "Safe financial environment"],
+                    concerns: ["Easy UX", "Gamification", "Visual feedback"],
+                    note: "Highest usage frequency."
+                  }
+                ]
+              },
+              {
+                groupTitle: "🏦 Secondary Stakeholders",
+                groupIcon: "globe",
+                groupColor: "blue",
+                items: [
+                  { icon: "🏦", title: "Partner Banks" },
+                  { icon: "🏛️", title: "Regulatory Authorities" },
+                  { icon: "🛒", title: "Merchants & Partners" }
+                ]
+              },
+              {
+                groupTitle: "🧠 Internal Stakeholders",
+                groupIcon: "target",
+                groupColor: "purple",
+                items: [
+                  { icon: "🎯", title: "Product Owner" },
+                  { icon: "📊", title: "Business Analyst" },
+                  { icon: "💻", title: "Dev Team" },
+                  { icon: "🧪", title: "QA / Tester" },
+                  { icon: "⚖️", title: "Legal / Compliance" },
+                  { icon: "🔒", title: "Security Team" }
+                ]
+              }
+            ]
           }
         },
         {
@@ -610,6 +679,35 @@ const Projects: React.FC = () => {
                     </p>
                   </section>
 
+                  {/* PROJECT LINKS */}
+                  {selectedProject.projectLinks && selectedProject.projectLinks.length > 0 && (
+                    <section className="pt-6">
+                      <div className="flex flex-wrap gap-4">
+                        {selectedProject.projectLinks.map((link, idx) => (
+                          <a
+                            key={idx}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-3 px-5 py-3 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/25 transition-all duration-300"
+                          >
+                            {link.icon === 'github' && (
+                              <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+                            )}
+                            {link.icon === 'deploy' && (
+                              <svg className="w-5 h-5 text-white/60 group-hover:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                            )}
+                            {link.icon === 'figma' && (
+                              <svg className="w-5 h-5 text-white/60 group-hover:text-purple-400 transition-colors" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zm0 9.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 01-7 0zM5 12a3.5 3.5 0 013.5-3.5H12v7H8.5A3.5 3.5 0 015 12z" /></svg>
+                            )}
+                            <span className="mono text-xs uppercase tracking-[0.15em] text-white/60 group-hover:text-white transition-colors">{link.label}</span>
+                            <svg className="w-3.5 h-3.5 text-white/30 group-hover:text-white/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                          </a>
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
                   {/* ACCORDION SECTIONS */}
                   {selectedProject.accordionSections && selectedProject.accordionSections.length > 0 && (
                     <section className="space-y-6 pt-10 border-t border-white/5">
@@ -765,16 +863,93 @@ const Projects: React.FC = () => {
                                       {/* STAKEHOLDERS */}
                                       {section.content.stakeholders && section.content.stakeholders.length > 0 && (
                                         <div className="mb-6">
-                                          <h4 className="text-sm font-bold text-white/40 mb-4">Stakeholders:</h4>
-                                          <div className="flex flex-wrap gap-2">
-                                            {section.content.stakeholders.map((stakeholder, i) => (
-                                              <span
-                                                key={i}
-                                                className="px-4 py-2 text-xs md:text-sm rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 font-medium"
-                                              >
-                                                {stakeholder}
-                                              </span>
-                                            ))}
+                                          <h4 className="text-sm font-bold text-white/40 mb-6 flex items-center gap-2">
+                                            <span className="w-1 h-4 bg-blue-500/50 rounded"></span>
+                                            Stakeholder Analysis:
+                                          </h4>
+                                          <div className="space-y-6">
+                                            {section.content.stakeholders.map((group, gi) => {
+                                              const colorMap: Record<string, { border: string; bg: string; text: string; accent: string; tagBg: string; tagBorder: string; tagText: string }> = {
+                                                'emerald': { border: 'border-emerald-500/30', bg: 'bg-emerald-500/5', text: 'text-emerald-400', accent: 'bg-emerald-500', tagBg: 'bg-emerald-500/10', tagBorder: 'border-emerald-500/30', tagText: 'text-emerald-300' },
+                                                'blue': { border: 'border-blue-500/30', bg: 'bg-blue-500/5', text: 'text-blue-400', accent: 'bg-blue-500', tagBg: 'bg-blue-500/10', tagBorder: 'border-blue-500/30', tagText: 'text-blue-300' },
+                                                'purple': { border: 'border-purple-500/30', bg: 'bg-purple-500/5', text: 'text-purple-400', accent: 'bg-purple-500', tagBg: 'bg-purple-500/10', tagBorder: 'border-purple-500/30', tagText: 'text-purple-300' },
+                                                'amber': { border: 'border-amber-500/30', bg: 'bg-amber-500/5', text: 'text-amber-400', accent: 'bg-amber-500', tagBg: 'bg-amber-500/10', tagBorder: 'border-amber-500/30', tagText: 'text-amber-300' },
+                                                'rose': { border: 'border-rose-500/30', bg: 'bg-rose-500/5', text: 'text-rose-400', accent: 'bg-rose-500', tagBg: 'bg-rose-500/10', tagBorder: 'border-rose-500/30', tagText: 'text-rose-300' },
+                                                'cyan': { border: 'border-cyan-500/30', bg: 'bg-cyan-500/5', text: 'text-cyan-400', accent: 'bg-cyan-500', tagBg: 'bg-cyan-500/10', tagBorder: 'border-cyan-500/30', tagText: 'text-cyan-300' }
+                                              };
+                                              const colors = colorMap[group.groupColor] || colorMap['blue'];
+
+                                              return (
+                                                <div key={gi} className={`rounded-xl border ${colors.border} ${colors.bg} overflow-hidden`}>
+                                                  {/* Group Header */}
+                                                  <div className={`px-5 py-4 border-b ${colors.border} flex items-center gap-3`}>
+                                                    <div className={`w-1 h-6 ${colors.accent} rounded-full`} />
+                                                    <h5 className={`text-sm md:text-base font-bold ${colors.text} tracking-wide`}>
+                                                      {group.groupTitle}
+                                                    </h5>
+                                                  </div>
+
+                                                  {/* Group Items */}
+                                                  <div className="divide-y divide-white/5">
+                                                    {group.items.map((item, ii) => (
+                                                      <div key={ii} className={`px-5 ${item.role ? 'py-5' : 'py-3'} hover:bg-white/[0.02] transition-colors`}>
+                                                        <div className="flex items-start gap-4">
+                                                          <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                                                          <div className="flex-1 min-w-0">
+                                                            <h6 className={`text-sm md:text-base font-bold text-white/85 ${item.role ? 'mb-1' : 'mt-1'}`}>
+                                                              {item.title}
+                                                            </h6>
+
+                                                            {item.role && (
+                                                              <p className="text-xs text-white/40 mb-3 italic">
+                                                                Role: {item.role}
+                                                              </p>
+                                                            )}
+
+                                                            {(item.benefits || item.concerns) && (
+                                                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                                {/* Benefits */}
+                                                                {item.benefits && item.benefits.length > 0 && (
+                                                                  <div className="space-y-1.5">
+                                                                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-bold mb-1">Benefits</p>
+                                                                    {item.benefits.map((b, bi) => (
+                                                                      <div key={bi} className="flex items-start gap-2">
+                                                                        <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${colors.accent}/60 flex-shrink-0`} />
+                                                                        <span className="text-xs md:text-sm text-white/60">{b}</span>
+                                                                      </div>
+                                                                    ))}
+                                                                  </div>
+                                                                )}
+
+                                                                {/* Concerns */}
+                                                                {item.concerns && item.concerns.length > 0 && (
+                                                                  <div className="space-y-1.5">
+                                                                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-bold mb-1">Concerns</p>
+                                                                    {item.concerns.map((c, ci) => (
+                                                                      <div key={ci} className="flex items-start gap-2">
+                                                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-500/60 flex-shrink-0" />
+                                                                        <span className="text-xs md:text-sm text-white/60">{c}</span>
+                                                                      </div>
+                                                                    ))}
+                                                                  </div>
+                                                                )}
+                                                              </div>
+                                                            )}
+
+                                                            {/* Note */}
+                                                            {item.note && (
+                                                              <div className={`mt-3 px-3 py-2 rounded-lg ${colors.tagBg} border ${colors.tagBorder}`}>
+                                                                <p className={`text-xs ${colors.tagText} font-medium`}>→ {item.note}</p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    ))}
+                                                  </div>
+                                                </div>
+                                              );
+                                            })}
                                           </div>
                                         </div>
                                       )}
@@ -970,8 +1145,8 @@ const Projects: React.FC = () => {
                                                     <th
                                                       key={i}
                                                       className={`px-4 py-3 text-[10px] mono tracking-[0.2em] uppercase font-bold ${i === section.content.comparisonTable!.headers.length - 1
-                                                          ? 'text-cyan-400'
-                                                          : 'text-white/50'
+                                                        ? 'text-cyan-400'
+                                                        : 'text-white/50'
                                                         }`}
                                                     >
                                                       {header}
@@ -993,8 +1168,8 @@ const Projects: React.FC = () => {
                                                       <td
                                                         key={j}
                                                         className={`px-4 py-3 text-xs text-center ${j === row.values.length - 1
-                                                            ? 'text-cyan-400 font-semibold'
-                                                            : 'text-white/50'
+                                                          ? 'text-cyan-400 font-semibold'
+                                                          : 'text-white/50'
                                                           }`}
                                                       >
                                                         {val}
