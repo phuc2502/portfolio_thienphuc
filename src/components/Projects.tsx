@@ -107,7 +107,7 @@ interface ProjectDetail {
   projectLinks?: {
     label: string;
     url: string;
-    icon: 'github' | 'deploy' | 'figma';
+    icon: 'github' | 'deploy' | 'figma' | 'drive';
   }[];
 }
 
@@ -128,19 +128,19 @@ const Projects: React.FC = () => {
       year: "2026",
       role: "Lead System Analyst",
       brief: "A core digital wallet platform designed to manage the full lifecycle of deposit and withdrawal transactions, ensuring real-time balance control, secure user authentication, and seamless bank integration within a scalable single-wallet architecture.",
-      strategy: "Conducted an end-to-end audit of the transaction lifecycle. Streamlined payment gateway integrations and implemented asynchronous processing for improved scalability.",
+      strategy: "Conducted end-to-end analysis of the transaction lifecycle to understand system flow and identify potential bottlenecks. Suggested improvements to transaction logging flow to enhance processing efficiency. Defined MVP feature scope for the initial version of UniWallet.",
       technical: "Designed robust API architectures for balance synchronization and transaction logging. Leveraged microservices to isolate core banking logic from the wallet front-end.",
       methodology: [
-        "Business Process Mapping",
-        "UML Sequence Modeling",
-        "Sequence Diagrams",
-        "Stakeholder Alignment Workshops"
+        "Applied structured Business Analysis framework to simulate enterprise-level fintech delivery.",
+        "Performed Business Process Mapping (AS-IS / TO-BE) to identify transaction bottlenecks.",
+        "Utilized UML modeling (Sequence, Activity, ERD) to define system interaction across wallet components.",
+        "Applied user story mapping to align MVP scope with business objectives."
       ],
       ba_focus: [
-        "Requirement Engineering",
-        "Process Flow Optimization",
-        "User Story Mapping",
-        "Risk Mitigation Strategies"
+        "Requirement Engineering with full traceability from BRD → SRS → User Stories → Test Cases.",
+        "Process flow optimization for transaction lifecycle and API orchestration.",
+        "User Story Mapping aligned with MVP prioritization strategy.",
+        "Risk identification & mitigation in concurrent transaction handling and external API integration."
       ],
       tech: ["Fintech APIs", "System Architecture", "Security Protocols", "Node.js"],
       outcomes: [
@@ -151,7 +151,8 @@ const Projects: React.FC = () => {
       projectLinks: [
         { label: "GitHub", url: "https://github.com/phuc2502/uniwallet_mvp", icon: "github" },
         { label: "Deploy MVP", url: "https://demouniwallet.vercel.app/#/login", icon: "deploy" },
-        { label: "Figma MockUp", url: "https://www.figma.com/design/dVAzddJDxaUcpam5EJGPQa/UNI-WALLET?node-id=0-1&t=dj5WaFlzGTtmYXmk-1", icon: "figma" }
+        { label: "Figma MockUp", url: "https://www.figma.com/design/dVAzddJDxaUcpam5EJGPQa/UNI-WALLET?node-id=0-1&t=dj5WaFlzGTtmYXmk-1", icon: "figma" },
+        { label: "Documents", url: "https://drive.google.com/drive/u/0/folders/1a3eyQqkbnMpPjHbci3zTiLUVXOn5vQV6", icon: "drive" }
       ],
       accordionSections: [
         {
@@ -699,6 +700,9 @@ const Projects: React.FC = () => {
                             )}
                             {link.icon === 'figma' && (
                               <svg className="w-5 h-5 text-white/60 group-hover:text-purple-400 transition-colors" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zm0 9.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 01-7 0zM5 12a3.5 3.5 0 013.5-3.5H12v7H8.5A3.5 3.5 0 015 12z" /></svg>
+                            )}
+                            {link.icon === 'drive' && (
+                              <svg className="w-5 h-5 text-white/60 group-hover:text-yellow-400 transition-colors" viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 5.97h6.56l-3.43-5.97L7.71 3.5zm1.14 0l6.56 11.5H22l-6.56-11.5H8.85zm6.28 12.5H8.57l-3.43 5.97h13.13L21.7 16h-6.57z" /></svg>
                             )}
                             <span className="mono text-xs uppercase tracking-[0.15em] text-white/60 group-hover:text-white transition-colors">{link.label}</span>
                             <svg className="w-3.5 h-3.5 text-white/30 group-hover:text-white/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
