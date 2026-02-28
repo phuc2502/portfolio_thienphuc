@@ -129,7 +129,7 @@ const Projects: React.FC = () => {
       role: "Lead System Analyst",
       brief: "A core digital wallet platform designed to manage the full lifecycle of deposit and withdrawal transactions, ensuring real-time balance control, secure user authentication, and seamless bank integration within a scalable single-wallet architecture.",
       strategy: "Conducted end-to-end analysis of the transaction lifecycle to understand system flow and identify potential bottlenecks. Suggested improvements to transaction logging flow to enhance processing efficiency. Defined MVP feature scope for the initial version of UniWallet.",
-      technical: "Designed robust API architectures for balance synchronization and transaction logging. Leveraged microservices to isolate core banking logic from the wallet front-end.",
+      technical: "Analyzed API interaction flows between Mobile App, Backend, and Bank Gateway to understand transaction processing logic. Modeled transaction flow using sequence diagrams to illustrate balance updates and logging steps. Identified potential edge cases in deposit/withdraw scenarios and documented expected system behavior. Documented error-handling scenarios for third-party payment gateway responses.",
       methodology: [
         "Applied structured Business Analysis framework to simulate enterprise-level fintech delivery.",
         "Performed Business Process Mapping (AS-IS / TO-BE) to identify transaction bottlenecks.",
@@ -155,6 +155,37 @@ const Projects: React.FC = () => {
         { label: "Documents", url: "https://drive.google.com/drive/u/0/folders/1a3eyQqkbnMpPjHbci3zTiLUVXOn5vQV6", icon: "drive" }
       ],
       accordionSections: [
+        {
+          id: "project-overview",
+          icon: "check-circle",
+          title: "PROJECT OVERVIEW",
+          content: {
+            description: "UniWallet is a family-focused digital wallet platform designed for the Vietnamese market, enabling parents to manage and monitor their children's financial activities through a structured parent–child account model. The project addresses a gap in Vietnam's e-wallet ecosystem, where no solution currently supports structured financial management for minors.",
+            businessImpact: [
+              { label: "Timeline:", description: "2026 — Specification and analysis phase." },
+              { label: "Team:", description: "Self-initiated BA case study." },
+              { label: "Artifacts:", description: "BRD, SRS, Use Case Specifications, BPMN, Sequence Diagrams, ERD, Test Cases." }
+            ],
+            subsections: [
+              {
+                title: "Project Background",
+                content: "Inspired by global fintech models such as Greenlight and GoHenry, this project was developed as a Business Analysis case study to simulate enterprise-level fintech requirement analysis — from problem discovery to MVP definition and system modeling."
+              },
+              {
+                title: "Core Objectives",
+                content: "Define functional and non-functional requirements for wallet transaction flows. Design a scalable single-wallet architecture supporting parent–child hierarchy. Establish structured BA documentation including BRD, SRS, UML diagrams, and test scenarios."
+              },
+              {
+                title: "Scope & MVP Boundaries",
+                content: "MVP includes: Parent & Child authentication (KYC simulation), Deposit & Withdrawal flows, Parent-controlled spending limits, Transaction logging, Bank gateway integration modeling. Phase 2 features (defined but not implemented): Goal-based saving, Financial education dashboard, Gamification elements."
+              },
+              {
+                title: "My Role",
+                content: "As the Business Analyst for this self-initiated project, I conducted end-to-end business analysis activities, including stakeholder analysis simulation, AS-IS/TO-BE process modeling, requirement documentation, UML modeling, and MVP backlog definition."
+              }
+            ]
+          }
+        },
         {
           id: "problem-opportunity",
           icon: "alert-triangle",
@@ -585,6 +616,31 @@ const Projects: React.FC = () => {
 
                 <p className="mono text-[9px] text-white/20 uppercase tracking-[0.4em] mb-6 group-hover:text-white/40 group-hover:tracking-[0.5em] transition-all duration-500">{project.cat} // {project.year}</p>
 
+                {/* STACK TAGS */}
+                {project.tech && project.tech.length > 0 && (
+                  <motion.div
+                    className={`flex flex-wrap gap-2 mb-8 ${idx % 2 !== 0 ? 'justify-end' : ''}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.35 }}
+                    viewport={{ once: true }}
+                  >
+                    {project.tech.map((t, ti) => (
+                      <motion.span
+                        key={ti}
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: 0.3 + ti * 0.06 }}
+                        viewport={{ once: true }}
+                        className="group/tag flex items-center gap-1.5 mono text-[9px] tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border border-white/[0.08] text-white/25 hover:text-white/70 hover:border-white/20 transition-all duration-300 cursor-default"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-white/20 group-hover/tag:bg-white/60 transition-colors duration-300" />
+                        {t}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                )}
+
                 <div className={`flex ${idx % 2 !== 0 ? 'justify-end' : ''}`}>
                   <motion.button
                     className="mono text-[8px] tracking-[0.3em] border border-white/10 px-6 py-3 rounded-full uppercase opacity-0 group-hover:opacity-80 transition-all duration-500 hover:bg-white hover:text-black hover:opacity-100 backdrop-blur-sm"
@@ -709,6 +765,94 @@ const Projects: React.FC = () => {
                           </a>
                         ))}
                       </div>
+                    </section>
+                  )}
+
+                  {/* STACK SECTION */}
+                  {selectedProject.tech && selectedProject.tech.length > 0 && (
+                    <section className="pt-10 border-t border-white/5">
+                      {/* Section header */}
+                      <div className="flex items-center justify-between mb-10">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-[1px] bg-white/20" />
+                          <p className="mono text-[10px] opacity-40 tracking-[0.6em] uppercase">Tools & Stack</p>
+                        </div>
+                        <span className="mono text-[9px] tracking-[0.3em] opacity-20 uppercase">
+                          {selectedProject.tech.length} Technologies
+                        </span>
+                      </div>
+
+                      {/* Big STACK label */}
+                      <div className="relative overflow-hidden mb-12">
+                        <motion.p
+                          initial={{ x: -60, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="mono text-[clamp(56px,10vw,120px)] font-black tracking-tighter uppercase leading-none text-white/[0.04] select-none pointer-events-none"
+                        >
+                          STACK
+                        </motion.p>
+                        {/* Glitch overlay */}
+                        <motion.p
+                          initial={{ x: -60, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute inset-0 mono text-[clamp(56px,10vw,120px)] font-black tracking-tighter uppercase leading-none text-white/[0.06] select-none pointer-events-none"
+                          style={{ clipPath: 'inset(45% 0 30% 0)', transform: 'translateX(3px)' }}
+                        >
+                          STACK
+                        </motion.p>
+                      </div>
+
+                      {/* Tech tags grid */}
+                      <div className="flex flex-wrap gap-3">
+                        {selectedProject.tech.map((t, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{
+                              delay: 0.3 + i * 0.07,
+                              duration: 0.5,
+                              ease: [0.16, 1, 0.3, 1]
+                            }}
+                            className="group relative overflow-hidden"
+                          >
+                            <div className="relative flex items-center gap-3 px-5 py-3 rounded-lg border border-white/10 bg-white/[0.03] hover:border-white/30 hover:bg-white/[0.07] transition-all duration-400 cursor-default">
+                              {/* Scanning line animation on hover */}
+                              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span
+                                  className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                                  style={{
+                                    animation: 'scan 1.5s ease-in-out infinite',
+                                  }}
+                                />
+                              </span>
+
+                              {/* Dot indicator */}
+                              <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white group-hover:shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300 flex-shrink-0" />
+
+                              {/* Tech name */}
+                              <span className="mono text-[11px] tracking-[0.2em] uppercase text-white/50 group-hover:text-white transition-colors duration-300 whitespace-nowrap font-medium">
+                                {t}
+                              </span>
+
+                              {/* Index number */}
+                              <span className="mono text-[9px] text-white/15 group-hover:text-white/40 transition-colors duration-300">
+                                /{String(i + 1).padStart(2, '0')}
+                              </span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      {/* Bottom decoration line */}
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="mt-12 h-[1px] bg-gradient-to-r from-white/20 via-white/5 to-transparent origin-left"
+                      />
                     </section>
                   )}
 
@@ -1308,12 +1452,12 @@ const Projects: React.FC = () => {
                   {/* STRATEGY & TECHNICAL */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     <section className="space-y-8">
-                      <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase border-b border-white/5 pb-4">Strategy & Vision</p>
-                      <p className="text-base md:text-xl text-white/80 leading-relaxed font-light">{selectedProject.strategy}</p>
+                      <p className="mono text-[10px] opacity-40 tracking-[0.5em] uppercase border-b border-white/10 pb-4">Strategy & Vision</p>
+                      <p className="text-base md:text-xl text-white leading-relaxed font-normal">{selectedProject.strategy}</p>
                     </section>
                     <section className="space-y-8">
-                      <p className="mono text-[10px] opacity-20 tracking-[0.5em] uppercase border-b border-white/5 pb-4">Technical Execution</p>
-                      <p className="text-base md:text-xl text-white/80 leading-relaxed font-light">{selectedProject.technical}</p>
+                      <p className="mono text-[10px] opacity-40 tracking-[0.5em] uppercase border-b border-white/10 pb-4">Technical Execution</p>
+                      <p className="text-base md:text-xl text-white leading-relaxed font-normal">{selectedProject.technical}</p>
                     </section>
                   </div>
                 </div>

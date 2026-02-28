@@ -378,7 +378,7 @@ const Contact: React.FC = () => {
             <h2 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8] opacity-0" style={{ clipPath: 'inset(100% 0% 0% 0%)' }}>
               Contact <br /> Form
             </h2>
-            <p ref={descRef} className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-sm opacity-0">
+            <p ref={descRef} className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-sm opacity-0">
               Please contact me directly at{' '}
               <span className="inline-flex items-center gap-2">
                 <a
@@ -443,7 +443,7 @@ const Contact: React.FC = () => {
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-10 pointer-events-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-3 form-element opacity-0">
-                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Full name</label>
+                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Full name</label>
                 <input
                   type="text"
                   required
@@ -453,7 +453,7 @@ const Contact: React.FC = () => {
                 />
               </div>
               <div className="space-y-3 form-element opacity-0">
-                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Email Address</label>
+                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Email Address</label>
                 <input
                   type="email"
                   required
@@ -465,7 +465,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-3 form-element opacity-0">
-              <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-30 font-bold">Your Message</label>
+              <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Your Message</label>
               <textarea
                 required
                 rows={5}
@@ -475,7 +475,7 @@ const Contact: React.FC = () => {
               />
             </div>
 
-            <p className="text-sm opacity-60 font-medium tracking-tight form-element opacity-0">
+            <p className="text-sm opacity-80 font-medium tracking-tight form-element opacity-0">
               I'll never share your data with anyone else. Pinky promise!
             </p>
 
