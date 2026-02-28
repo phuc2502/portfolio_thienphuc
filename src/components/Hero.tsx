@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
       {/* Main Title Section */}
       <div className="relative z-10 w-full flex flex-col items-center mt-[35vh] md:mt-[40vh]">
         <p className="mono text-[8px] md:text-[11px] tracking-[0.7em] mb-6 opacity-40 uppercase font-black text-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          Business Analyst / MIS Specialist
+          Business Analyst / Management Information Systems
         </p>
 
         <div className="w-full overflow-hidden flex justify-center px-4">
@@ -91,6 +91,11 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
           style={{ animationDelay: '0.6s' }}
         >
           <div className="relative w-16 h-16 md:w-18 md:h-18 flex items-center justify-center">
+            {/* Sound wave ripple rings */}
+            <div className="absolute rounded-full border border-white/20" style={{ inset: '-12px', animation: 'soundwave 2.4s ease-out infinite' }} />
+            <div className="absolute rounded-full border border-white/14" style={{ inset: '-12px', animation: 'soundwave 2.4s ease-out infinite 0.8s' }} />
+            <div className="absolute rounded-full border border-white/8" style={{ inset: '-12px', animation: 'soundwave 2.4s ease-out infinite 1.6s' }} />
+
             {/* Outer glow */}
             <div className="absolute inset-[-8px] bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
@@ -139,12 +144,6 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 animate-bounce" style={{ animationDuration: '2s' }}>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent" />
-        <span className="mono text-[7px] tracking-[0.4em] opacity-20 uppercase">Scroll</span>
-      </div>
-
       {/* Fullscreen Video Player */}
       {isVideoOpen && (
         <HeroVideoPlayer
@@ -155,6 +154,10 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
 
       {/* CSS Animations */}
       <style>{`
+        @keyframes soundwave {
+          0% { transform: scale(1); opacity: 0.5; }
+          100% { transform: scale(2.6); opacity: 0; }
+        }
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
