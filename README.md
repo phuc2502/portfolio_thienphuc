@@ -1,450 +1,426 @@
-# 🎨 Portfolio OS — Thiện Phúc
+# THIEN PHUC® — Portfolio
 
 <div align="center">
 
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![MCP](https://img.shields.io/badge/MCP-Enabled-orange?style=for-the-badge&logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-000?style=for-the-badge&logo=vercel&logoColor=white)](https://thienphuc2025.vercel.app/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-**Website portfolio cá nhân hiệu suất cao, tích hợp AI qua Model Context Protocol (MCP).**
+A high-performance, animation-driven personal portfolio built with **React**, **TypeScript**, and **Vite**.  
+Designed with a premium dark aesthetic and cinematic motion system.
 
-[🌐 Xem Demo](https://thienphuc2025.vercel.app/) • [📖 Tài liệu MCP](./docs/mcp/) • [🐛 Báo lỗi](../../issues) • [💡 Góp ý tính năng](../../issues)
+[**🌐 Live Demo**](https://thienphuc2025.vercel.app/) · [**🐛 Report Bug**](../../issues) · [**💡 Request Feature**](../../issues)
 
 </div>
 
 ---
 
-## 📖 Giới thiệu
+## Table of Contents
 
-**Portfolio OS** không chỉ là một website cá nhân thông thường — đây là một **hệ sinh thái nội dung động** được xây dựng theo triết lý **"Design-First"** (thiết kế là ưu tiên hàng đầu).
-
-Dự án kết hợp giữa giao diện frontend tối giản, sang trọng với một **lớp quản lý nội dung bằng AI** thông qua Model Context Protocol (MCP). Bạn có thể quản lý dự án, kỹ năng và các mốc sự nghiệp trực tiếp thông qua trợ lý AI Claude — không cần chỉnh sửa file JSON thủ công.
-
-### 🏛️ Triết lý thiết kế
-
-| Nguyên tắc | Mô tả |
-|:---:|---|
-| 🎭 **Trải nghiệm nhập vai** | Cuộn mượt mà, hiệu ứng chuyển động tinh tế tạo cảm giác giao diện "sống động" |
-| 🤖 **AI-Native** | Nội dung không tĩnh, mà được quản lý bởi AI qua giao thức chuẩn hóa |
-| ⚡ **Developer-Centric** | Codebase sạch, type-safe, dễ mở rộng và tối ưu hiệu suất |
-
----
-
-## ✨ Tính năng nổi bật
-
-### 🎨 Giao diện Frontend
-
-- **Thiết kế premium** — Phong cách dark mode tinh tế với kiểu chữ đậm (bold typography) và hiệu ứng glassmorphism
-- **Hệ thống chuyển động** — Cuộn mượt mà (Lenis), parallax và animation phối hợp (GSAP + Framer Motion)
-- **Con trỏ tùy chỉnh** — Custom cursor phản ứng theo ngữ cảnh, tăng cường tương tác
-- **Responsive hoàn hảo** — Hiển thị đẹp từ màn hình 4K đến thiết bị di động
-- **Video Player tích hợp** — Phát video giới thiệu trong section Hero
-- **Form liên hệ EmailJS** — Hệ thống gửi email tự động gồm auto-reply cho người gửi và thông báo cho chủ sở hữu
-
-### 🤖 Quản lý bằng AI (MCP Server)
-
-- **Tích hợp MCP** — Hỗ trợ giao thức Model Context Protocol chuẩn
-- **Cập nhật bằng ngôn ngữ tự nhiên** — Ví dụ: *"Thêm dự án mới về Fintech"* → AI xử lý ngay lập tức
-- **Dual-Mode** — Chạy cục bộ qua `stdio` (Claude Desktop) hoặc API HTTP từ xa
-- **Xác thực dữ liệu** — Tính toàn vẹn dữ liệu được đảm bảo bởi Zod validation
-- **Xuất JSON** — Sao lưu và di chuyển dữ liệu dễ dàng giữa các nền tảng
+- [Introduction](#introduction)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Running Locally](#running-locally)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🛠️ Công nghệ sử dụng
+## Introduction
 
-### Frontend
-| Công nghệ | Phiên bản | Mục đích |
-|---|---|---|
-| [React](https://reactjs.org/) | 18.2.0 | Thư viện UI chính |
-| [TypeScript](https://www.typescriptlang.org/) | 5.8.2 | Kiểm tra kiểu tĩnh |
-| [Vite](https://vitejs.dev/) | 6.2.0 | Build tool & Dev server |
-| [GSAP](https://greensock.com/gsap/) | 3.14.2 | Animation nâng cao, ScrollTrigger |
-| [Framer Motion](https://www.framer.com/motion/) | 11.11.11 | Animation khai báo cho React |
-| [Lenis](https://github.com/darkroomengineering/lenis) | 1.0.42 | Smooth scrolling |
-| [EmailJS](https://www.emailjs.com/) | 4.4.1 | Gửi email trực tiếp từ frontend |
-| [Lucide React](https://lucide.dev/) | 0.562.0 | Bộ icon SVG |
-| [TailwindCSS](https://tailwindcss.com/) | CDN | Utility-first CSS framework |
+**THIEN PHUC® Portfolio** is a personal portfolio website that goes beyond a static résumé page. It is engineered as a **cinematic, immersive experience** — combining bold typography, smooth scroll physics, coordinated GSAP & Framer Motion animations, and a glassmorphism-inspired dark UI.
 
-### MCP Server (Backend)
-| Công nghệ | Mục đích |
+The project is built with a **developer-first** philosophy: fully typed with TypeScript, modular component architecture, and optimized for both desktop and mobile performance.
+
+### Design Principles
+
+| Principle | Description |
 |---|---|
-| [Node.js](https://nodejs.org/) | Runtime |
-| [Express](https://expressjs.com/) | HTTP API |
-| [@modelcontextprotocol/sdk](https://modelcontextprotocol.io/) | Giao thức MCP |
-| [Zod](https://zod.dev/) | Xác thực schema |
-
-### Hạ tầng
-| Dịch vụ | Mục đích |
-|---|---|
-| [Vercel](https://vercel.com/) | Hosting & CI/CD |
-| [EmailJS](https://www.emailjs.com/) | Dịch vụ gửi email |
-| [Google Fonts](https://fonts.google.com/) | Typography (Montserrat, JetBrains Mono) |
+| **Immersive Experience** | Lenis smooth scroll, parallax layers, and scroll-triggered animations create a "living" interface |
+| **Premium Aesthetic** | Dark mode, noise texture overlay, bold Montserrat typography, and JetBrains Mono for accents |
+| **Performance First** | Vite-powered builds, lazy animations, and optimized asset loading for sub-second TTI |
+| **Fully Responsive** | Fluid layouts from 4K displays down to mobile devices with zero horizontal overflow |
 
 ---
 
-## 🏗️ Kiến trúc tổng quan
+## Key Features
 
-Dự án tuân theo kiến trúc **tách biệt (decoupled)**: Frontend tiêu thụ dữ liệu được quản lý bởi MCP Server độc lập.
+### 🎨 Frontend & UI
+
+- **Cinematic Motion System** — Coordinated animations powered by [GSAP](https://greensock.com/gsap/) ScrollTrigger and [Framer Motion](https://www.framer.com/motion/), delivering smooth scroll-triggered transitions across all sections
+- **Smooth Scroll Physics** — [Lenis](https://github.com/darkroomengineering/lenis) smooth scrolling with custom easing curves for a native-app feel
+- **Custom Interactive Cursor** — Context-aware custom cursor that reacts to hoverable elements
+- **Integrated Video Player** — Embedded video player in the Hero section with custom controls
+- **Glassmorphism Design** — Layered glass effects, noise texture overlay, and subtle opacity animations
+- **Responsive Navigation** — Fullscreen overlay menu with animated transitions and section-based navigation
+
+### 📧 Contact System
+
+- **Dual Email System** — Powered by [EmailJS](https://www.emailjs.com/):
+  - **Auto-Reply** — Sends a confirmation email to the visitor
+  - **Owner Notification** — Sends a detailed notification to the portfolio owner
+- **Client-Side Validation** — Form validation with real-time feedback
+- **No Backend Required** — Direct email delivery from the browser
+
+### 🧩 Developer Experience
+
+- **TypeScript** throughout — Strict typing for all components, props, and data structures
+- **Path Aliases** — Clean imports via `@/`, `@components/`, `@contexts/`, `@types/`
+- **Modular Architecture** — Each section is a self-contained component with its own animation logic
+- **Hot Module Replacement** — Instant feedback during development via Vite HMR
+
+---
+
+## Architecture
+
+The application follows a **component-driven architecture** where each page section is an isolated React component with its own animation lifecycle managed by GSAP ScrollTrigger.
 
 ```mermaid
-graph TB
-    subgraph "Lớp Tương Tác AI"
-        User((Người dùng)) -- "Ngôn ngữ tự nhiên" --> Claude[Claude AI / Desktop]
-        Claude -- "MCP Protocol" --> MCPServer[MCP Server Tùy Chỉnh]
+graph TD
+    subgraph "Application Shell"
+        App["App.tsx"]
+        Lenis["Lenis Smooth Scroll"]
+        GSAP["GSAP ScrollTrigger"]
     end
 
-    subgraph "Lớp Dữ Liệu"
-        MCPServer -- "Zod Validation" --> LocalDB[(portfolio-data.json)]
+    subgraph "Navigation"
+        Header["Header"]
+        Menu["Fullscreen Menu"]
     end
 
-    subgraph "Lớp Trình Bày"
-        LocalDB -- "JSON Source" --> ViteApp[Portfolio Frontend]
-        ViteApp -- "EmailJS API" --> Mail[Dịch vụ Email]
+    subgraph "Page Sections"
+        Hero["Hero + Video Player"]
+        About["About"]
+        Story["Story"]
+        Projects["Projects"]
+        Releases["Releases"]
+        Contact["Contact + EmailJS"]
     end
 
-    classDef primary fill:#646CFF,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef secondary fill:#61DAFB,stroke:#fff,stroke-width:2px,color:#000;
-    classDef highlight fill:#f9f,stroke:#333,stroke-width:2px;
+    subgraph "Shared"
+        Cursor["Custom Cursor"]
+        Context["React Contexts"]
+        Types["TypeScript Types"]
+    end
 
-    class MCPServer,ViteApp primary;
-    class LocalDB secondary;
-    class Claude highlight;
+    App --> Lenis
+    App --> GSAP
+    App --> Header
+    App --> Menu
+    App --> Hero
+    App --> About
+    App --> Story
+    App --> Projects
+    App --> Releases
+    App --> Contact
+    App --> Cursor
+
+    Contact -->|"EmailJS API"| Email["Email Service"]
+    Hero --> VideoPlayer["Video Player"]
+
+    classDef primary fill:#646CFF,stroke:#fff,stroke-width:2px,color:#fff
+    classDef accent fill:#61DAFB,stroke:#fff,stroke-width:1px,color:#000
+    classDef shell fill:#1a1a2e,stroke:#646CFF,stroke-width:2px,color:#fff
+
+    class App,Lenis,GSAP shell
+    class Hero,About,Story,Projects,Releases,Contact primary
+    class Header,Menu,Cursor,Email accent
 ```
 
-### Luồng hoạt động
+### Scroll & Animation Flow
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌────────────────────┐
-│  Người dùng  │────▶│  Claude AI   │────▶│   MCP Server       │
-│  (Chat AI)   │     │  (Xử lý NLP) │     │ (CRUD dữ liệu)    │
-└─────────────┘     └──────────────┘     └────────┬───────────┘
-                                                   │
-                                                   ▼
-┌─────────────┐     ┌──────────────┐     ┌────────────────────┐
-│  Trình duyệt │◀───│  Vite Build  │◀───│ portfolio-data.json │
-│  (UI hiển thị)│    │  (Đóng gói)   │     │ (Nguồn dữ liệu)   │
-└─────────────┘     └──────────────┘     └────────────────────┘
+User Scrolls
+    │
+    ▼
+┌──────────────────┐
+│  Lenis (Physics)  │  ← Smooth scroll with custom easing
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│  GSAP ScrollTrigger │  ← Trigger animations based on scroll position
+└────────┬─────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+┌────────┐ ┌──────────────┐
+│  GSAP  │ │ Framer Motion │  ← Orchestrated animations per section
+└────────┘ └──────────────┘
 ```
 
 ---
 
-## 📁 Cấu trúc thư mục
+## Tech Stack
 
-```text
-portfolio_thienphuc/
-│
-├── 📄 index.html              # Điểm vào HTML chính
-├── 📄 vite.config.ts          # Cấu hình Vite (alias, port, plugin)
-├── 📄 tsconfig.json           # Cấu hình TypeScript
-├── 📄 package.json            # Dependencies frontend
-├── 📄 .env.local              # Biến môi trường (KHÔNG đẩy lên Git)
-├── 📄 .gitignore              # Danh sách file/thư mục bỏ qua
-├── 📄 LICENSE                 # Giấy phép MIT
-│
-├── 📂 src/                    # ========== SOURCE CODE CHÍNH ==========
-│   ├── 📄 index.tsx           # Entry point — render React App
-│   ├── 📄 App.tsx             # Layout chính: Header, Sections, Footer
-│   ├── 📄 vite-env.d.ts       # Khai báo kiểu cho biến môi trường Vite
-│   │
-│   ├── 📂 components/         # ---- Các thành phần UI ----
-│   │   ├── 📄 Header.tsx      # Thanh điều hướng trên cùng
-│   │   ├── 📄 Menu.tsx        # Menu toàn màn hình (fullscreen overlay)
-│   │   ├── 📄 Hero.tsx        # Section đầu tiên — ấn tượng mạnh
-│   │   ├── 📄 HeroVideoPlayer.tsx  # Video player nhúng trong Hero
-│   │   ├── 📄 VideoPlayer.tsx # Component video player tái sử dụng
-│   │   ├── 📄 About.tsx       # Giới thiệu bản thân
-│   │   ├── 📄 Story.tsx       # Câu chuyện / hành trình cá nhân
-│   │   ├── 📄 Projects.tsx    # Danh sách dự án nổi bật
-│   │   ├── 📄 Releases.tsx    # Các phiên bản / thành tựu
-│   │   ├── 📄 Contact.tsx     # Form liên hệ (EmailJS)
-│   │   ├── 📄 CustomCursor.tsx # Con trỏ chuột tùy chỉnh
-│   │   ├── 📄 ExampleMCPIntegration.tsx # Ví dụ tích hợp MCP
-│   │   └── 📂 img/           # Hình ảnh dùng trong component
-│   │
-│   ├── 📂 contexts/           # React Context (state toàn cục)
-│   └── 📂 types/              # TypeScript interfaces & types
-│
-├── 📂 mcp-server/             # ========== MCP SERVER ==========
-│   ├── 📄 package.json        # Dependencies server
-│   ├── 📄 tsconfig.json       # Cấu hình TypeScript cho server
-│   ├── 📄 metadata.json       # Metadata server (tên, phiên bản)
-│   ├── 📄 vercel.json         # Cấu hình deploy MCP lên Vercel
-│   ├── 📄 claude_desktop_config.json  # Cấu hình Claude Desktop
-│   ├── 📄 test-mcp.js         # Script kiểm thử MCP
-│   ├── 📂 src/
-│   │   ├── 📄 index.ts        # Entry point MCP (chế độ stdio)
-│   │   ├── 📄 api.ts          # Entry point HTTP API
-│   │   ├── 📄 types.ts        # Định nghĩa kiểu dữ liệu
-│   │   └── 📂 data/           # JSON storage — nguồn dữ liệu chính
-│   └── 📂 dist/               # Mã đã biên dịch (output build)
-│
-├── 📂 docs/                   # ========== TÀI LIỆU ==========
-│   ├── 📄 README.md           # Tổng quan tài liệu
-│   ├── 📂 mcp/               # Hướng dẫn chi tiết MCP Server
-│   └── 📂 contributing/       # Quy tắc đóng góp
-│
-├── 📂 scripts/                # ========== TIỆN ÍCH ==========
-│   ├── 📄 sync-portfolio-data.js    # Đồng bộ dữ liệu portfolio
-│   └── 📄 download-artifacts.ps1   # Tải artifacts (PowerShell)
-│
-├── 📂 public/                 # Tài nguyên tĩnh (ảnh, 3D models)
-│   └── 📂 artifacts/         # Nơi lưu trữ artifacts
-│
-└── 📂 dist/                   # Output build (Vite production)
-```
+### Core
 
----
+| Technology | Version | Purpose |
+|---|---|---|
+| [React](https://reactjs.org/) | `18.2.0` | Component-based UI library |
+| [TypeScript](https://www.typescriptlang.org/) | `5.8.2` | Static type checking |
+| [Vite](https://vitejs.dev/) | `6.2.0` | Build tool & development server |
 
-## 🚀 Hướng dẫn cài đặt
+### Animation & Interaction
 
-### Yêu cầu hệ thống
+| Technology | Version | Purpose |
+|---|---|---|
+| [GSAP](https://greensock.com/gsap/) | `3.14.2` | Advanced scroll-triggered animations |
+| [Framer Motion](https://www.framer.com/motion/) | `11.11.11` | Declarative React animations & transitions |
+| [Lenis](https://github.com/darkroomengineering/lenis) | `1.0.42` | Smooth scroll physics engine |
 
-| Yêu cầu | Phiên bản tối thiểu |
+### Utilities
+
+| Technology | Purpose |
 |---|---|
-| Node.js | v18.x trở lên |
-| npm | v9.x trở lên |
-| Claude Desktop | Tùy chọn (để quản lý nội dung bằng AI) |
+| [EmailJS](https://www.emailjs.com/) | Client-side email delivery |
+| [Lucide React](https://lucide.dev/) | SVG icon library |
+| [TailwindCSS (CDN)](https://tailwindcss.com/) | Utility-first CSS |
+| [Google Fonts](https://fonts.google.com/) | Montserrat + JetBrains Mono |
 
-### Bước 1: Clone dự án
+### Infrastructure
+
+| Service | Purpose |
+|---|---|
+| [Vercel](https://vercel.com/) | Hosting, CI/CD, Edge Network |
+| [GitHub](https://github.com/) | Source control & collaboration |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+| Requirement | Minimum Version |
+|---|---|
+| [Node.js](https://nodejs.org/) | `18.x` or later |
+| [npm](https://www.npmjs.com/) | `9.x` or later |
+| A modern browser | Chrome, Firefox, Safari, or Edge |
+
+### Installation
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/phuc2502/portfolio_thienphuc.git
 cd portfolio_thienphuc
-```
 
-### Bước 2: Cài đặt dependencies
-
-```bash
-# Cài đặt dependencies cho Frontend
+# 2. Install dependencies
 npm install
-
-# Cài đặt dependencies cho MCP Server
-cd mcp-server && npm install && cd ..
 ```
 
-### Bước 3: Cấu hình biến môi trường
+### Environment Variables
 
-Tạo file `.env.local` ở thư mục gốc (root) của dự án:
+Create a `.env.local` file in the project root:
 
 ```env
-# ===== Google AI =====
-VITE_GOOGLE_AI_KEY=your_google_ai_key_here
-
-# ===== EmailJS (Bắt buộc để gửi email từ form liên hệ) =====
+# ===== EmailJS Configuration (Required for Contact Form) =====
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
-# ===== EmailJS Owner Template (Tùy chọn) =====
+# ===== EmailJS Owner Notification (Optional) =====
 VITE_EMAILJS_OWNER_TEMPLATE_ID=your_owner_template_id
 ```
 
-> 📝 **Cách lấy thông tin EmailJS:**
-> 1. Đăng ký tại [https://www.emailjs.com/](https://www.emailjs.com/)
-> 2. Tạo **Email Service** → Lấy `Service ID`
-> 3. Tạo **Email Template** → Lấy `Template ID`
-> 4. Vào **Account** → **API Keys** → Lấy `Public Key`
+<details>
+<summary><strong>📝 How to get EmailJS credentials</strong></summary>
 
-### Bước 4: Chạy dự án
+1. Sign up at [emailjs.com](https://www.emailjs.com/)
+2. Create an **Email Service** → copy `Service ID`
+3. Create an **Email Template** → copy `Template ID`
+4. Go to **Account** → **API Keys** → copy `Public Key`
+
+**Template variables used:**
+
+| Variable | Description |
+|---|---|
+| `{{email}}` | Sender's email address |
+| `{{name}}` | Sender's name |
+| `{{from_name}}` | Sender's display name |
+| `{{message}}` | Message content |
+| `{{reply_to}}` | Reply-to address |
+
+</details>
+
+### Running Locally
 
 ```bash
-# Khởi chạy Development Server
+# Start the development server
 npm run dev
 ```
 
-Truy cập tại: **http://localhost:3000**
+The application will be available at **http://localhost:3000**.
 
----
+#### Available Scripts
 
-## 📧 Cấu hình EmailJS chi tiết
-
-### Cách EmailJS hoạt động trong dự án
-
-Hệ thống liên hệ sử dụng **2 template email**:
-
-| Template | Mục đích | Biến bắt buộc |
-|---|---|---|
-| **Auto-Reply** | Gửi email xác nhận cho người điền form | `{{email}}`, `{{name}}`, `{{message}}` |
-| **Owner Notification** | Thông báo cho chủ sở hữu portfolio | `{{email}}`, `{{from_name}}`, `{{message}}` |
-
-### Thiết lập Template trong EmailJS Dashboard
-
-**Template Auto-Reply:**
-- **To Email**: `{{email}}` (email của người gửi form)
-- **Reply To**: `{{reply_to}}` (email của bạn)
-- **Subject**: Tùy chỉnh, ví dụ: `Cảm ơn {{name}} đã liên hệ!`
-
-**Template Owner Notification:**
-- **To Email**: `{{email}}` (email của bạn)
-- **Reply To**: `{{reply_to}}` (email người điền form)
-- **Subject**: Tùy chỉnh, ví dụ: `Tin nhắn mới từ {{from_name}}`
-
----
-
-## ☁️ Deploy lên Vercel
-
-### Bước 1: Import dự án
-
-1. Truy cập [https://vercel.com/](https://vercel.com/) và đăng nhập
-2. Click **"Add New Project"** → Import repository từ GitHub
-3. Chọn repository `portfolio_thienphuc`
-
-### Bước 2: Cấu hình biến môi trường (⚠️ QUAN TRỌNG)
-
-> **Đây là bước hay bị bỏ sót!** File `.env.local` KHÔNG được đẩy lên Git (vì nằm trong `.gitignore`), nên Vercel không có các biến này.
-
-Vào **Settings → Environment Variables** và thêm:
-
-| Tên biến | Giá trị |
+| Command | Description |
 |---|---|
-| `VITE_GOOGLE_AI_KEY` | `your_google_ai_key` |
-| `VITE_EMAILJS_SERVICE_ID` | `your_service_id` |
-| `VITE_EMAILJS_TEMPLATE_ID` | `your_template_id` |
-| `VITE_EMAILJS_PUBLIC_KEY` | `your_public_key` |
-| `VITE_EMAILJS_OWNER_TEMPLATE_ID` | `your_owner_template_id` |
+| `npm run dev` | Start Vite dev server with HMR at `localhost:3000` |
+| `npm run build` | Create optimized production build in `dist/` |
+| `npm run preview` | Preview production build locally |
 
-> ✅ Chọn tất cả environments: **Production**, **Preview**, **Development**
+---
 
-### Bước 3: Deploy
+## Project Structure
 
-- Vercel sẽ tự động build và deploy khi bạn push code lên GitHub
-- Nếu thêm/sửa biến môi trường, cần **Redeploy** lại:
-  - Vào tab **Deployments** → Click **⋮** → **Redeploy**
+```text
+portfolio_thienphuc/
+├── index.html                  # HTML entry point (includes Tailwind CDN, fonts, global styles)
+├── vite.config.ts              # Vite configuration (aliases, port, plugins)
+├── tsconfig.json               # TypeScript compiler options
+├── package.json                # Project metadata & dependencies
+├── .env.local                  # Environment variables (git-ignored)
+├── .gitignore                  # Git ignore rules
+├── LICENSE                     # MIT License
+│
+├── src/                        # ─── Application Source ───
+│   ├── index.tsx               # React DOM entry point
+│   ├── App.tsx                 # Root component: layout, scroll engine, routing
+│   ├── vite-env.d.ts           # Vite environment type declarations
+│   │
+│   ├── components/             # ─── UI Components ───
+│   │   ├── Header.tsx          # Top navigation bar
+│   │   ├── Menu.tsx            # Fullscreen overlay menu with navigation
+│   │   ├── Hero.tsx            # Hero section with video integration
+│   │   ├── HeroVideoPlayer.tsx # Video player embedded in Hero
+│   │   ├── VideoPlayer.tsx     # Reusable video player component
+│   │   ├── About.tsx           # Personal introduction section
+│   │   ├── Story.tsx           # Career journey / personal story
+│   │   ├── Projects.tsx        # Featured projects showcase
+│   │   ├── Releases.tsx        # Achievements & milestones
+│   │   ├── Contact.tsx         # Contact form (EmailJS integration)
+│   │   ├── CustomCursor.tsx    # Interactive custom cursor
+│   │   └── img/                # Component-specific images
+│   │
+│   ├── contexts/               # React Context providers (global state)
+│   └── types/                  # Shared TypeScript interfaces & types
+│
+├── public/                     # Static assets served at root
+├── scripts/                    # Build & utility scripts
+├── docs/                       # Project documentation
+└── dist/                       # Production build output (git-ignored)
+```
 
-### Xử lý sự cố thường gặp khi deploy
+---
 
-| Vấn đề | Nguyên nhân | Cách sửa |
+## Deployment
+
+The project is configured for seamless deployment on **[Vercel](https://vercel.com/)**.
+
+### Deploy to Vercel
+
+1. Import the repository at [vercel.com/new](https://vercel.com/new)
+2. Add environment variables under **Settings → Environment Variables**:
+
+   | Variable | Value |
+   |---|---|
+   | `VITE_EMAILJS_SERVICE_ID` | Your EmailJS Service ID |
+   | `VITE_EMAILJS_TEMPLATE_ID` | Your EmailJS Template ID |
+   | `VITE_EMAILJS_PUBLIC_KEY` | Your EmailJS Public Key |
+   | `VITE_EMAILJS_OWNER_TEMPLATE_ID` | Your owner notification Template ID |
+
+3. Deploy — Vercel auto-builds on every push to `main`
+
+> **⚠️ Important:** `.env.local` is git-ignored. You **must** configure environment variables in the Vercel dashboard for the contact form to work in production.
+
+### Troubleshooting
+
+| Issue | Cause | Solution |
 |---|---|---|
-| EmailJS không gửi email | Chưa thêm biến môi trường trên Vercel | Thêm `VITE_EMAILJS_*` trong Settings |
-| Form báo lỗi 400 | Template ID sai hoặc template chưa tạo | Kiểm tra lại Template ID trên EmailJS Dashboard |
-| Trang trắng sau deploy | Lỗi build hoặc thiếu dependencies | Kiểm tra tab **Deployments** → xem Build Logs |
-| Biến môi trường không nhận | Chưa redeploy sau khi thêm biến | Vào Deployments → Redeploy |
+| Contact form not sending emails | Missing env variables on Vercel | Add `VITE_EMAILJS_*` variables in Vercel Settings |
+| Form returns 400 error | Invalid Template ID | Verify Template ID matches EmailJS dashboard |
+| Blank page after deploy | Build error or missing dependency | Check Vercel build logs in Deployments tab |
+| Env variables not applied | Deployment not refreshed | Trigger manual redeploy after adding variables |
 
 ---
 
-## 🤖 Cấu hình MCP Server
+## Roadmap
 
-### Chế độ Local (Claude Desktop)
+- [x] Premium dark UI with GSAP + Framer Motion animation system
+- [x] Lenis smooth scroll integration
+- [x] EmailJS contact form with auto-reply & owner notification
+- [x] Custom interactive cursor
+- [x] Hero video player
+- [x] Vercel production deployment
+- [ ] Internationalization (i18n) — English / Vietnamese toggle
+- [ ] 3D scene integration with Three.js / React Three Fiber
+- [ ] Real-time analytics dashboard
+- [ ] Blog / writing section with MDX support
+- [ ] Performance monitoring with Web Vitals
 
-**Bước 1:** Build MCP Server
+---
+
+## Contributing
+
+Contributions are welcome! Follow these steps:
+
+### 1. Fork & Clone
 
 ```bash
-cd mcp-server
-npm run build
+git clone https://github.com/<your-username>/portfolio_thienphuc.git
+cd portfolio_thienphuc
+npm install
 ```
 
-**Bước 2:** Cấu hình Claude Desktop
-
-Thêm vào file `claude_desktop_config.json` (thường nằm ở `%APPDATA%\Claude\`):
-
-```json
-{
-  "mcpServers": {
-    "portfolio": {
-      "command": "node",
-      "args": ["D:\\portfolio_thienphuc\\mcp-server\\dist\\index.js"]
-    }
-  }
-}
-```
-
-**Bước 3:** Khởi động Claude Desktop — MCP Server sẽ tự kết nối
-
-### Chế độ HTTP API (Remote)
+### 2. Create a Feature Branch
 
 ```bash
-cd mcp-server
-npm run build
-node dist/api.js
+git checkout -b feature/your-feature-name
 ```
 
-API sẽ chạy và phục vụ tại endpoint HTTP cho các client từ xa.
+### 3. Make Changes & Commit
 
-### Các công cụ MCP hỗ trợ
-
-| Công cụ | Mô tả |
-|---|---|
-| `add_project` | Thêm dự án mới |
-| `update_project` | Cập nhật thông tin dự án |
-| `delete_project` | Xóa dự án |
-| `add_skill` | Thêm kỹ năng mới |
-| `export_json` | Xuất toàn bộ dữ liệu ra file JSON |
-
-> 📖 Xem chi tiết tại [docs/mcp/](./docs/mcp/)
-
----
-
-## 🏃 Các lệnh thường dùng
+Follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages:
 
 ```bash
-# ========== FRONTEND ==========
-npm run dev           # Chạy dev server tại http://localhost:3000
-npm run build         # Build production
-npm run preview       # Xem trước bản production build
-
-# ========== MCP SERVER ==========
-cd mcp-server
-npm run dev           # Chạy dev mode (hot-reload với tsx)
-npm run build         # Biên dịch TypeScript → JavaScript
-npm start             # Khởi chạy server (stdio mode)
-npm run inspector     # Mở MCP Inspector để debug
+git commit -m "feat: add dark mode toggle"
+git commit -m "fix: resolve scroll offset on mobile"
+git commit -m "docs: update environment setup guide"
 ```
 
----
+### 4. Push & Open a Pull Request
 
-## 🗺️ Lộ trình phát triển
+```bash
+git push origin feature/your-feature-name
+```
 
-- [x] **Giai đoạn 1** — Giao diện premium với GSAP animations
-- [x] **Giai đoạn 2** — MCP Server quản lý nội dung bằng AI
-- [x] **Giai đoạn 3** — Tích hợp EmailJS (auto-reply + owner notification)
-- [x] **Giai đoạn 4** — Deploy production trên Vercel
-- [ ] **Giai đoạn 5** — Hỗ trợ đa ngôn ngữ (i18n) qua MCP tools
-- [ ] **Giai đoạn 6** — Tích hợp cảnh 3D với Three.js / React Three Fiber
-- [ ] **Giai đoạn 7** — Dashboard phân tích lượt xem theo thời gian thực
+Then open a Pull Request on GitHub with a clear description of your changes.
 
----
+### Code Guidelines
 
-## 🤝 Đóng góp
-
-Mọi đóng góp đều được hoan nghênh! Hãy làm theo các bước sau:
-
-1. **Fork** repository này
-2. **Tạo** nhánh tính năng mới:
-   ```bash
-   git checkout -b feature/TinhNangMoi
-   ```
-3. **Commit** thay đổi theo [Conventional Commits](https://www.conventionalcommits.org/):
-   ```bash
-   git commit -m "feat: thêm tính năng XYZ"
-   ```
-4. **Push** lên nhánh:
-   ```bash
-   git push origin feature/TinhNangMoi
-   ```
-5. **Mở** Pull Request
-
-> ⚠️ **Lưu ý:** Đảm bảo code pass `npm run build` và không có lỗi TypeScript trước khi gửi PR.
+- Ensure `npm run build` passes with **zero errors**
+- Follow existing code style and naming conventions
+- Keep components focused and self-contained
+- Add TypeScript types for all new props and data structures
 
 ---
 
-## 📄 Giấy phép
+## License
 
-Dự án được phân phối theo giấy phép **MIT**. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+This project is distributed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+```
+MIT License — Copyright (c) 2024 Thien Phuc
+```
 
 ---
 
 <div align="center">
 
-### 🚀 Được xây dựng bởi [Thiện Phúc](https://github.com/phuc2502)
+**Built by [Thien Phuc](https://github.com/phuc2502)** · Hanoi, Vietnam
 
-*Nâng tầm thương hiệu cá nhân qua công nghệ AI.*
+⭐ If you found this project useful, consider giving it a star on GitHub!
 
-**⭐ Nếu bạn thấy dự án hữu ích, hãy cho một ngôi sao trên GitHub!**
-
-[↑ Về đầu trang](#-portfolio-os--thiện-phúc)
+[↑ Back to top](#thien-phuc--portfolio)
 
 </div>
