@@ -5,6 +5,14 @@ import imgAsIs from './img/AS_IS_RUT.png';
 import imgUC from './img/UC_RUT.png';
 import imgLifecycle from './img/TRANSACTION_LIFECYCLE.png';
 import imgERD from './img/ERD.png';
+import imgFrInscope from './img/FR_INSCOPE.png';
+import imgFrOutscope from './img/FR_OUTSCOPE.png';
+import imgFR from './img/FR.png';
+import imgNFR from './img/NFR.png';
+import imgUsAc1 from './img/US_AC1.png';
+import imgUsAc2 from './img/US_AC2.png';
+import imgUat1 from './img/UAT1.png';
+import imgUat2 from './img/UAT2.png';
 
 
 interface Outcome {
@@ -69,7 +77,7 @@ interface AccordionSection {
       title: string;
       icon: string;
       sections: {
-        type: 'box' | 'twoColumn' | 'list' | 'image';
+        type: 'box' | 'twoColumn' | 'list' | 'image' | 'inline-image';
         title?: string;
         bgColor?: string;
         items?: string[];
@@ -332,8 +340,38 @@ const Projects: React.FC = () => {
                   {
                     type: "list",
                     items: [
-                      "Conducted structured analysis of family-based wallet use cases and identified key functional requirements for MVP scope.",
-                      "Defined functional and non-functional requirements covering Authentication, KYC simulation, Deposit/Withdrawal, and Transaction Monitoring.",
+                      "Conducted structured analysis of family-based wallet use cases and identified key functional requirements for MVP scope."
+                    ]
+                  },
+                  {
+                    type: "inline-image",
+                    title: "Functional Requirements - In Scope",
+                    src: imgFrInscope
+                  },
+                  {
+                    type: "inline-image",
+                    title: "Functional Requirements - Out Scope",
+                    src: imgFrOutscope
+                  },
+                  {
+                    type: "list",
+                    items: [
+                      "Defined functional and non-functional requirements covering Authentication, KYC simulation, Deposit/Withdrawal, and Transaction Monitoring."
+                    ]
+                  },
+                  {
+                    type: "inline-image",
+                    title: "Functional Requirements (FR)",
+                    src: imgFR
+                  },
+                  {
+                    type: "inline-image",
+                    title: "Non-Functional Requirements (NFR)",
+                    src: imgNFR
+                  },
+                  {
+                    type: "list",
+                    items: [
                       "Documented business rules, validation logic, and transaction lifecycle states in BRD and SRS.",
                       "Established requirement traceability from business objectives to user stories and test scenarios."
                     ]
@@ -382,7 +420,22 @@ const Projects: React.FC = () => {
                   {
                     type: "list",
                     items: [
-                      "Translated requirements into 30+ structured user stories with clear acceptance criteria.",
+                      "Translated requirements into 30+ structured user stories with clear acceptance criteria."
+                    ]
+                  },
+                  {
+                    type: "inline-image",
+                    title: "User Stories & Acceptance Criteria (1)",
+                    src: imgUsAc1
+                  },
+                  {
+                    type: "inline-image",
+                    title: "User Stories & Acceptance Criteria (2)",
+                    src: imgUsAc2
+                  },
+                  {
+                    type: "list",
+                    items: [
                       "Organized product backlog aligned with MVP priority and sprint planning.",
                       "Produced BRD, SRS, and Process Specification documents.",
                       "Maintained traceability matrix linking business goals → requirements → test cases."
@@ -401,6 +454,16 @@ const Projects: React.FC = () => {
                       "Participated in UAT walkthroughs and tracked defect resolution.",
                       "Validated system behavior against documented business rules and edge cases."
                     ]
+                  },
+                  {
+                    type: "inline-image",
+                    title: "UAT Test Cases (1)",
+                    src: imgUat1
+                  },
+                  {
+                    type: "inline-image",
+                    title: "UAT Test Cases (2)",
+                    src: imgUat2
                   }
                 ]
               }
@@ -1169,6 +1232,63 @@ const Projects: React.FC = () => {
                                                 // Image type — handled in grouped grid below
                                                 if (sec.type === 'image') return null;
 
+                                                // Inline-image: collect consecutive inline-images and render as a row
+                                                if (sec.type === 'inline-image') {
+                                                  // Only render when we hit the first inline-image in a consecutive group
+                                                  const prevSec = activity.sections[secIdx - 1];
+                                                  if (prevSec && prevSec.type === 'inline-image') return null; // skip, already rendered by the first one
+
+                                                  // Collect consecutive inline-images starting from this index
+                                                  const inlineGroup: typeof activity.sections = [];
+                                                  for (let i = secIdx; i < activity.sections.length; i++) {
+                                                    if (activity.sections[i].type === 'inline-image') inlineGroup.push(activity.sections[i]);
+                                                    else break;
+                                                  }
+
+                                                  return (
+                                                    <div key={secIdx} className="mt-4 grid grid-cols-2 gap-4 w-full max-w-[1050px] mx-auto justify-items-center">
+                                                      {inlineGroup.map((img, imgIdx) => (
+                                                        <div key={imgIdx} className="space-y-1.5 w-full max-w-[500px]">
+                                                          {img.title && (
+                                                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/80 truncate text-center">{img.title}</p>
+                                                          )}
+                                                          <div
+                                                            className="relative p-2 rounded-xl group/img bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:border-blue-500/30 cursor-zoom-in aspect-video transition-all duration-500 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] mx-auto"
+                                                            onClick={() => setLightboxImg({ src: img.src!, title: img.title || 'Diagram' })}
+                                                          >
+                                                            {/* Animated Corner brackets */}
+                                                            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-tl-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-tr-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-bl-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-br-xl transition-all duration-500 pointer-events-none" />
+
+                                                            <div className="relative w-full h-full rounded-lg overflow-hidden bg-black/80">
+                                                              {/* Zoom hint badge */}
+                                                              <div className="absolute top-3 right-3 z-20 bg-blue-500/90 backdrop-blur-md rounded-md px-2.5 py-1.5 opacity-0 group-hover/img:opacity-100 transition-all duration-300 translate-y-1 group-hover/img:translate-y-0 pointer-events-none shadow-lg">
+                                                                <span className="text-[9px] text-white font-bold tracking-widest flex items-center gap-1.5">
+                                                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                                                  </svg>
+                                                                  EXPAND
+                                                                </span>
+                                                              </div>
+
+                                                              {/* Gradient overlay */}
+                                                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-[1] opacity-60 group-hover/img:opacity-20 transition-opacity duration-500 pointer-events-none" />
+
+                                                              <img
+                                                                src={img.src}
+                                                                alt={img.title || 'Diagram'}
+                                                                className="w-full h-full object-cover transition-all duration-700 ease-out grayscale opacity-40 group-hover/img:grayscale-0 group-hover/img:opacity-100 group-hover/img:scale-[1.05]"
+                                                              />
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      ))}
+                                                    </div>
+                                                  );
+                                                }
+
                                                 return null;
                                               })}
 
@@ -1177,38 +1297,66 @@ const Projects: React.FC = () => {
                                                 const imgSections = activity.sections.filter(s => s.type === 'image' && s.src);
                                                 if (imgSections.length === 0) return null;
                                                 return (
-                                                  <div className="mt-4 grid grid-cols-2 gap-3">
-                                                    {imgSections.map((img, imgIdx) => (
-                                                      <div key={imgIdx} className="space-y-1.5">
-                                                        {img.title && (
-                                                          <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 truncate">{img.title}</p>
-                                                        )}
-                                                        <div
-                                                          className="relative overflow-hidden rounded-lg border border-white/10 group/img bg-white/[0.02] cursor-zoom-in aspect-square"
-                                                          onClick={() => setLightboxImg({ src: img.src!, title: img.title || 'Diagram' })}
-                                                        >
-                                                          {/* Corner decorations */}
-                                                          <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/25 rounded-tl-lg z-10 pointer-events-none" />
-                                                          <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/25 rounded-tr-lg z-10 pointer-events-none" />
-                                                          <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/25 rounded-bl-lg z-10 pointer-events-none" />
-                                                          <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/25 rounded-br-lg z-10 pointer-events-none" />
-                                                          {/* Zoom hint */}
-                                                          <div className="absolute top-1.5 right-1.5 z-20 bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 pointer-events-none">
-                                                            <span className="text-[7px] text-white/70 font-mono tracking-wider">⊕ EXPAND</span>
+                                                  <div className="mt-4 flex flex-col items-center">
+                                                    <div className="grid grid-cols-2 gap-4 w-full max-w-[1050px] mx-auto mb-6 justify-items-center">
+                                                      {imgSections.map((img, imgIdx) => (
+                                                        <div key={imgIdx} className="space-y-1.5 w-full max-w-[500px]">
+                                                          {img.title && (
+                                                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/80 truncate text-center">{img.title}</p>
+                                                          )}
+                                                          <div
+                                                            className="relative p-2 rounded-xl group/img bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:border-blue-500/30 cursor-zoom-in aspect-video transition-all duration-500 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] mx-auto"
+                                                            onClick={() => setLightboxImg({ src: img.src!, title: img.title || 'Diagram' })}
+                                                          >
+                                                            {/* Animated Corner brackets */}
+                                                            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-tl-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-tr-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-bl-xl transition-all duration-500 pointer-events-none" />
+                                                            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/20 group-hover/img:border-blue-400 group-hover/img:w-8 group-hover/img:h-8 rounded-br-xl transition-all duration-500 pointer-events-none" />
+
+                                                            <div className="relative w-full h-full rounded-lg overflow-hidden bg-black/80">
+                                                              {/* Zoom hint badge */}
+                                                              <div className="absolute top-3 right-3 z-20 bg-blue-500/90 backdrop-blur-md rounded-md px-2.5 py-1.5 opacity-0 group-hover/img:opacity-100 transition-all duration-300 translate-y-1 group-hover/img:translate-y-0 pointer-events-none shadow-lg">
+                                                                <span className="text-[9px] text-white font-bold tracking-widest flex items-center gap-1.5">
+                                                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                                                  </svg>
+                                                                  EXPAND
+                                                                </span>
+                                                              </div>
+
+                                                              {/* Gradient overlay */}
+                                                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-[1] opacity-60 group-hover/img:opacity-20 transition-opacity duration-500 pointer-events-none" />
+
+                                                              <img
+                                                                src={img.src}
+                                                                alt={img.title || 'Diagram'}
+                                                                className="w-full h-full object-cover transition-all duration-700 ease-out grayscale opacity-40 group-hover/img:grayscale-0 group-hover/img:opacity-100 group-hover/img:scale-[1.05]"
+                                                              />
+                                                            </div>
                                                           </div>
-                                                          {/* Gradient overlay */}
-                                                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-[1] pointer-events-none" />
-                                                          <img
-                                                            src={img.src}
-                                                            alt={img.title || 'Diagram'}
-                                                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-[1.04]"
-                                                          />
                                                         </div>
-                                                      </div>
-                                                    ))}
+                                                      ))}
+                                                    </div>
                                                   </div>
                                                 );
                                               })()}
+
+                                              {/* Additional Link Box (UniWallet - BA Artifacts) — shown for all activities */}
+                                              <div className="mt-4 flex justify-center">
+                                                <a
+                                                  href="https://drive.google.com/drive/folders/1a3eyQqkbnMpPjHbci3zTiLUVXOn5vQV6?usp=sharing"
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="group/btn relative inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+                                                >
+                                                  <span className="relative z-10 text-sm font-bold text-white/90 group-hover/btn:text-blue-400 transition-colors">
+                                                    <span className="opacity-50 font-normal mr-1">UniWallet —</span>
+                                                    BA Artifacts ↗
+                                                  </span>
+                                                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+                                                </a>
+                                              </div>
                                             </div>
                                           ))}
                                         </div>
