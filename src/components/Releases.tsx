@@ -33,21 +33,21 @@ const Releases: React.FC = () => {
           title: "BUSINESS REQUIREMENTS & SYSTEM SPEC",
           start: "CORE",
           end: "DOC",
-          url: "https://www.iiba.org/business-analysis-certifications/"
+          url: "https://drive.google.com/drive/u/0/folders/1py2FN7I54CHlrFzd2C8HtvlauyCoYj9P"
         },
         {
           artist: "USE CASE",
           title: "USE CASES & USE CASE DIAGRAM",
           start: "SPEC",
           end: "UML",
-          url: "https://www.uml-diagrams.org/use-case-diagrams.html"
+          url: "https://drive.google.com/drive/u/0/folders/1pf7GTPAzt4p1uWtDPsf8svmoUzx2F48j"
         },
         {
           artist: "USER STORIES",
           title: "USER STORIES & ACCEPTANCE CRITERIA",
           start: "AGILE",
           end: "REQ",
-          url: "https://www.atlassian.com/agile/project-management/user-stories"
+          url: "https://drive.google.com/drive/u/0/folders/1G2pw3zCLhABBQV-XY0NB4_dYDg3nluNC"
         },
         {
           artist: "BPMN 2.0",
@@ -61,21 +61,21 @@ const Releases: React.FC = () => {
           title: "ACTIVITY, SEQUENCE, ERD, CLASS DIAGRAM",
           start: "MODEL",
           end: "VIS",
-          url: "https://www.uml.org/"
+          url: "https://drive.google.com/drive/u/0/folders/1a3eyQqkbnMpPjHbci3zTiLUVXOn5vQV6"
         },
         {
           artist: "UAT TESTING",
           title: "UAT TEST SCENARIOS & API TESTING",
           start: "TEST",
           end: "QA",
-          url: "https://www.guru99.com/user-acceptance-testing.html"
+          url: "https://drive.google.com/drive/u/0/folders/1pI3ULt3ZSQxaqnLUlRwe9TZjHKasw_aX"
         },
         {
           artist: "WIREFRAMING",
           title: "WIREFRAMING & MOCKUPS DESIGN",
           start: "UI",
           end: "UX",
-          url: "https://www.figma.com/"
+          url: "https://www.figma.com/design/dVAzddJDxaUcpam5EJGPQa/UNI-WALLET?node-id=0-1&p=f&t=tCiMN6EDvDDC9uyT-0"
         },
         {
           artist: "SDLC",
@@ -93,29 +93,20 @@ const Releases: React.FC = () => {
           artist: "PYTHON",
           title: "PYTHON PROGRAMMING (BASIC)",
           start: "CODE",
-          end: "DEV",
-          url: "https://www.python.org/"
+          end: "DEV"
         },
         {
           artist: "SQL",
           title: "DDL, DML, DQL QUERIES",
           start: "DATA",
-          end: "QUERY",
-          url: "https://www.w3schools.com/sql/"
+          end: "QUERY"
         },
         {
           artist: "POWER BI",
           title: "DASHBOARDS & DATA VISUALIZATION",
           start: "DASH",
           end: "INS",
-          url: "https://powerbi.microsoft.com/"
-        },
-        {
-          artist: "EXCEL",
-          title: "PIVOT TABLE & VLOOKUP",
-          start: "CALC",
-          end: "DATA",
-          url: "https://www.microsoft.com/en-us/microsoft-365/excel"
+          url: "https://drive.google.com/file/d/1Glz_GVLm4oTQkXTXViEQh1vv8pLxu-YE/view"
         },
       ]
     },
@@ -187,29 +178,25 @@ const Releases: React.FC = () => {
           artist: "STAKEHOLDER",
           title: "STAKEHOLDER COMMUNICATION",
           start: "MGMT",
-          end: "COLL",
-          url: "https://www.pmi.org/learning/library/stakeholder-management-6090"
+          end: "COLL"
         },
         {
           artist: "ELICITATION",
           title: "REQUIREMENT ELICITATION",
           start: "DISC",
-          end: "ANAL",
-          url: "https://www.iiba.org/"
+          end: "ANAL"
         },
         {
           artist: "ANALYTICAL",
           title: "ANALYTICAL THINKING & PROBLEM SOLVING",
           start: "MIND",
-          end: "SOLV",
-          url: "https://www.mindtools.com/athe1wg/analytical-thinking"
+          end: "SOLV"
         },
         {
           artist: "DOCUMENTATION",
           title: "REQUIREMENT DOCUMENTATION & TEAMWORK",
           start: "DOC",
-          end: "TEAM",
-          url: "https://www.iiba.org/business-analysis-certifications/"
+          end: "TEAM"
         },
       ]
     }
