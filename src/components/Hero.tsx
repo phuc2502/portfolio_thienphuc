@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProps> = ({ closeVideoTrigger }) => {
 
   // Use images from components/img/ folder
   const heroImageUrl = new URL('./img/avt1.png', import.meta.url).href;
-  const videoUrl = new URL('./img/video.mp4', import.meta.url).href;
+  const videoUrl = '/video.mp4'; // Served from public/ folder — safe for Vercel deployment
 
   return (
     <div className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
