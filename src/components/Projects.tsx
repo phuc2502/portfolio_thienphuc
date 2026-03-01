@@ -471,42 +471,32 @@ const Projects: React.FC = () => {
           }
         },
         {
-          id: "challenges",
-          icon: "wrench",
-          title: "CHALLENGES & SOLUTIONS",
-          content: {
-            challenges: [
-              {
-                title: "Race Condition Management",
-                icon: "alert-triangle",
-                borderColor: "blue",
-                problem: "Simultaneous balance updates led to 'dirty reads' and incorrect ledger entries.",
-                solution: [
-                  "Implemented optimistic locking mechanism at the database level.",
-                  "Introduced a Redis-based distributed lock for critical transaction paths."
-                ],
-                outcome: "Zero balance discrepancies reported across 1M+ monthly transactions."
-              }
-            ]
-          }
-        },
-        {
           id: "results",
           icon: "trending-up",
-          title: "RESULTS & IMPACT",
+          title: "PROJECT OUTCOMES & LEARNINGS",
           content: {
-            metricCards: [
+            impactSections: [
               {
-                label: "Transaction Growth",
-                value: "300%",
-                description: "System successfully handled 3x more concurrent users.",
-                color: "blue"
+                title: "📌 Project Outcomes",
+                icon: "check-circle",
+                bgColor: "green",
+                items: [
+                  "Completed a structured end-to-end BA artifact set, including BRD, SRS, BPMN diagrams, ERD, User Stories, and Test Scenarios.",
+                  "Defined a clear transaction lifecycle model for Core Wallet operations (deposit, withdrawal, transaction logging).",
+                  "Improved requirement clarity by documenting business rules, validation logic, and edge-case handling scenarios.",
+                  "Established traceability between business objectives, functional requirements, and test cases."
+                ]
               },
               {
-                label: "Support Tickets",
-                value: "-65%",
-                description: "Significant reduction in transaction-related complaints.",
-                color: "green"
+                title: "🔹 Key Learnings",
+                icon: "book-open",
+                bgColor: "yellow",
+                items: [
+                  "Developed a deeper understanding of fintech transaction flows and wallet system logic.",
+                  "Gained hands-on experience in translating business problems into structured requirements.",
+                  "Strengthened ability to think in terms of system states, validation rules, and edge cases.",
+                  "Improved documentation discipline and requirement traceability mindset."
+                ]
               }
             ]
           }
