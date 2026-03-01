@@ -1,0 +1,94 @@
+{
+    "header": {
+        "close": "CLOSE",
+        "moreInfo": "MORE INFORMATION"
+    },
+    "menu": {
+        "navTitle": "Navigation Menu",
+        "about": "ABOUT",
+        "story": "STORY",
+        "projects": "PROJECTS",
+        "stack": "STACK",
+        "contact": "CONTACT"
+    },
+    "hero": {
+        "projectEdition": "PROJECT EDITION",
+        "systemArchitect": "SYSTEM ARCHITECT ©2024",
+        "role": "Business Analyst / Management Information Systems",
+        "playVideo": "Play Video",
+        "status": "STATUS",
+        "seniorStudent": "SENIOR STUDENT"
+    },
+    "about": {
+        "capabilityProfile": "CAPABILITY PROFILE",
+        "bio": "Thien Phuc is a dedicated analyst at the Banking Academy of Vietnam. With a system analysis mindset and a passion for technology, Phuc focuses on optimizing business processes through data-driven insights and modern architectural solutions.",
+        "academicBackground": "Academic Background",
+        "major": "Management Information Systems (MIS)",
+        "university": "Banking Academy of Vietnam",
+        "gpa": "GPA: 3.3/4.0",
+        "badge": "BA VISION 2026"
+    },
+    "story": {
+        "backgroundText": "BRIDGE",
+        "title": "MY",
+        "titleLine2": "STORY",
+        "subtitle": "Exploring the gap between logic and human needs",
+        "paragraph1": "I perceive complex systems not merely as static lines of code, but as a continuous, vital dialogue between",
+        "people": "people",
+        "and": "and",
+        "solutions": "solutions",
+        "paragraph2": "With a foundation in the Banking sector, I have honed a meticulous approach to data analysis and a sharp eye for operational workflows. My mission is to decode intricate business challenges into",
+        "streamlined": "streamlined and high-impact",
+        "blueprints": "technological blueprints.",
+        "coreMission": "Core Mission",
+        "quote": "\"Translating organizational chaos into absolute clarity, and business hurdles into technical innovation.\"",
+        "reqStrategy": "Requirement Strategy",
+        "elicitation": "Elicitation Focused",
+        "devApproach": "Development Approach",
+        "userCentric": "User-Centric Architecture",
+        "badge": "BA VISION 2026"
+    },
+    "releases": {
+        "domainCategory": "Domain Category",
+        "specialization": "Specialization & Competencies",
+        "stageLink": "Stage // Link"
+    },
+    "contact": {
+        "title": "Contact",
+        "titleLine2": "Form",
+        "description": "Please contact me directly at",
+        "orDropInfo": "or drop your info here.",
+        "emailCopied": "✓ Email copied to clipboard!",
+        "fullName": "Full name",
+        "namePlaceholder": "Your Name",
+        "emailAddress": "Email Address",
+        "emailPlaceholder": "you@example.com",
+        "yourMessage": "Your Message",
+        "messagePlaceholder": "Tell me about your project,",
+        "privacyNote": "I'll never share your data with anyone else. Pinky promise!",
+        "sendMessage": "Send Message",
+        "sending": "Sending...",
+        "successTitle": "Message sent successfully!",
+        "successDesc": "I'll get back to you as soon as possible.",
+        "errorTitle": "Failed to send message",
+        "errorDesc": "Please try again or contact me directly via email.",
+        "copyEmail": "Copy email",
+        "copyToClipboard": "Copy email to clipboard"
+    },
+    "projects": {
+        "title": "PROJECTS",
+        "viewCase": "VIEW CASE",
+        "returnToGallery": "RETURN TO GALLERY",
+        "indexNo": "INDEX NO."
+    },
+    "footer": {
+        "copyright": "© 2024 THIEN PHUC® PORTFOLIO",
+        "builtFor": "BUILT FOR IMPACT",
+        "locations": "LOCATIONS",
+        "hanoiVietnam": "HANOI / VIETNAM"
+    },
+    "lang": {
+        "switchTo": "VI",
+        "current": "EN"
+    }
+}

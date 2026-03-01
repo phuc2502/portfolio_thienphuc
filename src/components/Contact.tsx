@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from '../contexts/LanguageContext';
 
 // EmailJS configuration - update these values with your own
 // Get from https://dashboard.emailjs.com/admin
@@ -32,6 +33,7 @@ const Contact: React.FC = () => {
   const [isSending, setIsSending] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const { t } = useTranslation();
 
   // Refs for animations
   const containerRef = useRef<HTMLDivElement>(null);
@@ -376,10 +378,10 @@ const Contact: React.FC = () => {
         <div className="lg:col-span-5 space-y-12 relative z-20">
           <div className="space-y-6">
             <h2 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8] opacity-0" style={{ clipPath: 'inset(100% 0% 0% 0%)' }}>
-              Contact <br /> Form
+              {t('contact.title')} <br /> {t('contact.titleLine2')}
             </h2>
             <p ref={descRef} className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-sm opacity-0">
-              Please contact me directly at{' '}
+              {t('contact.description')}{' '}
               <span className="inline-flex items-center gap-2">
                 <a
                   href={`mailto:${targetEmail}`}
@@ -420,18 +422,18 @@ const Contact: React.FC = () => {
                     }
                   }}
                   className="text-white/60 hover:text-white transition-colors cursor-pointer pointer-events-auto relative z-30"
-                  title="Copy email"
-                  aria-label="Copy email to clipboard"
+                  title={t('contact.copyEmail')}
+                  aria-label={t('contact.copyToClipboard')}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
                 </button>
               </span>
-              {' '}or drop your info here.
+              {' '}{t('contact.orDropInfo')}
               {emailCopied && (
                 <span className="block mt-2 text-green-400 text-sm font-medium animate-pulse">
-                  ✓ Email copied to clipboard!
+                  {t('contact.emailCopied')}
                 </span>
               )}
             </p>
@@ -443,21 +445,21 @@ const Contact: React.FC = () => {
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-10 pointer-events-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-3 form-element opacity-0">
-                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Full name</label>
+                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">{t('contact.fullName')}</label>
                 <input
                   type="text"
                   required
-                  placeholder="Your Name"
+                  placeholder={t('contact.namePlaceholder')}
                   className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm placeholder:text-white/20"
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
               <div className="space-y-3 form-element opacity-0">
-                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Email Address</label>
+                <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">{t('contact.emailAddress')}</label>
                 <input
                   type="email"
                   required
-                  placeholder="you@example.com"
+                  placeholder={t('contact.emailPlaceholder')}
                   className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm placeholder:text-white/20"
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -465,18 +467,18 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-3 form-element opacity-0">
-              <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">Your Message</label>
+              <label className="mono text-[9px] uppercase tracking-[0.4em] opacity-60 font-bold">{t('contact.yourMessage')}</label>
               <textarea
                 required
                 rows={5}
-                placeholder="Tell me about about your project,"
+                placeholder={t('contact.messagePlaceholder')}
                 className="w-full bg-white/[0.05] border border-white/10 p-5 rounded-md focus:outline-none focus:border-white/40 focus:bg-white/[0.08] transition-all duration-300 text-sm resize-none placeholder:text-white/20"
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
 
             <p className="text-sm opacity-80 font-medium tracking-tight form-element opacity-0">
-              I'll never share your data with anyone else. Pinky promise!
+              {t('contact.privacyNote')}
             </p>
 
             <motion.button
@@ -495,11 +497,11 @@ const Contact: React.FC = () => {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  <span className="relative z-10">Sending...</span>
+                  <span className="relative z-10">{t('contact.sending')}</span>
                 </>
               ) : (
                 <>
-                  <span className="relative z-10">Send Message</span>
+                  <span className="relative z-10">{t('contact.sendMessage')}</span>
                   <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
@@ -523,8 +525,8 @@ const Contact: React.FC = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-green-400 text-sm font-semibold">Message sent successfully!</p>
-                      <p className="text-green-300/60 text-xs mt-1">I'll get back to you as soon as possible.</p>
+                      <p className="text-green-400 text-sm font-semibold">{t('contact.successTitle')}</p>
+                      <p className="text-green-300/60 text-xs mt-1">{t('contact.successDesc')}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -545,8 +547,8 @@ const Contact: React.FC = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-red-400 text-sm font-semibold">Failed to send message</p>
-                      <p className="text-red-300/60 text-xs mt-1">{errorMessage || 'Please try again or contact me directly via email.'}</p>
+                      <p className="text-red-400 text-sm font-semibold">{t('contact.errorTitle')}</p>
+                      <p className="text-red-300/60 text-xs mt-1">{errorMessage || t('contact.errorDesc')}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -555,7 +557,7 @@ const Contact: React.FC = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

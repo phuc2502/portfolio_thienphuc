@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
+import { LanguageProvider, useTranslation } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Hero from './components/Hero';
@@ -14,7 +15,8 @@ import Releases from './components/Releases';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [closeVideoTrigger, setCloseVideoTrigger] = useState(0);
 
@@ -104,17 +106,25 @@ const App: React.FC = () => {
 
       <footer className="p-6 md:p-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-start gap-10 mono text-[10px] uppercase text-white/40 tracking-wider">
         <div className="space-y-2">
-          <p>© 2024 THIEN PHUC® PORTFOLIO</p>
-          <p>BUILT FOR IMPACT</p>
+          <p>{t('footer.copyright')}</p>
+          <p>{t('footer.builtFor')}</p>
         </div>
         <div className="flex gap-16">
           <div className="space-y-2">
-            <p className="text-white/20">LOCATIONS</p>
-            <p>HANOI / VIETNAM</p>
+            <p className="text-white/20">{t('footer.locations')}</p>
+            <p>{t('footer.hanoiVietnam')}</p>
           </div>
         </div>
       </footer>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 };
 

@@ -1,8 +1,10 @@
 
 import React from 'react';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const About: React.FC = () => {
-  const bio = "Thien Phuc is a dedicated analyst at the Banking Academy of Vietnam. With a system analysis mindset and a passion for technology, Phuc focuses on optimizing business processes through data-driven insights and modern architectural solutions.";
+  const { t } = useTranslation();
+  const bio = t('about.bio');
   const anh1Url = new URL('./img/anh1.jpg', import.meta.url).href;
 
   return (
@@ -13,7 +15,7 @@ const About: React.FC = () => {
         <div className="lg:col-span-7">
           <p className="mono text-[8px] mb-8 opacity-20 tracking-[0.5em] uppercase flex items-center gap-4 animate-about-fade-in" style={{ animationDelay: '0.1s' }}>
             <span className="w-6 h-[1px] bg-white/10"></span>
-            CAPABILITY PROFILE
+            {t('about.capabilityProfile')}
           </p>
 
           <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.4] tracking-tight text-white/90 mb-12">
@@ -37,13 +39,13 @@ const About: React.FC = () => {
 
           {/* Education Metadata Section */}
           <div className="border-l-2 border-white/20 pl-8 py-4 backdrop-blur-sm bg-white/[0.02] rounded-r-lg animate-about-slide-in" style={{ animationDelay: '1.2s' }}>
-            <p className="mono text-[8px] opacity-30 tracking-[0.4em] uppercase mb-3 italic">Academic Background</p>
+            <p className="mono text-[8px] opacity-30 tracking-[0.4em] uppercase mb-3 italic">{t('about.academicBackground')}</p>
             <div className="space-y-2">
               <p className="mono text-2xl md:text-3xl font-bold text-white tracking-wider uppercase italic mb-2">
-                Management Information Systems (MIS)
+                {t('about.major')}
               </p>
               <p className="mono text-lg md:text-xl text-white/90 tracking-widest uppercase font-medium">
-                Banking Academy of Vietnam // <span className="text-white font-bold border-b border-white/30 pb-0.5">GPA: 3.3/4.0</span>
+                {t('about.university')} // <span className="text-white font-bold border-b border-white/30 pb-0.5">{t('about.gpa')}</span>
               </p>
             </div>
           </div>
@@ -68,7 +70,7 @@ const About: React.FC = () => {
 
             {/* Floating badge — inside image frame, bottom-left */}
             <div className="absolute bottom-4 left-4 z-10 bg-white text-black p-6 hidden md:block rounded-lg shadow-2xl transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-default">
-              <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">BA VISION 2026</p>
+              <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">{t('about.badge')}</p>
             </div>
           </div>
         </div>

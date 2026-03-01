@@ -1,0 +1,94 @@
+{
+    "header": {
+        "close": "ĐÓNG",
+        "moreInfo": "THÊM THÔNG TIN"
+    },
+    "menu": {
+        "navTitle": "Menu Điều Hướng",
+        "about": "GIỚI THIỆU",
+        "story": "CÂU CHUYỆN",
+        "projects": "DỰ ÁN",
+        "stack": "KỸ NĂNG",
+        "contact": "LIÊN HỆ"
+    },
+    "hero": {
+        "projectEdition": "ẤN PHẨM DỰ ÁN",
+        "role": "Chuyên viên Phân tích Nghiệp vụ / Hệ thống Thông tin Quản lý",
+        "systemArchitect": "KIẾN TRÚC SƯ HỆ THỐNG ©2024",
+        "playVideo": "Xem Video",
+        "status": "TRẠNG THÁI",
+        "seniorStudent": "SINH VIÊN NĂM CUỐI"
+    },
+    "about": {
+        "capabilityProfile": "HỒ SƠ NĂNG LỰC",
+        "bio": "Thiên Phúc là một chuyên viên phân tích tận tâm tại Học viện Ngân hàng Việt Nam. Với tư duy phân tích hệ thống và niềm đam mê công nghệ, Phúc tập trung tối ưu hóa quy trình kinh doanh thông qua phân tích dữ liệu và các giải pháp kiến trúc hiện đại.",
+        "academicBackground": "Nền Tảng Học Vấn",
+        "major": "Hệ thống Thông tin Quản lý (MIS)",
+        "university": "Học viện Ngân hàng Việt Nam",
+        "gpa": "GPA: 3.3/4.0",
+        "badge": "TẦM NHÌN BA 2026"
+    },
+    "story": {
+        "backgroundText": "CẦU NỐI",
+        "title": "CÂU CHUYỆN",
+        "titleLine2": "CỦA TÔI",
+        "subtitle": "Khám phá khoảng cách giữa logic và nhu cầu con người",
+        "paragraph1": "Tôi nhìn nhận các hệ thống phức tạp không chỉ đơn thuần là những dòng code tĩnh, mà là một cuộc đối thoại sống động và liên tục giữa",
+        "people": "con người",
+        "and": "và",
+        "solutions": "giải pháp",
+        "paragraph2": "Với nền tảng trong lĩnh vực Ngân hàng, tôi đã rèn luyện cách tiếp cận tỉ mỉ trong phân tích dữ liệu và một cái nhìn sắc bén về quy trình vận hành. Sứ mệnh của tôi là giải mã các thách thức kinh doanh phức tạp thành",
+        "streamlined": "các bản thiết kế công nghệ",
+        "blueprints": "tinh gọn và có tác động cao.",
+        "coreMission": "Sứ Mệnh Cốt Lõi",
+        "quote": "\"Chuyển đổi sự hỗn loạn của tổ chức thành sự rõ ràng tuyệt đối, và các rào cản kinh doanh thành đổi mới công nghệ.\"",
+        "reqStrategy": "Chiến Lược Yêu Cầu",
+        "elicitation": "Tập Trung Khai Thác",
+        "devApproach": "Phương Pháp Phát Triển",
+        "userCentric": "Kiến Trúc Lấy Người Dùng Làm Trung Tâm",
+        "badge": "TẦM NHÌN BA 2026"
+    },
+    "releases": {
+        "domainCategory": "Danh Mục Lĩnh Vực",
+        "specialization": "Chuyên Môn & Năng Lực",
+        "stageLink": "Giai Đoạn // Liên Kết"
+    },
+    "contact": {
+        "title": "Biểu Mẫu",
+        "titleLine2": "Liên Hệ",
+        "description": "Vui lòng liên hệ trực tiếp với tôi tại",
+        "orDropInfo": "hoặc để lại thông tin tại đây.",
+        "emailCopied": "✓ Đã sao chép email vào clipboard!",
+        "fullName": "Họ và tên",
+        "namePlaceholder": "Tên của bạn",
+        "emailAddress": "Địa chỉ Email",
+        "emailPlaceholder": "ban@example.com",
+        "yourMessage": "Tin nhắn của bạn",
+        "messagePlaceholder": "Hãy kể về dự án của bạn,",
+        "privacyNote": "Tôi sẽ không bao giờ chia sẻ dữ liệu của bạn với bất kỳ ai. Xin hứa!",
+        "sendMessage": "Gửi Tin Nhắn",
+        "sending": "Đang gửi...",
+        "successTitle": "Gửi tin nhắn thành công!",
+        "successDesc": "Tôi sẽ phản hồi bạn sớm nhất có thể.",
+        "errorTitle": "Gửi tin nhắn thất bại",
+        "errorDesc": "Vui lòng thử lại hoặc liên hệ trực tiếp qua email.",
+        "copyEmail": "Sao chép email",
+        "copyToClipboard": "Sao chép email vào clipboard"
+    },
+    "projects": {
+        "title": "DỰ ÁN",
+        "viewCase": "XEM CHI TIẾT",
+        "returnToGallery": "QUAY VỀ DANH SÁCH",
+        "indexNo": "SỐ THỨ TỰ"
+    },
+    "footer": {
+        "copyright": "© 2024 THIEN PHUC® PORTFOLIO",
+        "builtFor": "XÂY DỰNG ĐỂ TẠO TÁC ĐỘNG",
+        "locations": "ĐỊA ĐIỂM",
+        "hanoiVietnam": "HÀ NỘI / VIỆT NAM"
+    },
+    "lang": {
+        "switchTo": "EN",
+        "current": "VI"
+    }
+}

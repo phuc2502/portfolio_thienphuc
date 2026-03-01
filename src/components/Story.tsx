@@ -2,9 +2,11 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const Story: React.FC = () => {
   const storyImageUrl = new URL('./img/anh.jpg', import.meta.url).href;
+  const { t } = useTranslation();
   const img1Ref = useRef<HTMLImageElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
@@ -147,7 +149,7 @@ const Story: React.FC = () => {
     <div ref={containerRef} id="story-content" className="px-6 md:px-12 py-24 md:py-48 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
       {/* Background Text Decor */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.02] select-none z-0">
-        <h2 ref={backgroundTextRef} className="text-[25vw] font-black italic tracking-tighter uppercase whitespace-nowrap">BRIDGE</h2>
+        <h2 ref={backgroundTextRef} className="text-[25vw] font-black italic tracking-tighter uppercase whitespace-nowrap">{t('story.backgroundText')}</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center max-w-screen-2xl mx-auto relative z-10">
@@ -166,7 +168,7 @@ const Story: React.FC = () => {
           </div>
           {/* Floating Badge */}
           <div ref={badgeRef} className="absolute -bottom-6 -right-6 bg-white text-black p-6 hidden md:block rounded-lg shadow-2xl transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-default">
-            <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">BA VISION 2026</p>
+            <p className="mono text-[8px] font-black tracking-[0.4em] uppercase">{t('story.badge')}</p>
           </div>
           {/* Decorative corner lines */}
           <div className="absolute -top-4 -left-4 w-16 h-16 border-l-2 border-t-2 border-white/10 rounded-tl-lg hidden lg:block decor-line" style={{ transformOrigin: 'top left' }} />
@@ -175,40 +177,40 @@ const Story: React.FC = () => {
         <div ref={textContainerRef} className="lg:col-span-5 lg:col-start-8 space-y-12">
           <div className="space-y-4">
             <h3 className="reveal text-4xl md:text-6xl lg:text-7xl font-black italic tracking-tighter uppercase leading-[0.9] text-white relative overflow-hidden">
-              MY <br />STORY
+              {t('story.title')} <br />{t('story.titleLine2')}
             </h3>
-            <p className="reveal mono text-[10px] tracking-[0.5em] text-white/30 uppercase italic">Exploring the gap between logic and human needs</p>
+            <p className="reveal mono text-[10px] tracking-[0.5em] text-white/30 uppercase italic">{t('story.subtitle')}</p>
           </div>
 
           <div className="space-y-8 max-w-xl">
             <p className="reveal text-lg md:text-2xl text-white/70 leading-relaxed font-light">
-              I perceive complex systems not merely as static lines of code, but as a continuous, vital dialogue between <span className="text-white italic font-medium">people</span> and <span className="text-white italic font-medium">solutions</span>.
+              {t('story.paragraph1')} <span className="text-white italic font-medium">{t('story.people')}</span> {t('story.and')} <span className="text-white italic font-medium">{t('story.solutions')}</span>.
             </p>
 
             <p className="reveal text-lg md:text-2xl text-white/70 leading-relaxed font-light">
-              With a foundation in the Banking sector, I have honed a meticulous approach to data analysis and a sharp eye for operational workflows. My mission is to decode intricate business challenges into <span className="underline decoration-white/30 underline-offset-8 decoration-2">streamlined and high-impact</span> technological blueprints.
+              {t('story.paragraph2')} <span className="underline decoration-white/30 underline-offset-8 decoration-2">{t('story.streamlined')}</span> {t('story.blueprints')}
             </p>
           </div>
 
           <div className="reveal pt-8 space-y-6">
             <div className="flex items-center gap-6">
               <div className="w-16 h-[2px] bg-gradient-to-r from-white/40 to-transparent decor-line" style={{ transformOrigin: 'left' }} />
-              <span className="mono text-[9px] tracking-[0.5em] uppercase text-white/40">Core Mission</span>
+              <span className="mono text-[9px] tracking-[0.5em] uppercase text-white/40">{t('story.coreMission')}</span>
             </div>
             <p className="text-sm md:text-base font-bold italic tracking-tight opacity-100 text-white/90 pl-6 border-l-2 border-white/20">
-              "Translating organizational chaos into absolute clarity, and business hurdles into technical innovation."
+              {t('story.quote')}
             </p>
           </div>
 
           {/* Quick Stats for BA Intern */}
           <div className="reveal grid grid-cols-2 gap-8 pt-12 border-t border-white/10">
             <div className="group cursor-default">
-              <p className="mono text-[8px] opacity-30 uppercase mb-2 group-hover:opacity-50 transition-opacity">Requirement Strategy</p>
-              <p className="text-xs font-bold tracking-widest uppercase group-hover:translate-x-1 transition-transform duration-300">Elicitation Focused</p>
+              <p className="mono text-[8px] opacity-30 uppercase mb-2 group-hover:opacity-50 transition-opacity">{t('story.reqStrategy')}</p>
+              <p className="text-xs font-bold tracking-widest uppercase group-hover:translate-x-1 transition-transform duration-300">{t('story.elicitation')}</p>
             </div>
             <div className="group cursor-default">
-              <p className="mono text-[8px] opacity-30 uppercase mb-2 group-hover:opacity-50 transition-opacity">Development Approach</p>
-              <p className="text-xs font-bold tracking-widest uppercase italic group-hover:translate-x-1 transition-transform duration-300">User-Centric Architecture</p>
+              <p className="mono text-[8px] opacity-30 uppercase mb-2 group-hover:opacity-50 transition-opacity">{t('story.devApproach')}</p>
+              <p className="text-xs font-bold tracking-widest uppercase italic group-hover:translate-x-1 transition-transform duration-300">{t('story.userCentric')}</p>
             </div>
           </div>
         </div>

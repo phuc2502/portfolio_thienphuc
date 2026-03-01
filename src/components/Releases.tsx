@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../contexts/LanguageContext';
 
 interface Track {
   artist: string;
@@ -21,6 +22,7 @@ const Releases: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const [hoveredTrack, setHoveredTrack] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const releases: Release[] = [
     {
@@ -306,9 +308,9 @@ const Releases: React.FC = () => {
     <div ref={containerRef} className="px-6 md:px-12 max-w-screen-2xl mx-auto py-12 md:py-20">
       {/* Table Header */}
       <div ref={headerRef} className="hidden lg:grid grid-cols-12 mono text-[11px] font-bold text-white/20 border-b border-white/5 pb-6 mb-12 tracking-[0.5em]">
-        <div className="col-span-3 uppercase">Domain Category</div>
-        <div className="col-span-6 uppercase">Specialization & Competencies</div>
-        <div className="col-span-3 text-right uppercase">Stage // Link</div>
+        <div className="col-span-3 uppercase">{t('releases.domainCategory')}</div>
+        <div className="col-span-6 uppercase">{t('releases.specialization')}</div>
+        <div className="col-span-3 text-right uppercase">{t('releases.stageLink')}</div>
       </div>
 
       <motion.div

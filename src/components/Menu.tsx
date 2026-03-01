@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../contexts/LanguageContext';
 
 interface MenuProps {
   onClose: () => void;
@@ -9,13 +10,14 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ onClose, onNavigate }) => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   const menuItems = [
-    { label: 'ABOUT', id: 'about', num: '01', img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000' },
-    { label: 'STORY', id: 'story', num: '02', img: 'https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000' },
-    { label: 'PROJECTS', id: 'projects', num: '03', img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000' },
-    { label: 'STACK', id: 'releases', num: '04', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000' },
-    { label: 'CONTACT', id: 'contact', num: '05', img: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1000' },
+    { label: t('menu.about'), id: 'about', num: '01', img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000' },
+    { label: t('menu.story'), id: 'story', num: '02', img: 'https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000' },
+    { label: t('menu.projects'), id: 'projects', num: '03', img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000' },
+    { label: t('menu.stack'), id: 'releases', num: '04', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000' },
+    { label: t('menu.contact'), id: 'contact', num: '05', img: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1000' },
   ];
 
   return (
@@ -36,24 +38,24 @@ const Menu: React.FC<MenuProps> = ({ onClose, onNavigate }) => {
             exit={{ opacity: 0, scale: 1.1 }}
             className="absolute inset-0 z-0 pointer-events-none"
           >
-            <img 
-              src={menuItems[hoveredIdx].img} 
-              className="w-full h-full object-cover grayscale" 
+            <img
+              src={menuItems[hoveredIdx].img}
+              className="w-full h-full object-cover grayscale"
               alt="preview"
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      <button 
+      <button
         onClick={onClose}
         className="absolute top-10 right-10 z-10 mono text-[10px] text-white/40 hover:text-white transition-colors tracking-widest uppercase border border-white/10 px-8 py-2.5 rounded-full backdrop-blur-sm"
       >
-        [ CLOSE ]
+        [ {t('header.close')} ]
       </button>
 
       <div className="absolute top-10 left-10 z-10 pointer-events-none">
-        <p className="mono text-[8px] tracking-[0.6em] opacity-20 uppercase">Navigation Menu</p>
+        <p className="mono text-[8px] tracking-[0.6em] opacity-20 uppercase">{t('menu.navTitle')}</p>
       </div>
 
       <div className="relative z-10 flex flex-col space-y-4 md:space-y-6 text-center w-full max-w-4xl px-6">
