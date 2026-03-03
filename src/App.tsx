@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
+import { Analytics } from '@vercel/analytics/react';
 import { LanguageProvider, useTranslation } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
@@ -124,6 +125,7 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <AppContent />
+      <Analytics />
     </LanguageProvider>
   );
 };
