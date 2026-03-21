@@ -10,7 +10,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-FF0000?style=flat-square&logo=typescript&logoColor=white&labelColor=1a1a1a)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.2.0-FF0000?style=flat-square&logo=vite&logoColor=white&labelColor=1a1a1a)](https://vitejs.dev/)
 [![GSAP](https://img.shields.io/badge/GSAP-3.14.2-FF0000?style=flat-square&logo=greensock&logoColor=white&labelColor=1a1a1a)](https://greensock.com/gsap/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-FF0000?style=flat-square&logo=vercel&logoColor=white&labelColor=1a1a1a)](https://thienphuc2025.vercel.app/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-FF0000?style=flat-square&logo=vercel&logoColor=white&labelColor=1a1a1a)](https://thienphucba.vercel.app/)
 [![License](https://img.shields.io/badge/License-MIT-FF0000?style=flat-square&labelColor=1a1a1a)](LICENSE)
 
 **A high-performance, animation-driven personal portfolio**
@@ -18,7 +18,7 @@
 
 <br />
 
-[🌐 **Live Demo**](https://thienphuc2025.vercel.app/) &nbsp;·&nbsp; [🐛 **Report Bug**](../../issues) &nbsp;·&nbsp; [💡 **Request Feature**](../../issues)
+[🌐 **Live Demo**](https://thienphucba.vercel.app/) &nbsp;·&nbsp; [🐛 **Report Bug**](../../issues) &nbsp;·&nbsp; [💡 **Request Feature**](../../issues)
 
 <br />
 
