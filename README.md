@@ -1,17 +1,17 @@
 <div align="center">
 
-# 🔴 THIEN PHUC® — Portfolio
+# ⚫ THIEN PHUC® — Portfolio
 
-<img src="https://img.shields.io/badge/▸_THIEN_PHUC®-PORTFOLIO-FF0000?style=for-the-badge&labelColor=0a0a0a" alt="Portfolio" />
+<img src="https://img.shields.io/badge/▸_THIEN_PHUC®-PORTFOLIO-AAAAAA?style=for-the-badge&labelColor=0a0a0a" alt="Portfolio" />
 
 <br />
 
-[![React](https://img.shields.io/badge/React-18.2.0-FF0000?style=flat-square&logo=react&logoColor=white&labelColor=1a1a1a)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-FF0000?style=flat-square&logo=typescript&logoColor=white&labelColor=1a1a1a)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2.0-FF0000?style=flat-square&logo=vite&logoColor=white&labelColor=1a1a1a)](https://vitejs.dev/)
-[![GSAP](https://img.shields.io/badge/GSAP-3.14.2-FF0000?style=flat-square&logo=greensock&logoColor=white&labelColor=1a1a1a)](https://greensock.com/gsap/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-FF0000?style=flat-square&logo=vercel&logoColor=white&labelColor=1a1a1a)](https://thienphucba.vercel.app/)
-[![License](https://img.shields.io/badge/License-MIT-FF0000?style=flat-square&labelColor=1a1a1a)](LICENSE)
+[![React](https://img.shields.io/badge/React-18.2.0-AAAAAA?style=flat-square&logo=react&logoColor=white&labelColor=1a1a1a)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-AAAAAA?style=flat-square&logo=typescript&logoColor=white&labelColor=1a1a1a)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.2.0-AAAAAA?style=flat-square&logo=vite&logoColor=white&labelColor=1a1a1a)](https://vitejs.dev/)
+[![GSAP](https://img.shields.io/badge/GSAP-3.14.2-AAAAAA?style=flat-square&logo=greensock&logoColor=white&labelColor=1a1a1a)](https://greensock.com/gsap/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-AAAAAA?style=flat-square&logo=vercel&logoColor=white&labelColor=1a1a1a)](https://thienphucba.vercel.app/)
+[![License](https://img.shields.io/badge/License-MIT-AAAAAA?style=flat-square&labelColor=1a1a1a)](LICENSE)
 
 **A high-performance, animation-driven personal portfolio**
 **built with React, TypeScript, and cinematic motion design.**
@@ -22,7 +22,7 @@
 
 <br />
 
-<img src="https://img.shields.io/badge/━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-FF0000?style=flat-square" />
+<img src="https://img.shields.io/badge/━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-AAAAAA?style=flat-square" />
 
 </div>
 
@@ -101,18 +101,18 @@ The application follows a **component-driven architecture** where each page sect
 
 ```mermaid
 graph TD
-    subgraph "🔴 Application Shell"
+    subgraph "⚫ Application Shell"
         App["⚙️ App.tsx"]
         Lenis["🌊 Lenis Smooth Scroll"]
         GSAP["🎬 GSAP ScrollTrigger"]
     end
 
-    subgraph "🔴 Navigation"
+    subgraph "⚫ Navigation"
         Header["📍 Header"]
         Menu["📋 Fullscreen Menu"]
     end
 
-    subgraph "🔴 Page Sections"
+    subgraph "⚫ Page Sections"
         Hero["🎥 Hero + Video Player"]
         About["👤 About"]
         Story["📖 Story"]
@@ -121,7 +121,7 @@ graph TD
         Contact["📧 Contact + EmailJS"]
     end
 
-    subgraph "🔴 Shared"
+    subgraph "⚫ Shared"
         Cursor["🖱️ Custom Cursor"]
         Context["🧠 React Contexts"]
         Types["📝 TypeScript Types"]
@@ -142,9 +142,9 @@ graph TD
     Contact -->|"📨 EmailJS API"| Email["📬 Email Service"]
     Hero --> VideoPlayer["🎥 Video Player"]
 
-    classDef primary fill:#CC0000,stroke:#FF0000,stroke-width:2px,color:#fff
-    classDef accent fill:#1a1a1a,stroke:#FF0000,stroke-width:1px,color:#fff
-    classDef shell fill:#0a0a0a,stroke:#FF0000,stroke-width:2px,color:#fff
+    classDef primary fill:#333333,stroke:#AAAAAA,stroke-width:2px,color:#fff
+    classDef accent fill:#1a1a1a,stroke:#CCCCCC,stroke-width:1px,color:#fff
+    classDef shell fill:#0a0a0a,stroke:#AAAAAA,stroke-width:2px,color:#fff
 
     class App,Lenis,GSAP shell
     class Hero,About,Story,Projects,Releases,Contact primary
@@ -162,19 +162,19 @@ flowchart LR
     D --> F["🖥️ DOM\nUpdates"]
     E --> F
 
-    style A fill:#FF0000,stroke:#CC0000,color:#fff
-    style B fill:#CC0000,stroke:#FF0000,color:#fff
-    style C fill:#990000,stroke:#FF0000,color:#fff
-    style D fill:#660000,stroke:#FF0000,color:#fff
-    style E fill:#660000,stroke:#FF0000,color:#fff
-    style F fill:#1a1a1a,stroke:#FF0000,color:#fff
+    style A fill:#AAAAAA,stroke:#CCCCCC,color:#000
+    style B fill:#CCCCCC,stroke:#AAAAAA,color:#000
+    style C fill:#999999,stroke:#AAAAAA,color:#000
+    style D fill:#666666,stroke:#AAAAAA,color:#fff
+    style E fill:#666666,stroke:#AAAAAA,color:#fff
+    style F fill:#1a1a1a,stroke:#AAAAAA,color:#fff
 ```
 
 ---
 
 ## 🧰 Tech Stack
 
-### 🔴 Core
+### ⚫ Core
 
 | | Technology | Version | Purpose |
 |---|---|---|---|
@@ -182,7 +182,7 @@ flowchart LR
 | 🔷 | [TypeScript](https://www.typescriptlang.org/) | `5.8.2` | Static type checking |
 | ⚡ | [Vite](https://vitejs.dev/) | `6.2.0` | Build tool & development server |
 
-### 🔴 Animation & Interaction
+### ⚫ Animation & Interaction
 
 | | Technology | Version | Purpose |
 |---|---|---|---|
@@ -190,7 +190,7 @@ flowchart LR
 | ✨ | [Framer Motion](https://www.framer.com/motion/) | `11.11.11` | Declarative React animations & transitions |
 | 🌊 | [Lenis](https://github.com/darkroomengineering/lenis) | `1.0.42` | Smooth scroll physics engine |
 
-### 🔴 Utilities & Services
+### ⚫ Utilities & Services
 
 | | Technology | Purpose |
 |---|---|---|
@@ -199,7 +199,7 @@ flowchart LR
 | 💅 | [TailwindCSS (CDN)](https://tailwindcss.com/) | Utility-first CSS framework |
 | 🔤 | [Google Fonts](https://fonts.google.com/) | Montserrat + JetBrains Mono typography |
 
-### 🔴 Infrastructure
+### ⚫ Infrastructure
 
 | | Service | Purpose |
 |---|---|---|
@@ -352,10 +352,10 @@ The project is configured for seamless deployment on **[Vercel](https://vercel.c
 
 | | Issue | Cause | Solution |
 |---|---|---|---|
-| 🔴 | Contact form not sending | Missing env variables on Vercel | Add `VITE_EMAILJS_*` variables in Settings |
-| 🔴 | Form returns 400 error | Invalid Template ID | Verify Template ID on EmailJS dashboard |
-| 🔴 | Blank page after deploy | Build error | Check build logs in Deployments tab |
-| 🔴 | Env variables not applied | Stale deployment | Trigger manual redeploy |
+| ⚫ | Contact form not sending | Missing env variables on Vercel | Add `VITE_EMAILJS_*` variables in Settings |
+| ⚫ | Form returns 400 error | Invalid Template ID | Verify Template ID on EmailJS dashboard |
+| ⚫ | Blank page after deploy | Build error | Check build logs in Deployments tab |
+| ⚫ | Env variables not applied | Stale deployment | Trigger manual redeploy |
 
 ---
 
@@ -442,11 +442,11 @@ See the [LICENSE](LICENSE) file for full details.
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-FF0000?style=flat-square" />
+<img src="https://img.shields.io/badge/━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-AAAAAA?style=flat-square" />
 
 <br /><br />
 
-🔴 **Built with ❤️ by [Thien Phuc](https://github.com/phuc2502)** · Hanoi, Vietnam
+⚫ **Built with 🤍 by [Thien Phuc](https://github.com/phuc2502)** · Hanoi, Vietnam
 
 ⭐ **If you found this project useful, consider giving it a star on GitHub!**
 
